@@ -10,7 +10,7 @@ module shifter_eight_bit (In, Cnt, Op, Out);
 	mux4_1 CMD15(.InD(1'b0), .InC(In[15]), .InB(In[7]), .InA(In[7]), .S(Op), .Out(cmdLogic[15]));
 	mux2_1 BIT15(.InB(cmdLogic[15]), .InA(In[15]), .S(Cnt), .Out(Out[15]));
 		
-	mux4_1 CMD14(.InD(1'b00), .InC(In[15]), .InB(In[6]), .InA(In[6]), .S(Op), .Out(cmdLogic[14]));
+	mux4_1 CMD14(.InD(1'b0), .InC(In[15]), .InB(In[6]), .InA(In[6]), .S(Op), .Out(cmdLogic[14]));
 	mux2_1 BIT14(.InB(cmdLogic[14]), .InA(In[14]), .S(Cnt), .Out(Out[14]));
 	
 	mux4_1 CMD13(.InD(1'b0), .InC(In[15]), .InB(In[5]), .InA(In[5]), .S(Op), .Out(cmdLogic[13]));

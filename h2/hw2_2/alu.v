@@ -1,9 +1,8 @@
-module alu (A, B, Cin, Op, sign, Out, Ofl, Z);
+module alu (A, B, Cin, sign, Out, Ofl, Z);
    
 	input [15:0] A;
   input [15:0] B;
   input Cin;
-  input [2:0] Op;
   input sign;
   
 	output [15:0] Out;
@@ -55,5 +54,5 @@ module alu (A, B, Cin, Op, sign, Out, Ofl, Z);
 	//top_cout[3] needs to be used with overflow...
 	//probably need to include sign somehow...
 	//detect 0...
-	//
+	assign Z = 1'b0;	
 endmodule
