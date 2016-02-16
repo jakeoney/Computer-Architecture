@@ -1,0 +1,11 @@
+*.mpf
+*.cr.mti
+*dump.vcd
+*transcript
+*.asm
+*.vhd
+*.dat
+*.vcheck.out
+*vsim.wlf
+*cs552_tutorial/*
+*h2/hw2_2/hw2_2/*
