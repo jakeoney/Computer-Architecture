@@ -32,7 +32,7 @@ module alu_hier(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z);
 	mux2_1_16bit B_OR_BINV (.InB(b_inv[15:0]), .InA(B[15:0]), .S(invB), .Out(muxed_B[15:0]));
 
   //Adder and overflow logic
-	alu A0(.Out(add_out[15:0]), .Ofl(add_Ofl),.Z(Z),
+	alu A0(.Out(add_out[15:0]), .Ofl(add_Ofl),
     .A(muxed_A[15:0]), .B(muxed_B[15:0]), .Cin(Cin), .sign(sign));
 	
 	//Logical Operators
@@ -52,5 +52,6 @@ module alu_hier(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z);
 	mux4_1 OFLMUX2(.InD(1'b0), .InC(1'b0), .InB(1'b0), .InA(Ofl_temp), .S(Op[1:0]), .Out(Ofl));
 
 	//zero detector of some sort...
-
+	zero_detector ZERO(Out[15:0], Z);
+	
 endmodule

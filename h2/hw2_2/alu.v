@@ -1,4 +1,4 @@
-module alu (A, B, Cin, sign, Out, Ofl, Z);
+module alu (A, B, Cin, sign, Out, Ofl);
    
 	input [15:0] A;
   input [15:0] B;
@@ -7,7 +7,6 @@ module alu (A, B, Cin, sign, Out, Ofl, Z);
   
 	output [15:0] Out;
   output Ofl;
-  output Z;
 
 	wire [15:0] cout, G, P;
 	wire [3:0] outP, outG;
@@ -51,8 +50,4 @@ module alu (A, B, Cin, sign, Out, Ofl, Z);
 	assign signed_overflow = top_cout[3] ^ cout[14];
 	mux2_1 OFL (.InB(signed_overflow), .InA(top_cout[3]), .S(sign), .Out(Ofl ));			
 
-	//top_cout[3] needs to be used with overflow...
-	//probably need to include sign somehow...
-	//detect 0...
-	assign Z = 1'b0;	
 endmodule
