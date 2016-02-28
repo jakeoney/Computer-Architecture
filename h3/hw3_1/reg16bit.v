@@ -9,7 +9,7 @@ module reg16bit(clk, rst, write, writedata, readdata);
 	wire new_clk;
 	
 	assign rst_or_write = rst | write;
-	assign new_clk = rst_or_write & clk;
+	assign new_clk = rst_or_write & ~clk;
 
 	dff ZERO (.q(readdata[0]),  .d(writedata[0]),  .clk(new_clk), .rst(rst));
 	dff ONE  (.q(readdata[1]),  .d(writedata[1]),  .clk(new_clk), .rst(rst));
