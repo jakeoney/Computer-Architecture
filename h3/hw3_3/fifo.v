@@ -1,24 +1,19 @@
-/* $Author: karu $ */
-/* $LastChangedDate: 2009-03-04 23:09:45 -0600 (Wed, 04 Mar 2009) $ */
-/* $Rev: 45 $ */
-module fifo(/*AUTOARG*/
-   // Outputs
-   data_out, fifo_empty, fifo_full, err, 
-   // Inputs
-   data_in, data_in_valid, pop_fifo, clk, rst
-   );
-   input [63:0] data_in;
-   input        data_in_valid;
-   input        pop_fifo;
+module fifo(data_out, fifo_empty, fifo_full, err, data_in, data_in_valid, pop_fifo, clk, rst);
+  input [63:0] data_in;
+  input        data_in_valid;
+  input        pop_fifo;
+  input        clk;
+  input        rst;
+  output [63:0] data_out;
+  output        fifo_empty;
+  output        fifo_full;
+  output        err;
    
-   input        clk;
-   input        rst;
-   output [63:0] data_out;
-   output        fifo_empty;
-   output        fifo_full;
-   output        err;
-   
-   //your code here
+	wire [2:0] state, next_state;
 
+	fifo_reg fifo_state_reg(.state(state), .next_state(next_state), .clk(clk), .rst(rst));	
+
+	fifo_logic fifo_state_logic(.state(state), .next_state(next_state), .fifo_empty(fifo_empty), .fifo_full(fifo_full), .err(err), .data_in_falid(data_in_valid), .pop_fifo(pop_fifo));
+
+	fifo_entry_controller fifo_control();
 endmodule
-// DUMMY LINE FOR REV CONTROL :1:
