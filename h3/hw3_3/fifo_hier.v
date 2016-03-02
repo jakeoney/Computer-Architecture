@@ -29,7 +29,6 @@ module fifo_hier(/*AUTOARG*/
               .data_out                 (data_out[63:0]),
               .fifo_empty               (fifo_empty),
               .fifo_full                (fifo_full),
-              .data_out_valid           (data_out_valid),
               .err                      (err),
               // Inputs
               .data_in                  (data_in[63:0]),
