@@ -10,7 +10,7 @@ module fifo_entry(in, new_data, out, clk, rst);
 
 	wire new_clk;
 	//might want ~clk here
-	assign new_clk = clk & new_data;
+	assign new_clk = ~clk & new_data;
 
 	dff bit0 (.q(out[0]),  .d(in[0]),  .clk(new_clk), .rst(rst));
 	dff bit1 (.q(out[1]),  .d(in[1]),  .clk(new_clk), .rst(rst));

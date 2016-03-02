@@ -1264,7 +1264,7 @@ module fifo_bench;
        fifo_empty_gold = 1'b0;
        fifo_full_gold = 1'b1;
        data_out_valid_gold = 1'b1;
-/*
+
        data_in = 64'hae23ce5c7b7b89f6;
        data_in_valid = 1'b1;
        pop_fifo = 1'b1;
@@ -1372,7 +1372,7 @@ module fifo_bench;
        fifo_empty_gold = 1'b0;
        fifo_full_gold = 1'b0;
        data_out_valid_gold = 1'b0;
-*/
+
        // END OF TEST CASES
 
        if (fail)

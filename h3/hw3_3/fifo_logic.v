@@ -6,7 +6,7 @@ module fifo_logic(state, next_state, fifo_empty, fifo_full, err, data_in_valid, 
 	output reg fifo_empty, fifo_full;
 	output reg err;
 
-	always @(state, data_in_valid,pop_fifo) begin
+	always @(state, data_in_valid, pop_fifo) begin
 		//defaults
 		fifo_empty <= 1'b0;
 		fifo_full <= 1'b0;
@@ -71,7 +71,8 @@ module fifo_logic(state, next_state, fifo_empty, fifo_full, err, data_in_valid, 
 			//what to do when there is data-in valid and pop fifo
 			5'b1_1_000:
 				begin
-					next_state <= 3'b000;
+					//pop should be ignored...
+					next_state <= 3'b001;
 //					fifo_empty <= 1'b1;
 				end
 			5'b1_1_001:
@@ -83,7 +84,8 @@ module fifo_logic(state, next_state, fifo_empty, fifo_full, err, data_in_valid, 
 			5'b1_1_100:
 				begin
 					fifo_full <= 1'b1;
-					next_state <= 3'b100;
+					//ignore data_in
+					next_state <= 3'b011;
 				end
 			//end data-in valid and pop fifo
 			
