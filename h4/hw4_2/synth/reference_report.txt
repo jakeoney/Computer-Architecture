@@ -1,0 +1,28 @@
+ 
+****************************************
+Report : reference
+Design : fifo
+Version: B-2008.09-SP3
+Date   : Sun Mar 13 19:22:46 2016
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+BUFX2              gscl45nm       2.346500       6     14.079000  
+fifo_entry_controller         14706.923115       1  14706.923115  h, n
+fifo_logic                       87.759098       1     87.759098  h
+fifo_reg                         39.421199       1     39.421199  h, n
+-----------------------------------------------------------------------------
+Total 4 references                                  14848.182412
+1

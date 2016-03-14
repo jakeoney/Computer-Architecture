@@ -1,0 +1,1149 @@
+
+                        DC Professional (TM)
+                           DC Expert (TM)
+                            DC Ultra (TM)
+                       FloorPlan Manager (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                        Library Compiler (TM)
+                      DesignWare Developer (TM)
+                          DFT Compiler (TM)
+                            BSD Compiler
+                         Power Compiler (TM)
+
+           Version B-2008.09-SP3 for amd64 -- Jan 19, 2009
+              Copyright (c) 1988-2008 by Synopsys, Inc.
+                         ALL RIGHTS RESERVED
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+The above trademark notice does not imply that you are licensed to use 
+all of the listed products. You are licensed to use only those products 
+for which you have lawfully obtained a valid license key.
+
+Initializing...
+echo "********** CS552 Reading files begin ********************"
+********** CS552 Reading files begin ********************
+set my_verilog_files [list dff.v fifo_entry_controller.v fifo_entry.v fifo_logic.v fifo_reg.v fifo.v mux2_1_16bit.v mux2_1_4bit.v mux2_1_64bit.v mux2_1.v mux4_1_16bit.v mux4_1_64bit.v nand2.v not1.v  ]
+dff.v fifo_entry_controller.v fifo_entry.v fifo_logic.v fifo_reg.v fifo.v mux2_1_16bit.v mux2_1_4bit.v mux2_1_64bit.v mux2_1.v mux4_1_16bit.v mux4_1_64bit.v nand2.v not1.v
+set my_toplevel fifo
+fifo
+define_design_lib WORK -path ./WORK
+1
+analyze -f verilog $my_verilog_files
+Running PRESTO HDLC
+Searching for ./dff.v
+Searching for ./fifo_entry_controller.v
+Searching for ./fifo_entry.v
+Searching for ./fifo_logic.v
+Searching for ./fifo_reg.v
+Searching for ./fifo.v
+Searching for ./mux2_1_16bit.v
+Searching for ./mux2_1_4bit.v
+Searching for ./mux2_1_64bit.v
+Searching for ./mux2_1.v
+Searching for ./mux4_1_16bit.v
+Searching for ./mux4_1_64bit.v
+Searching for ./nand2.v
+Searching for ./not1.v
+Compiling source file ./dff.v
+Warning:  ./dff.v:15: delays for continuous assignment are ignored. (VER-173)
+Compiling source file ./fifo_entry_controller.v
+Compiling source file ./fifo_entry.v
+Compiling source file ./fifo_logic.v
+Compiling source file ./fifo_reg.v
+Compiling source file ./fifo.v
+Compiling source file ./mux2_1_16bit.v
+Compiling source file ./mux2_1_4bit.v
+Compiling source file ./mux2_1_64bit.v
+Compiling source file ./mux2_1.v
+Compiling source file ./mux4_1_16bit.v
+Compiling source file ./mux4_1_64bit.v
+Compiling source file ./nand2.v
+Compiling source file ./not1.v
+Presto compilation completed successfully.
+Loading db file '/u/k/a/karu/courses/cs552/cad/Synopsys_Libraries/libs/gscl45nm.db'
+1
+elaborate $my_toplevel -architecture verilog
+Loading db file '/s/synopsys-2009_03_09/@sys/B-2008.09-SP3/libraries/syn/gtech.db'
+Loading db file '/s/synopsys-2009_03_09/@sys/B-2008.09-SP3/libraries/syn/standard.sldb'
+  Loading link library 'gscl45nm'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'fifo'.
+Information: Building the design 'fifo_reg'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fifo_logic'. (HDL-193)
+
+Statistics for case statements in always block at line 10 in file
+	'./fifo_logic.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            15            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'fifo_entry_controller'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'dff'. (HDL-193)
+
+Inferred memory devices in process
+	in routine dff line 17 in file
+		'./dff.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mux4_1_64bit'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2_1_64bit'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fifo_entry'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux4_1_16bit'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2_1_16bit'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2_1_4bit'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mux2_1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'not1'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'nand2'. (HDL-193)
+Presto compilation completed successfully.
+1
+echo "********** CS552 Reading files end ********************"
+********** CS552 Reading files end ********************
+current_design $my_toplevel
+Current design is 'fifo'.
+{fifo}
+#/* The name of the clock pin. If no clock-pin     */
+#/* exists, pick anything                          */
+set my_clock_pin clk
+clk
+#/* Target frequency in MHz for optimization       */
+set my_clk_freq_MHz 1000
+1000
+#/* Delay of input signals (Clock-to-Q, Package etc.)  */
+set my_input_delay_ns 0.1
+0.1
+#/* Reserved time for output signals (Holdtime etc.)   */
+set my_output_delay_ns 0.1
+0.1
+#/**************************************************/
+#/* No modifications needed below                  */
+#/**************************************************/
+set verilogout_show_unconnected_pins "true"
+true
+# analyze -f verilog $my_verilog_files
+# elaborate $my_toplevel -architecture verilog
+# current_design $my_toplevel
+report_hierarchy 
+ 
+****************************************
+Report : hierarchy
+Design : fifo
+Version: B-2008.09-SP3
+Date   : Sun Mar 13 19:21:38 2016
+****************************************
+
+Information: This design contains unmapped logic. (RPT-7)
+
+fifo
+    fifo_entry_controller
+        GTECH_AND2                                 gtech
+        GTECH_NOT                                  gtech
+        GTECH_OR2                                  gtech
+        fifo_entry
+            GTECH_AND2                             gtech
+            GTECH_NOT                              gtech
+            dff
+                GTECH_BUF                          gtech
+                GTECH_NOT                          gtech
+        mux2_1_64bit
+            mux2_1_16bit
+                mux2_1_4bit
+                    mux2_1
+                        nand2
+                            GTECH_AND2             gtech
+                            GTECH_NOT              gtech
+                        not1
+                            GTECH_NOT              gtech
+        mux4_1_64bit
+            mux4_1_16bit
+                mux2_1_16bit
+                    ...
+    fifo_logic
+        GTECH_AND2                                 gtech
+        GTECH_BUF                                  gtech
+        GTECH_NOT                                  gtech
+        GTECH_OR2                                  gtech
+        GTECH_OR3                                  gtech
+        GTECH_OR4                                  gtech
+        GTECH_OR5                                  gtech
+    fifo_reg
+        dff
+            ...
+1
+link
+
+  Linking design 'fifo'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  gscl45nm (library)          /u/k/a/karu/courses/cs552/cad/Synopsys_Libraries/libs/gscl45nm.db
+
+1
+uniquify
+Removing uniquified design 'dff'.
+Removing uniquified design 'mux4_1_64bit'.
+Removing uniquified design 'fifo_entry'.
+Removing uniquified design 'mux4_1_16bit'.
+Removing uniquified design 'mux2_1_16bit'.
+Removing uniquified design 'mux2_1_4bit'.
+Removing uniquified design 'mux2_1'.
+Removing uniquified design 'not1'.
+Removing uniquified design 'nand2'.
+  Uniquified 259 instances of design 'dff'.
+  Uniquified 3 instances of design 'mux4_1_64bit'.
+  Uniquified 4 instances of design 'fifo_entry'.
+  Uniquified 12 instances of design 'mux4_1_16bit'.
+  Uniquified 40 instances of design 'mux2_1_16bit'.
+  Uniquified 160 instances of design 'mux2_1_4bit'.
+  Uniquified 640 instances of design 'mux2_1'.
+  Uniquified 640 instances of design 'not1'.
+  Uniquified 1920 instances of design 'nand2'.
+1
+set my_period [expr 1000 / $my_clk_freq_MHz]
+1
+set find_clock [ find port [list $my_clock_pin] ]
+{clk}
+if {  $find_clock != [list] } {
+   set clk_name $my_clock_pin
+   create_clock -period $my_period $clk_name
+} else {
+   set clk_name vclk
+   create_clock -period $my_period -name $clk_name
+} 
+1
+set_driving_cell  -lib_cell INVX1  [all_inputs]
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+1
+set_input_delay $my_input_delay_ns -clock $clk_name [remove_from_collection [all_inputs] $my_clock_pin]
+1
+set_output_delay $my_output_delay_ns -clock $clk_name [all_outputs]
+1
+compile -map_effort low  -area_effort low
+Warning: The compile -map_effort low is obsolete. Setting this variable now defaults to compile -map_effort medium. Please update your script accordingly. (OPT-1303)
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'fifo'. (UIO-59)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library       |      Version       | Available |
+============================================================================
+| Basic DW Building Blocks                | B-2008.09-DWBB_0901
+                                                               |     *     |
+| Licensed DW Building Blocks             |                    |           |
+============================================================================
+
+
+Information: There are 8 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'dff_0'
+  Processing 'fifo_entry_0'
+  Processing 'nand2_1728'
+  Processing 'not1_576'
+  Processing 'mux2_1_576'
+  Processing 'mux2_1_4bit_144'
+  Processing 'mux2_1_16bit_36'
+  Processing 'mux2_1_64bit'
+  Processing 'mux4_1_16bit_0'
+  Processing 'mux4_1_64bit_0'
+  Processing 'fifo_entry_controller'
+  Processing 'fifo_logic'
+  Processing 'fifo_reg'
+  Processing 'fifo'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:09   10200.2      0.87     134.2       4.5                          
+    0:00:09   10200.2      0.87     134.2       4.5                          
+    0:00:11    9947.8      0.05      10.9       4.2                          
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:11    9947.8      0.05      10.9       4.2                          
+    0:00:12    9731.4      0.04       8.5       4.2 fifo_control/ENTRY3/bit40/state_reg/D
+    0:00:12    9692.0      0.04       7.5       4.2 fifo_control/ENTRY3/bit34/state_reg/D
+    0:00:13    9656.8      0.03       7.0       4.2 fifo_control/ENTRY3/bit59/state_reg/D
+    0:00:13    9632.4      0.03       5.9       4.2 fifo_control/ENTRY1/bit29/state_reg/D
+    0:00:13    9598.6      0.02       3.5       4.2 fifo_control/ENTRY1/bit43/state_reg/D
+    0:00:14    9574.2      0.02       2.8       4.2 fifo_control/ENTRY1/bit12/state_reg/D
+    0:00:14    9538.1      0.01       0.7       4.2 fifo_control/ENTRY3/bit1/state_reg/D
+    0:00:14    9523.0      0.00       0.0       4.2 fifo_control/ENTRY3/bit44/state_reg/D
+    0:00:14    9534.8      0.00       0.0       4.2                          
+
+
+  Beginning Design Rule Fixing  (max_capacitance)
+  ----------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:14    9534.8      0.00       0.0       4.2                          
+    0:00:15   10021.9      0.00       0.0       3.9 fifo_control/first/HIGH/LOW/SECOND/FIRST/NA1/out
+    0:00:15   10473.8      0.00       0.0       3.6 fifo_control/second/HIGH/LOW/SECOND/LAST/NA1/out
+    0:00:16   11280.1      0.00       0.0       3.3 fifo_control/fourth/LOW/FIRST/FIRST/NA2/out
+    0:00:17   11743.3      0.00       0.0       3.0 fifo_control/second/LOW/HIGH/THIRD/FIRST/NA2/out
+    0:00:17   12220.6      0.00       0.0       2.7 fifo_control/third/HIGHMID/TOP/SECOND/THIRD/NA2/out
+    0:00:18   12340.7      0.00       0.0       2.7 fifo_state_logic/n12     
+    0:00:18   12365.1      0.00       0.0       2.7 fifo_control/net5598     
+    0:00:18   12449.1      0.00       0.0       2.6 fifo_control/second/LOW/LOW/LAST/FIRST/NA2/out
+    0:00:19   12483.4      0.00       0.0       2.6 fifo_control/third/LOW/LOW/LAST/SECOND/NA3/out
+    0:00:19   12484.3      0.00       0.0       2.6 fifo_control/third/LOW/LOW/THIRD/THIRD/NA2/out
+    0:00:20   12486.7      0.00       0.0       2.6 fifo_control/first/HIGHMID/TOP/THIRD/LAST/NA2/out
+    0:00:21   12508.3      0.00       0.0       2.6 fifo_control/third/HIGHMID/HIGH/SECOND/FIRST/nandAS
+    0:00:21   12509.2      0.00       0.0       2.6 fifo_control/first/HIGHMID/TOP/SECOND/FIRST/NA2/out
+    0:00:22   12510.1      0.00       0.0       2.6 fifo_control/second/LOW/HIGH/FIRST/THIRD/Out
+    0:00:24   12511.5      0.00       0.0       2.6 fifo_control/first/net9235
+    0:00:28   12522.8      0.02       1.9       2.6 fifo_control/net6716     
+    0:00:29   13813.4      0.13      16.0       2.3 fifo_control/ENTRY4/bit2/N3
+    0:00:30   14906.4      0.16      26.9       2.1 fifo_control/first/LOW/LOW/FIRST/FIRST/NA2/out
+    0:00:31   15792.9      0.17      30.7       1.5 fifo_control/first/LOW/LOW/FIRST/FIRST/NA3/out
+    0:00:32   16966.1      0.25      38.6       0.7 fifo_control/second/HIGHMID/LOW/THIRD/THIRD/NA3/out
+    0:00:32   18046.9      0.24      46.3       0.0 fifo_control/ENTRY1/bit35/state_reg/D
+    0:00:33   18054.9      0.20      42.2       0.0 fifo_control/ENTRY2/bit7/state_reg/D
+    0:00:33   18047.9      0.19      41.0       0.0 fifo_control/ENTRY1/bit13/state_reg/D
+    0:00:34   18145.5      0.17      39.2       0.0 fifo_control/ENTRY2/bit26/state_reg/D
+    0:00:35   18130.9      0.17      38.1       0.0 fifo_control/ENTRY2/bit20/state_reg/D
+    0:00:35   18084.5      0.16      37.3       0.0 fifo_control/ENTRY2/bit47/state_reg/D
+    0:00:36   17977.5      0.15      35.6       0.0 fifo_control/ENTRY1/bit57/state_reg/D
+    0:00:37   17837.6      0.15      34.7       0.0 fifo_control/ENTRY3/bit25/state_reg/D
+    0:00:37   17714.7      0.14      33.8       0.0 fifo_control/ENTRY1/bit22/state_reg/D
+    0:00:38   17626.4      0.14      32.8       0.0 fifo_control/ENTRY3/bit28/state_reg/D
+    0:00:38   17580.4      0.13      32.2       0.0 fifo_control/ENTRY1/bit22/state_reg/D
+    0:00:39   17552.3      0.13      31.7       0.0 fifo_control/ENTRY2/bit51/state_reg/D
+    0:00:40   17542.4      0.13      30.8       0.0 fifo_control/ENTRY2/bit9/state_reg/D
+    0:00:40   17419.0      0.12      30.1       0.0 fifo_control/ENTRY3/bit7/state_reg/D
+    0:00:41   17323.3      0.12      29.6       0.0 fifo_control/ENTRY2/bit4/state_reg/D
+    0:00:42   17229.4      0.12      28.9       0.0 fifo_control/ENTRY2/bit14/state_reg/D
+    0:00:42   17091.9      0.11      27.5       0.0 fifo_control/ENTRY3/bit47/state_reg/D
+    0:00:43   16957.7      0.11      25.6       0.0 fifo_control/ENTRY1/bit50/state_reg/D
+    0:00:44   16838.0      0.11      25.0       0.0 fifo_control/ENTRY3/bit45/state_reg/D
+    0:00:44   16778.9      0.10      24.6       0.0 fifo_control/ENTRY3/bit48/state_reg/D
+    0:00:45   16743.2      0.10      24.3       0.0 fifo_control/ENTRY2/bit42/state_reg/D
+    0:00:45   16676.6      0.10      23.8       0.0 fifo_control/ENTRY2/bit4/state_reg/D
+    0:00:46   16633.4      0.10      23.6       0.0 fifo_control/ENTRY2/bit44/state_reg/D
+    0:00:46   16540.0      0.10      23.0       0.0 fifo_control/ENTRY3/bit9/state_reg/D
+    0:00:47   16524.1      0.09      22.5       0.0                          
+    0:00:47   16517.0      0.09      22.4       0.0                          
+    0:00:48   16499.6      0.09      22.3       0.0                          
+    0:00:48   16472.9      0.09      21.3       0.0                          
+    0:00:48   16443.3      0.09      21.0       0.0                          
+    0:00:49   16444.3      0.09      20.8       0.0                          
+    0:00:49   16401.1      0.09      20.6       0.0                          
+    0:00:49   16386.5      0.09      20.5       0.0                          
+    0:00:49   16372.5      0.09      20.4       0.0                          
+    0:00:50   16334.9      0.09      20.3       0.0                          
+    0:00:50   16312.4      0.09      20.2       0.0                          
+    0:00:50   16288.9      0.09      20.0       0.0                          
+    0:00:50   16261.7      0.09      19.2       0.0                          
+    0:00:51   16249.5      0.09      19.1       0.0                          
+    0:00:51   16232.6      0.09      19.1       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:51   16232.6      0.09      19.1       0.0                          
+    0:00:51   16232.6      0.09      19.1       0.0                          
+    0:00:52   15563.4      0.09      18.6       0.0                          
+    0:00:53   15474.2      0.09      18.7       0.0                          
+    0:00:53   15446.1      0.09      19.1       0.0                          
+    0:00:53   15441.4      0.09      19.1       0.0                          
+    0:00:53   15436.2      0.09      19.1       0.0                          
+    0:00:53   15436.2      0.09      19.1       0.0                          
+    0:00:53   15436.2      0.09      19.1       0.0                          
+    0:00:54   14913.4      0.10      20.2       0.0                          
+    0:00:54   14830.8      0.10      20.5       0.0                          
+    0:00:54   14830.8      0.10      20.5       0.0                          
+    0:00:54   14830.8      0.10      20.5       0.0                          
+    0:00:54   14830.8      0.10      20.5       0.0                          
+    0:00:54   14830.8      0.10      20.5       0.0                          
+    0:00:54   14830.8      0.10      20.5       0.0                          
+    0:00:54   14841.6      0.09      20.1       0.0                          
+    0:00:55   14854.3      0.09      19.9       0.0                          
+    0:00:55   14851.9      0.09      19.8       0.0                          
+    0:00:55   14855.7      0.09      19.7       0.0                          
+    0:00:55   14867.9      0.09      19.6       0.0                          
+    0:00:56   14866.5      0.09      19.5       0.0                          
+    0:00:56   14868.4      0.09      19.5       0.0                          
+    0:00:56   14870.2      0.09      19.5       0.0                          
+    0:00:57   14858.5      0.09      19.4       0.0                          
+    0:00:57   14858.0      0.09      19.3       0.0                          
+    0:00:57   14858.5      0.09      19.2       0.0                          
+    0:00:57   14867.4      0.09      19.2       0.0                          
+    0:00:58   14868.4      0.09      19.1       0.0                          
+    0:00:58   14874.0      0.09      19.1       0.0                          
+    0:00:58   14872.6      0.09      19.0       0.0                          
+    0:00:58   14872.1      0.09      18.8       0.0                          
+    0:00:59   14877.7      0.09      18.6       0.0                          
+    0:00:59   14882.0      0.09      18.2       0.0 fifo_control/ENTRY2/bit34/state_reg/D
+    0:01:00   14852.4      0.08      17.9       0.0 fifo_control/ENTRY1/bit39/state_reg/D
+    0:01:00   14848.2      0.08      17.7       0.0                          
+Loading db file '/u/k/a/karu/courses/cs552/cad/Synopsys_Libraries/libs/gscl45nm.db'
+
+  Optimization Complete
+  ---------------------
+1
+check_design -summary
+Warning: In design 'fifo_entry_controller', there are 4 submodules connected to power or ground. (LINT-30)
+Warning: In design 'fifo_entry_controller', there are 4 submodules with pins connected to the same net. (LINT-30)
+
+Information: Use the 'check_design' command for 
+	 more information about warnings. (LINT-98)
+
+1
+report_constraint -all_violators
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : fifo
+Version: B-2008.09-SP3
+Date   : Sun Mar 13 19:22:43 2016
+****************************************
+
+
+   max_delay/setup ('clk' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   fifo_control/ENTRY2/bit21/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit23/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit9/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit11/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit42/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit62/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit28/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit29/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit31/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit35/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit16/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit18/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit17/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit19/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit0/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit1/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit2/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit3/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit24/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit25/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit38/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit41/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit30/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit55/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit60/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit13/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit20/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit22/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit6/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit32/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit33/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit34/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit44/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit47/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit36/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit37/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit38/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit39/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit60/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit37/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit40/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit48/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit49/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit54/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit58/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit61/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit63/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit45/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit61/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit58/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit31/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit48/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit50/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit56/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit57/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit62/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit59/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit52/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit56/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit57/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit27/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit4/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit26/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit49/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit51/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit63/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit2/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY4/bit21/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY4/bit23/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY4/bit16/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY4/bit17/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit23/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit41/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY3/bit55/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit21/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit12/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit14/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit10/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit7/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit9/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit10/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit11/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit13/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit24/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit26/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY3/bit54/state_reg/D
+                                0.44           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY1/bit53/state_reg/D
+                                0.45           0.52 f        -0.08  (VIOLATED)
+   fifo_control/ENTRY2/bit55/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit4/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit49/state_reg/D
+                                0.44           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit15/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit16/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit17/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit19/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit5/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit18/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit27/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit40/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit42/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit43/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit44/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit45/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit46/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit47/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit29/state_reg/D
+                                0.44           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit32/state_reg/D
+                                0.44           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit62/state_reg/D
+                                0.44           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit42/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit8/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit59/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit52/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit53/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit54/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit46/state_reg/D
+                                0.44           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit51/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit40/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit1/state_reg/D
+                                0.44           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit33/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit32/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit34/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit35/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit31/state_reg/D
+                                0.44           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit55/state_reg/D
+                                0.44           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit20/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit60/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit5/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit53/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit35/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit1/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit36/state_reg/D
+                                0.45           0.52 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit32/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit30/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit22/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit33/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY2/bit34/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit28/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit3/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit15/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit0/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit2/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit3/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit37/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit50/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit52/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit39/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit40/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit41/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit43/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit48/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit50/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit52/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit53/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit49/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit51/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit54/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit56/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit58/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit33/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit21/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit18/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit59/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit26/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit45/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit60/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit10/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit24/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit57/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY4/bit59/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit48/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit50/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit51/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit57/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit58/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit8/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit61/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit27/state_reg/D
+                                0.44           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit56/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit25/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY1/bit7/state_reg/D
+                                0.45           0.51 f        -0.07  (VIOLATED)
+   fifo_control/ENTRY3/bit4/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit22/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit20/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit25/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit24/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit27/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY1/bit39/state_reg/D
+                                0.45           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit18/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit19/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit41/state_reg/D
+                                0.45           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit13/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit14/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit15/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY1/bit25/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit36/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit37/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY1/bit14/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit44/state_reg/D
+                                0.45           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit5/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit0/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit8/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit63/state_reg/D
+                                0.45           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY1/bit12/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit15/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit47/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit38/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit42/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit35/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit23/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit6/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit7/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY1/bit46/state_reg/D
+                                0.44           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit1/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit2/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit3/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit9/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit10/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit11/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit29/state_reg/D
+                                0.45           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit61/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit62/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit63/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY1/bit6/state_reg/D
+                                0.45           0.51 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit29/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit30/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit28/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit22/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit31/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit36/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit38/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit16/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit17/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit8/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit11/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit19/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit43/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit20/state_reg/D
+                                0.45           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit6/state_reg/D
+                                0.45           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit12/state_reg/D
+                                0.45           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit26/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY4/bit4/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit9/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit5/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit7/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY1/bit43/state_reg/D
+                                0.44           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY1/bit0/state_reg/D
+                                0.45           0.50 f        -0.06  (VIOLATED)
+   fifo_control/ENTRY3/bit30/state_reg/D
+                                0.44           0.50 f        -0.05  (VIOLATED)
+   fifo_control/ENTRY3/bit13/state_reg/D
+                                0.44           0.49 f        -0.05  (VIOLATED)
+   fifo_control/ENTRY4/bit12/state_reg/D
+                                0.44           0.50 f        -0.05  (VIOLATED)
+   fifo_control/ENTRY3/bit14/state_reg/D
+                                0.44           0.49 f        -0.05  (VIOLATED)
+   fifo_control/ENTRY3/bit28/state_reg/D
+                                0.44           0.49 f        -0.05  (VIOLATED)
+   fifo_control/ENTRY4/bit34/state_reg/D
+                                0.44           0.49 f        -0.05  (VIOLATED)
+   fifo_control/ENTRY3/bit39/state_reg/D
+                                0.45           0.48 f        -0.04  (VIOLATED)
+   fifo_control/ENTRY4/bit44/state_reg/D
+                                0.44           0.47 f        -0.03  (VIOLATED)
+   fifo_control/ENTRY4/bit45/state_reg/D
+                                0.44           0.47 f        -0.03  (VIOLATED)
+   fifo_control/ENTRY4/bit46/state_reg/D
+                                0.44           0.47 f        -0.03  (VIOLATED)
+   fifo_control/ENTRY4/bit47/state_reg/D
+                                0.44           0.47 f        -0.03  (VIOLATED)
+
+
+   max_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   fifo_control/entry3_write
+                                0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_control/entry4_write
+                                0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_control/n70             0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_control/n74             0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_control/n77             0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_state_logic/n9          0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_state_logic/n12         0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_state_logic/n13         0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_state_logic/n15         0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_state_logic/n17         0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_state_logic/n18         0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_state_logic/n19         0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+   fifo_state_logic/n36         0.00           0.00           0.00  (VIOLATED: increase signficant digits)
+
+
+1
+set filename [format "%s%s"  $my_toplevel ".syn.v"]
+fifo.syn.v
+write -hierarchy -f verilog $my_toplevel -output synth/$filename
+Writing verilog file '/afs/cs.wisc.edu/u/o/n/oney/private/cs552/h4/hw4_2/synth/fifo.syn.v'.
+Warning: Bus naming style currently specified as %s<%d>, verilog syntax requires bus naming style to be "[]".  (VO-13)
+1
+set filename [format "%s%s"  $my_toplevel ".ddc"]
+fifo.ddc
+write -hierarchy -format ddc -output synth/$filename
+Writing ddc file 'synth/fifo.ddc'.
+1
+report_reference > synth/reference_report.txt
+report_area > synth/area_report.txt
+report_cell > synth/cell_report.txt
+report_timing -max_paths 20 > synth/timing_report.txt
+report_power > synth/power_report.txt
+quit
+Information: Defining new variable 'filename'. (CMD-041)
+Information: Defining new variable 'my_clk_freq_MHz'. (CMD-041)
+Information: Defining new variable 'my_toplevel'. (CMD-041)
+Information: Defining new variable 'clk_name'. (CMD-041)
+Information: Defining new variable 'find_clock'. (CMD-041)
+Information: Defining new variable 'my_output_delay_ns'. (CMD-041)
+Information: Defining new variable 'my_period'. (CMD-041)
+Information: Defining new variable 'my_verilog_files'. (CMD-041)
+Information: Defining new variable 'my_clock_pin'. (CMD-041)
+Information: Defining new variable 'my_input_delay_ns'. (CMD-041)
+
+Thank you...

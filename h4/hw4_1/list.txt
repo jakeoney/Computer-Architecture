@@ -1,0 +1,13 @@
+decode3_8.v
+dff.v
+eight_registers.v
+mux2_1_16bit.v
+mux2_1_4bit.v
+mux2_1.v
+mux4_1_16bit.v
+mux8_1_16bit.v
+nand2.v
+not1.v
+reg16bit.v
+rf_bypass.v
+rf.v

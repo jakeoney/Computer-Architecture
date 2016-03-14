@@ -1,0 +1,2132 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 20
+Design : fifo
+Version: B-2008.09-SP3
+Date   : Sun Mar 13 19:22:46 2016
+****************************************
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit21/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOWMID/S<0> (mux4_1_16bit_6)        0.00       0.28 r
+  fifo_control/second/LOWMID/HIGH/S (mux2_1_16bit_19)     0.00       0.28 r
+  fifo_control/second/LOWMID/HIGH/U4/Y (INVX1)            0.02       0.30 f
+  fifo_control/second/LOWMID/HIGH/U1/Y (INVX1)            0.01       0.30 r
+  fifo_control/second/LOWMID/HIGH/SECOND/S (mux2_1_4bit_78)
+                                                          0.00       0.30 r
+  fifo_control/second/LOWMID/HIGH/SECOND/U5/Y (INVX1)     0.02       0.32 f
+  fifo_control/second/LOWMID/HIGH/SECOND/U1/Y (INVX1)     0.01       0.33 r
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/S (mux2_1_314)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/N1/in1 (not1_314)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/N1/out (not1_314)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/NA2/in2 (nand2_943)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.38 f
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/NA2/out (nand2_943)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/NA3/in2 (nand2_942)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/NA3/out (nand2_942)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/HIGH/SECOND/SECOND/Out (mux2_1_314)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/HIGH/SECOND/Out<1> (mux2_1_4bit_78)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/HIGH/Out<5> (mux2_1_16bit_19)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/InB<5> (mux2_1_16bit_18)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/SECOND/InB<1> (mux2_1_4bit_74)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/InB (mux2_1_298)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/NA1/in1 (nand2_896)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/NA1/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/NA1/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/NA1/out (nand2_896)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/NA3/in1 (nand2_894)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/NA3/out (nand2_894)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/SECOND/SECOND/Out (mux2_1_298)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/SECOND/Out<1> (mux2_1_4bit_74)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/Out<5> (mux2_1_16bit_18)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/Out<5> (mux4_1_16bit_6)      0.00       0.49 f
+  fifo_control/second/Out<21> (mux4_1_64bit_1)            0.00       0.49 f
+  fifo_control/ENTRY2/in<21> (fifo_entry_2)               0.00       0.49 f
+  fifo_control/ENTRY2/bit21/d (dff_170)                   0.00       0.49 f
+  fifo_control/ENTRY2/bit21/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY2/bit21/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit21/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit23/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOWMID/S<0> (mux4_1_16bit_6)        0.00       0.28 r
+  fifo_control/second/LOWMID/HIGH/S (mux2_1_16bit_19)     0.00       0.28 r
+  fifo_control/second/LOWMID/HIGH/U4/Y (INVX1)            0.02       0.30 f
+  fifo_control/second/LOWMID/HIGH/U1/Y (INVX1)            0.01       0.30 r
+  fifo_control/second/LOWMID/HIGH/SECOND/S (mux2_1_4bit_78)
+                                                          0.00       0.30 r
+  fifo_control/second/LOWMID/HIGH/SECOND/U5/Y (INVX1)     0.02       0.32 f
+  fifo_control/second/LOWMID/HIGH/SECOND/U2/Y (INVX1)     0.01       0.33 r
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/S (mux2_1_312)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/N1/in1 (not1_312)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/N1/out (not1_312)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/NA2/in2 (nand2_937)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.38 f
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/NA2/out (nand2_937)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/NA3/in2 (nand2_936)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/NA3/out (nand2_936)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/HIGH/SECOND/LAST/Out (mux2_1_312)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/HIGH/SECOND/Out<3> (mux2_1_4bit_78)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/HIGH/Out<7> (mux2_1_16bit_19)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/InB<7> (mux2_1_16bit_18)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/SECOND/InB<3> (mux2_1_4bit_74)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/InB (mux2_1_296)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/NA1/in1 (nand2_890)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/NA1/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/NA1/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/NA1/out (nand2_890)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/NA3/in1 (nand2_888)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/NA3/out (nand2_888)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/SECOND/LAST/Out (mux2_1_296)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/SECOND/Out<3> (mux2_1_4bit_74)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/Out<7> (mux2_1_16bit_18)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/Out<7> (mux4_1_16bit_6)      0.00       0.49 f
+  fifo_control/second/Out<23> (mux4_1_64bit_1)            0.00       0.49 f
+  fifo_control/ENTRY2/in<23> (fifo_entry_2)               0.00       0.49 f
+  fifo_control/ENTRY2/bit23/d (dff_168)                   0.00       0.49 f
+  fifo_control/ENTRY2/bit23/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY2/bit23/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit23/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop2/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit9/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop2/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop2/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop2/q (dff_258)                  0.00       0.11 f
+  fifo_state_reg/state<2> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<2> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U33/Y (OR2X2)                              0.05       0.15 f
+  fifo_control/U34/Y (INVX1)                              0.00       0.15 r
+  fifo_control/U42/Y (AND2X2)                             0.04       0.19 r
+  fifo_control/U24/Y (OAI21X1)                            0.02       0.21 f
+  fifo_control/U23/Y (INVX4)                              0.02       0.23 r
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.23 r
+  fifo_control/first/LOW/S<0> (mux4_1_16bit_11)           0.00       0.23 r
+  fifo_control/first/LOW/LOW/S (mux2_1_16bit_35)          0.00       0.23 r
+  fifo_control/first/LOW/LOW/U6/Y (INVX1)                 0.02       0.25 f
+  fifo_control/first/LOW/LOW/U4/Y (INVX1)                 0.00       0.25 r
+  fifo_control/first/LOW/LOW/THIRD/S (mux2_1_4bit_141)
+                                                          0.00       0.25 r
+  fifo_control/first/LOW/LOW/THIRD/U2/Y (INVX1)           0.01       0.27 f
+  fifo_control/first/LOW/LOW/THIRD/U5/Y (INVX1)           0.01       0.27 r
+  fifo_control/first/LOW/LOW/THIRD/SECOND/S (mux2_1_566)
+                                                          0.00       0.27 r
+  fifo_control/first/LOW/LOW/THIRD/SECOND/N1/in1 (not1_566)
+                                                          0.00       0.27 r
+  fifo_control/first/LOW/LOW/THIRD/SECOND/N1/U1/Y (INVX1)
+                                                          0.01       0.29 f
+  fifo_control/first/LOW/LOW/THIRD/SECOND/N1/out (not1_566)
+                                                          0.00       0.29 f
+  fifo_control/first/LOW/LOW/THIRD/SECOND/NA2/in2 (nand2_1699)
+                                                          0.00       0.29 f
+  fifo_control/first/LOW/LOW/THIRD/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.32 f
+  fifo_control/first/LOW/LOW/THIRD/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.31 r
+  fifo_control/first/LOW/LOW/THIRD/SECOND/NA2/out (nand2_1699)
+                                                          0.00       0.31 r
+  fifo_control/first/LOW/LOW/THIRD/SECOND/U4/Y (BUFX2)
+                                                          0.03       0.34 r
+  fifo_control/first/LOW/LOW/THIRD/SECOND/NA3/in2 (nand2_1698)
+                                                          0.00       0.34 r
+  fifo_control/first/LOW/LOW/THIRD/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/LOW/LOW/THIRD/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/LOW/LOW/THIRD/SECOND/NA3/out (nand2_1698)
+                                                          0.00       0.39 f
+  fifo_control/first/LOW/LOW/THIRD/SECOND/U3/Y (BUFX2)
+                                                          0.03       0.42 f
+  fifo_control/first/LOW/LOW/THIRD/SECOND/Out (mux2_1_566)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/LOW/THIRD/Out<1> (mux2_1_4bit_141)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/LOW/Out<9> (mux2_1_16bit_35)     0.00       0.42 f
+  fifo_control/first/LOW/TOP/InA<9> (mux2_1_16bit_33)     0.00       0.42 f
+  fifo_control/first/LOW/TOP/THIRD/InA<1> (mux2_1_4bit_133)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/TOP/THIRD/SECOND/InA (mux2_1_534)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/TOP/THIRD/SECOND/NA2/in1 (nand2_1603)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/TOP/THIRD/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/LOW/TOP/THIRD/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/LOW/TOP/THIRD/SECOND/NA2/out (nand2_1603)
+                                                          0.00       0.45 r
+  fifo_control/first/LOW/TOP/THIRD/SECOND/NA3/in2 (nand2_1602)
+                                                          0.00       0.45 r
+  fifo_control/first/LOW/TOP/THIRD/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/LOW/TOP/THIRD/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/LOW/TOP/THIRD/SECOND/NA3/out (nand2_1602)
+                                                          0.00       0.49 f
+  fifo_control/first/LOW/TOP/THIRD/SECOND/Out (mux2_1_534)
+                                                          0.00       0.49 f
+  fifo_control/first/LOW/TOP/THIRD/Out<1> (mux2_1_4bit_133)
+                                                          0.00       0.49 f
+  fifo_control/first/LOW/TOP/Out<9> (mux2_1_16bit_33)     0.00       0.49 f
+  fifo_control/first/LOW/Out<9> (mux4_1_16bit_11)         0.00       0.49 f
+  fifo_control/first/Out<9> (mux4_1_64bit_2)              0.00       0.49 f
+  fifo_control/ENTRY1/in<9> (fifo_entry_3)                0.00       0.49 f
+  fifo_control/ENTRY1/bit9/d (dff_246)                    0.00       0.49 f
+  fifo_control/ENTRY1/bit9/U3/Y (AND2X2)                  0.03       0.52 f
+  fifo_control/ENTRY1/bit9/state_reg/D (DFFPOSX1)         0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit9/state_reg/CLK (DFFPOSX1)       0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop2/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit11/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop2/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop2/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop2/q (dff_258)                  0.00       0.11 f
+  fifo_state_reg/state<2> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<2> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U33/Y (OR2X2)                              0.05       0.15 f
+  fifo_control/U34/Y (INVX1)                              0.00       0.15 r
+  fifo_control/U42/Y (AND2X2)                             0.04       0.19 r
+  fifo_control/U24/Y (OAI21X1)                            0.02       0.21 f
+  fifo_control/U23/Y (INVX4)                              0.02       0.23 r
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.23 r
+  fifo_control/first/LOW/S<0> (mux4_1_16bit_11)           0.00       0.23 r
+  fifo_control/first/LOW/LOW/S (mux2_1_16bit_35)          0.00       0.23 r
+  fifo_control/first/LOW/LOW/U6/Y (INVX1)                 0.02       0.25 f
+  fifo_control/first/LOW/LOW/U4/Y (INVX1)                 0.00       0.25 r
+  fifo_control/first/LOW/LOW/THIRD/S (mux2_1_4bit_141)
+                                                          0.00       0.25 r
+  fifo_control/first/LOW/LOW/THIRD/U7/Y (INVX1)           0.01       0.27 f
+  fifo_control/first/LOW/LOW/THIRD/U3/Y (INVX1)           0.01       0.27 r
+  fifo_control/first/LOW/LOW/THIRD/LAST/S (mux2_1_564)
+                                                          0.00       0.27 r
+  fifo_control/first/LOW/LOW/THIRD/LAST/N1/in1 (not1_564)
+                                                          0.00       0.27 r
+  fifo_control/first/LOW/LOW/THIRD/LAST/N1/U1/Y (INVX1)
+                                                          0.01       0.29 f
+  fifo_control/first/LOW/LOW/THIRD/LAST/N1/out (not1_564)
+                                                          0.00       0.29 f
+  fifo_control/first/LOW/LOW/THIRD/LAST/NA2/in2 (nand2_1693)
+                                                          0.00       0.29 f
+  fifo_control/first/LOW/LOW/THIRD/LAST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.32 f
+  fifo_control/first/LOW/LOW/THIRD/LAST/NA2/U2/Y (INVX1)
+                                                          0.00       0.31 r
+  fifo_control/first/LOW/LOW/THIRD/LAST/NA2/out (nand2_1693)
+                                                          0.00       0.31 r
+  fifo_control/first/LOW/LOW/THIRD/LAST/U4/Y (BUFX2)      0.03       0.34 r
+  fifo_control/first/LOW/LOW/THIRD/LAST/NA3/in2 (nand2_1692)
+                                                          0.00       0.34 r
+  fifo_control/first/LOW/LOW/THIRD/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/LOW/LOW/THIRD/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/LOW/LOW/THIRD/LAST/NA3/out (nand2_1692)
+                                                          0.00       0.39 f
+  fifo_control/first/LOW/LOW/THIRD/LAST/U3/Y (BUFX2)      0.03       0.42 f
+  fifo_control/first/LOW/LOW/THIRD/LAST/Out (mux2_1_564)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/LOW/THIRD/Out<3> (mux2_1_4bit_141)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/LOW/Out<11> (mux2_1_16bit_35)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/TOP/InA<11> (mux2_1_16bit_33)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/TOP/THIRD/InA<3> (mux2_1_4bit_133)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/TOP/THIRD/LAST/InA (mux2_1_532)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/TOP/THIRD/LAST/NA2/in1 (nand2_1597)
+                                                          0.00       0.42 f
+  fifo_control/first/LOW/TOP/THIRD/LAST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/LOW/TOP/THIRD/LAST/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/LOW/TOP/THIRD/LAST/NA2/out (nand2_1597)
+                                                          0.00       0.45 r
+  fifo_control/first/LOW/TOP/THIRD/LAST/NA3/in2 (nand2_1596)
+                                                          0.00       0.45 r
+  fifo_control/first/LOW/TOP/THIRD/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/LOW/TOP/THIRD/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/LOW/TOP/THIRD/LAST/NA3/out (nand2_1596)
+                                                          0.00       0.49 f
+  fifo_control/first/LOW/TOP/THIRD/LAST/Out (mux2_1_532)
+                                                          0.00       0.49 f
+  fifo_control/first/LOW/TOP/THIRD/Out<3> (mux2_1_4bit_133)
+                                                          0.00       0.49 f
+  fifo_control/first/LOW/TOP/Out<11> (mux2_1_16bit_33)
+                                                          0.00       0.49 f
+  fifo_control/first/LOW/Out<11> (mux4_1_16bit_11)        0.00       0.49 f
+  fifo_control/first/Out<11> (mux4_1_64bit_2)             0.00       0.49 f
+  fifo_control/ENTRY1/in<11> (fifo_entry_3)               0.00       0.49 f
+  fifo_control/ENTRY1/bit11/d (dff_244)                   0.00       0.49 f
+  fifo_control/ENTRY1/bit11/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY1/bit11/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit11/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop0/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit42/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop0/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop0/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop0/q (dff_256)                  0.00       0.11 f
+  fifo_state_reg/state<0> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<0> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U11/Y (AND2X2)                             0.04       0.15 f
+  fifo_control/U38/Y (AND2X2)                             0.03       0.18 f
+  fifo_control/U24/Y (OAI21X1)                            0.05       0.23 r
+  fifo_control/U23/Y (INVX4)                              0.03       0.26 f
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.26 f
+  fifo_control/first/HIGHMID/S<0> (mux4_1_16bit_9)        0.00       0.26 f
+  fifo_control/first/HIGHMID/HIGH/S (mux2_1_16bit_28)     0.00       0.26 f
+  fifo_control/first/HIGHMID/HIGH/U3/Y (INVX1)            0.01       0.27 r
+  fifo_control/first/HIGHMID/HIGH/U1/Y (INVX1)            0.02       0.29 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/S (mux2_1_4bit_113)
+                                                          0.00       0.29 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/U6/Y (INVX1)      0.01       0.30 r
+  fifo_control/first/HIGHMID/HIGH/THIRD/U3/Y (INVX1)      0.02       0.31 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/S (mux2_1_453)
+                                                          0.00       0.31 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/NA1/in2 (nand2_1361)
+                                                          0.00       0.31 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/NA1/U1/Y (AND2X2)
+                                                          0.03       0.35 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/NA1/U2/Y (INVX1)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/NA1/out (nand2_1361)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/NA3/in1 (nand2_1359)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/NA3/out (nand2_1359)
+                                                          0.00       0.39 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/U1/Y (BUFX2)
+                                                          0.03       0.42 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/THIRD/Out (mux2_1_453)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/HIGH/THIRD/Out<2> (mux2_1_4bit_113)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/HIGH/Out<10> (mux2_1_16bit_28)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/InB<10> (mux2_1_16bit_27)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/THIRD/InB<2> (mux2_1_4bit_109)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/InB (mux2_1_437)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/NA1/in1 (nand2_1313)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/NA1/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/NA1/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/NA1/out (nand2_1313)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/NA3/in1 (nand2_1311)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/NA3/out (nand2_1311)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGHMID/TOP/THIRD/THIRD/Out (mux2_1_437)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGHMID/TOP/THIRD/Out<2> (mux2_1_4bit_109)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGHMID/TOP/Out<10> (mux2_1_16bit_27)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGHMID/Out<10> (mux4_1_16bit_9)     0.00       0.49 f
+  fifo_control/first/Out<42> (mux4_1_64bit_2)             0.00       0.49 f
+  fifo_control/ENTRY1/in<42> (fifo_entry_3)               0.00       0.49 f
+  fifo_control/ENTRY1/bit42/d (dff_213)                   0.00       0.49 f
+  fifo_control/ENTRY1/bit42/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY1/bit42/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit42/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop0/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit62/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop0/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop0/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop0/q (dff_256)                  0.00       0.11 f
+  fifo_state_reg/state<0> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<0> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U11/Y (AND2X2)                             0.04       0.15 f
+  fifo_control/U38/Y (AND2X2)                             0.03       0.18 f
+  fifo_control/U24/Y (OAI21X1)                            0.05       0.23 r
+  fifo_control/U23/Y (INVX4)                              0.03       0.26 f
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.26 f
+  fifo_control/first/HIGH/S<0> (mux4_1_16bit_8)           0.00       0.26 f
+  fifo_control/first/HIGH/HIGH/S (mux2_1_16bit_25)        0.00       0.26 f
+  fifo_control/first/HIGH/HIGH/U2/Y (INVX1)               0.01       0.27 r
+  fifo_control/first/HIGH/HIGH/U1/Y (INVX1)               0.02       0.29 f
+  fifo_control/first/HIGH/HIGH/LAST/S (mux2_1_4bit_100)
+                                                          0.00       0.29 f
+  fifo_control/first/HIGH/HIGH/LAST/U1/Y (INVX1)          0.01       0.30 r
+  fifo_control/first/HIGH/HIGH/LAST/U5/Y (INVX1)          0.02       0.31 f
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/S (mux2_1_401)
+                                                          0.00       0.31 f
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/NA1/in2 (nand2_1205)
+                                                          0.00       0.31 f
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/NA1/U1/Y (AND2X2)
+                                                          0.03       0.35 f
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/NA1/U2/Y (INVX1)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/NA1/out (nand2_1205)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/NA3/in1 (nand2_1203)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/NA3/out (nand2_1203)
+                                                          0.00       0.39 f
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/U1/Y (BUFX2)
+                                                          0.03       0.42 f
+  fifo_control/first/HIGH/HIGH/LAST/THIRD/Out (mux2_1_401)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGH/HIGH/LAST/Out<2> (mux2_1_4bit_100)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGH/HIGH/Out<14> (mux2_1_16bit_25)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGH/TOP/InB<14> (mux2_1_16bit_24)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGH/TOP/LAST/InB<2> (mux2_1_4bit_96)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGH/TOP/LAST/THIRD/InB (mux2_1_385)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGH/TOP/LAST/THIRD/NA1/in1 (nand2_1157)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGH/TOP/LAST/THIRD/NA1/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/HIGH/TOP/LAST/THIRD/NA1/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGH/TOP/LAST/THIRD/NA1/out (nand2_1157)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGH/TOP/LAST/THIRD/NA3/in1 (nand2_1155)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGH/TOP/LAST/THIRD/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/HIGH/TOP/LAST/THIRD/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/HIGH/TOP/LAST/THIRD/NA3/out (nand2_1155)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGH/TOP/LAST/THIRD/Out (mux2_1_385)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGH/TOP/LAST/Out<2> (mux2_1_4bit_96)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGH/TOP/Out<14> (mux2_1_16bit_24)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGH/Out<14> (mux4_1_16bit_8)        0.00       0.49 f
+  fifo_control/first/Out<62> (mux4_1_64bit_2)             0.00       0.49 f
+  fifo_control/ENTRY1/in<62> (fifo_entry_3)               0.00       0.49 f
+  fifo_control/ENTRY1/bit62/d (dff_193)                   0.00       0.49 f
+  fifo_control/ENTRY1/bit62/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY1/bit62/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit62/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit28/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOWMID/S<0> (mux4_1_16bit_6)        0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/S (mux2_1_16bit_20)      0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/U5/Y (INVX1)             0.02       0.30 f
+  fifo_control/second/LOWMID/LOW/U4/Y (INVX1)             0.01       0.31 r
+  fifo_control/second/LOWMID/LOW/LAST/S (mux2_1_4bit_80)
+                                                          0.00       0.31 r
+  fifo_control/second/LOWMID/LOW/LAST/U6/Y (INVX1)        0.01       0.32 f
+  fifo_control/second/LOWMID/LOW/LAST/U2/Y (INVX1)        0.01       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/S (mux2_1_323)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/N1/in1 (not1_323)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/N1/out (not1_323)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/NA2/in2 (nand2_970)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/NA2/U1/Y (AND2X1)
+                                                          0.03       0.37 f
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/NA2/out (nand2_970)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/NA3/in2 (nand2_969)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/NA3/out (nand2_969)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/FIRST/Out (mux2_1_323)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/Out<0> (mux2_1_4bit_80)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/Out<12> (mux2_1_16bit_20)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/InA<12> (mux2_1_16bit_18)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/InA<0> (mux2_1_4bit_72)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/InA (mux2_1_291)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/NA2/in1 (nand2_874)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/NA2/out (nand2_874)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/NA3/in2 (nand2_873)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/NA3/out (nand2_873)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/FIRST/Out (mux2_1_291)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/Out<0> (mux2_1_4bit_72)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/Out<12> (mux2_1_16bit_18)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/Out<12> (mux4_1_16bit_6)     0.00       0.49 f
+  fifo_control/second/Out<28> (mux4_1_64bit_1)            0.00       0.49 f
+  fifo_control/ENTRY2/in<28> (fifo_entry_2)               0.00       0.49 f
+  fifo_control/ENTRY2/bit28/d (dff_163)                   0.00       0.49 f
+  fifo_control/ENTRY2/bit28/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY2/bit28/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit28/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit29/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOWMID/S<0> (mux4_1_16bit_6)        0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/S (mux2_1_16bit_20)      0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/U5/Y (INVX1)             0.02       0.30 f
+  fifo_control/second/LOWMID/LOW/U4/Y (INVX1)             0.01       0.31 r
+  fifo_control/second/LOWMID/LOW/LAST/S (mux2_1_4bit_80)
+                                                          0.00       0.31 r
+  fifo_control/second/LOWMID/LOW/LAST/U1/Y (INVX1)        0.01       0.32 f
+  fifo_control/second/LOWMID/LOW/LAST/U3/Y (INVX1)        0.01       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/S (mux2_1_322)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/N1/in1 (not1_322)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/N1/out (not1_322)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/NA2/in2 (nand2_967)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/NA2/U1/Y (AND2X1)
+                                                          0.03       0.37 f
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/NA2/out (nand2_967)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/NA3/in2 (nand2_966)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/NA3/out (nand2_966)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/SECOND/Out (mux2_1_322)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/Out<1> (mux2_1_4bit_80)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/Out<13> (mux2_1_16bit_20)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/InA<13> (mux2_1_16bit_18)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/InA<1> (mux2_1_4bit_72)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/InA (mux2_1_290)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/NA2/in1 (nand2_871)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/NA2/out (nand2_871)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/NA3/in2 (nand2_870)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/NA3/out (nand2_870)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/SECOND/Out (mux2_1_290)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/Out<1> (mux2_1_4bit_72)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/Out<13> (mux2_1_16bit_18)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/Out<13> (mux4_1_16bit_6)     0.00       0.49 f
+  fifo_control/second/Out<29> (mux4_1_64bit_1)            0.00       0.49 f
+  fifo_control/ENTRY2/in<29> (fifo_entry_2)               0.00       0.49 f
+  fifo_control/ENTRY2/bit29/d (dff_162)                   0.00       0.49 f
+  fifo_control/ENTRY2/bit29/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY2/bit29/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit29/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit31/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOWMID/S<0> (mux4_1_16bit_6)        0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/S (mux2_1_16bit_20)      0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/U5/Y (INVX1)             0.02       0.30 f
+  fifo_control/second/LOWMID/LOW/U4/Y (INVX1)             0.01       0.31 r
+  fifo_control/second/LOWMID/LOW/LAST/S (mux2_1_4bit_80)
+                                                          0.00       0.31 r
+  fifo_control/second/LOWMID/LOW/LAST/U6/Y (INVX1)        0.01       0.32 f
+  fifo_control/second/LOWMID/LOW/LAST/U5/Y (INVX1)        0.01       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/LAST/S (mux2_1_320)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/LAST/N1/in1 (not1_320)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/LAST/LAST/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/LAST/N1/out (not1_320)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/LAST/NA2/in2 (nand2_961)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/LAST/LAST/NA2/U1/Y (AND2X1)
+                                                          0.03       0.37 f
+  fifo_control/second/LOWMID/LOW/LAST/LAST/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/LAST/NA2/out (nand2_961)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/LAST/NA3/in2 (nand2_960)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/LAST/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOWMID/LOW/LAST/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/LAST/NA3/out (nand2_960)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/LAST/Out (mux2_1_320)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/LAST/Out<3> (mux2_1_4bit_80)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/Out<15> (mux2_1_16bit_20)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/InA<15> (mux2_1_16bit_18)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/InA<3> (mux2_1_4bit_72)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/LAST/InA (mux2_1_288)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/LAST/NA2/in1 (nand2_865)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/LAST/LAST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOWMID/TOP/LAST/LAST/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/LAST/NA2/out (nand2_865)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/LAST/NA3/in2 (nand2_864)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/LAST/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOWMID/TOP/LAST/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/LAST/NA3/out (nand2_864)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/LAST/Out (mux2_1_288)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/LAST/Out<3> (mux2_1_4bit_72)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/Out<15> (mux2_1_16bit_18)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/Out<15> (mux4_1_16bit_6)     0.00       0.49 f
+  fifo_control/second/Out<31> (mux4_1_64bit_1)            0.00       0.49 f
+  fifo_control/ENTRY2/in<31> (fifo_entry_2)               0.00       0.49 f
+  fifo_control/ENTRY2/bit31/d (dff_160)                   0.00       0.49 f
+  fifo_control/ENTRY2/bit31/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY2/bit31/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit31/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop0/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit35/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop0/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop0/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop0/q (dff_256)                  0.00       0.11 f
+  fifo_state_reg/state<0> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<0> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U11/Y (AND2X2)                             0.04       0.15 f
+  fifo_control/U38/Y (AND2X2)                             0.03       0.18 f
+  fifo_control/U24/Y (OAI21X1)                            0.05       0.23 r
+  fifo_control/U23/Y (INVX4)                              0.03       0.26 f
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.26 f
+  fifo_control/first/HIGHMID/S<0> (mux4_1_16bit_9)        0.00       0.26 f
+  fifo_control/first/HIGHMID/HIGH/S (mux2_1_16bit_28)     0.00       0.26 f
+  fifo_control/first/HIGHMID/HIGH/U3/Y (INVX1)            0.01       0.27 r
+  fifo_control/first/HIGHMID/HIGH/U2/Y (INVX1)            0.01       0.28 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/S (mux2_1_4bit_115)
+                                                          0.00       0.28 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/U5/Y (INVX1)      0.02       0.30 r
+  fifo_control/first/HIGHMID/HIGH/FIRST/U3/Y (INVX1)      0.02       0.31 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/S (mux2_1_460)
+                                                          0.00       0.31 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/NA1/in2 (nand2_1382)
+                                                          0.00       0.31 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/NA1/U1/Y (AND2X2)
+                                                          0.03       0.35 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/NA1/U2/Y (INVX1)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/NA1/out (nand2_1382)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/NA3/in1 (nand2_1380)
+                                                          0.00       0.34 r
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/NA3/out (nand2_1380)
+                                                          0.00       0.39 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/U1/Y (BUFX2)
+                                                          0.03       0.42 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/LAST/Out (mux2_1_460)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/HIGH/FIRST/Out<3> (mux2_1_4bit_115)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/HIGH/Out<3> (mux2_1_16bit_28)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/InB<3> (mux2_1_16bit_27)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/FIRST/InB<3> (mux2_1_4bit_111)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/InB (mux2_1_444)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/NA1/in1 (nand2_1334)
+                                                          0.00       0.42 f
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/NA1/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/NA1/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/NA1/out (nand2_1334)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/NA3/in1 (nand2_1332)
+                                                          0.00       0.45 r
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/NA3/out (nand2_1332)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGHMID/TOP/FIRST/LAST/Out (mux2_1_444)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGHMID/TOP/FIRST/Out<3> (mux2_1_4bit_111)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGHMID/TOP/Out<3> (mux2_1_16bit_27)
+                                                          0.00       0.49 f
+  fifo_control/first/HIGHMID/Out<3> (mux4_1_16bit_9)      0.00       0.49 f
+  fifo_control/first/Out<35> (mux4_1_64bit_2)             0.00       0.49 f
+  fifo_control/ENTRY1/in<35> (fifo_entry_3)               0.00       0.49 f
+  fifo_control/ENTRY1/bit35/d (dff_220)                   0.00       0.49 f
+  fifo_control/ENTRY1/bit35/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY1/bit35/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit35/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop0/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit16/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop0/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop0/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop0/q (dff_256)                  0.00       0.11 f
+  fifo_state_reg/state<0> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<0> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U11/Y (AND2X2)                             0.04       0.15 f
+  fifo_control/U38/Y (AND2X2)                             0.03       0.18 f
+  fifo_control/U24/Y (OAI21X1)                            0.05       0.23 r
+  fifo_control/U23/Y (INVX4)                              0.03       0.26 f
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.26 f
+  fifo_control/first/LOWMID/S<0> (mux4_1_16bit_10)        0.00       0.26 f
+  fifo_control/first/LOWMID/LOW/S (mux2_1_16bit_32)       0.00       0.26 f
+  fifo_control/first/LOWMID/LOW/U2/Y (INVX1)              0.01       0.27 r
+  fifo_control/first/LOWMID/LOW/U3/Y (INVX1)              0.02       0.29 f
+  fifo_control/first/LOWMID/LOW/FIRST/S (mux2_1_4bit_131)
+                                                          0.00       0.29 f
+  fifo_control/first/LOWMID/LOW/FIRST/U3/Y (INVX1)        0.01       0.30 r
+  fifo_control/first/LOWMID/LOW/FIRST/U2/Y (INVX1)        0.02       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/S (mux2_1_527)
+                                                          0.00       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/NA1/in2 (nand2_1583)
+                                                          0.00       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/NA1/U1/Y (AND2X2)
+                                                          0.03       0.35 f
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/NA1/U2/Y (INVX1)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/NA1/out (nand2_1583)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/NA3/in1 (nand2_1581)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/NA3/out (nand2_1581)
+                                                          0.00       0.39 f
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/U1/Y (BUFX2)
+                                                          0.03       0.42 f
+  fifo_control/first/LOWMID/LOW/FIRST/FIRST/Out (mux2_1_527)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/LOW/FIRST/Out<0> (mux2_1_4bit_131)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/LOW/Out<0> (mux2_1_16bit_32)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/InA<0> (mux2_1_16bit_30)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/InA<0> (mux2_1_4bit_123)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/InA (mux2_1_495)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/NA2/in1 (nand2_1486)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/NA2/out (nand2_1486)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/NA3/in2 (nand2_1485)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/NA3/out (nand2_1485)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/FIRST/Out (mux2_1_495)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/Out<0> (mux2_1_4bit_123)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/Out<0> (mux2_1_16bit_30)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/Out<0> (mux4_1_16bit_10)      0.00       0.49 f
+  fifo_control/first/Out<16> (mux4_1_64bit_2)             0.00       0.49 f
+  fifo_control/ENTRY1/in<16> (fifo_entry_3)               0.00       0.49 f
+  fifo_control/ENTRY1/bit16/d (dff_239)                   0.00       0.49 f
+  fifo_control/ENTRY1/bit16/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY1/bit16/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit16/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop0/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit18/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop0/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop0/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop0/q (dff_256)                  0.00       0.11 f
+  fifo_state_reg/state<0> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<0> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U11/Y (AND2X2)                             0.04       0.15 f
+  fifo_control/U38/Y (AND2X2)                             0.03       0.18 f
+  fifo_control/U24/Y (OAI21X1)                            0.05       0.23 r
+  fifo_control/U23/Y (INVX4)                              0.03       0.26 f
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.26 f
+  fifo_control/first/LOWMID/S<0> (mux4_1_16bit_10)        0.00       0.26 f
+  fifo_control/first/LOWMID/LOW/S (mux2_1_16bit_32)       0.00       0.26 f
+  fifo_control/first/LOWMID/LOW/U2/Y (INVX1)              0.01       0.27 r
+  fifo_control/first/LOWMID/LOW/U3/Y (INVX1)              0.02       0.29 f
+  fifo_control/first/LOWMID/LOW/FIRST/S (mux2_1_4bit_131)
+                                                          0.00       0.29 f
+  fifo_control/first/LOWMID/LOW/FIRST/U1/Y (INVX1)        0.01       0.30 r
+  fifo_control/first/LOWMID/LOW/FIRST/U4/Y (INVX1)        0.02       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/S (mux2_1_525)
+                                                          0.00       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/NA1/in2 (nand2_1577)
+                                                          0.00       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/NA1/U1/Y (AND2X2)
+                                                          0.03       0.35 f
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/NA1/U2/Y (INVX1)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/NA1/out (nand2_1577)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/NA3/in1 (nand2_1575)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/NA3/out (nand2_1575)
+                                                          0.00       0.39 f
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/U1/Y (BUFX2)
+                                                          0.03       0.42 f
+  fifo_control/first/LOWMID/LOW/FIRST/THIRD/Out (mux2_1_525)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/LOW/FIRST/Out<2> (mux2_1_4bit_131)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/LOW/Out<2> (mux2_1_16bit_32)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/InA<2> (mux2_1_16bit_30)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/InA<2> (mux2_1_4bit_123)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/InA (mux2_1_493)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/NA2/in1 (nand2_1480)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/NA2/out (nand2_1480)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/NA3/in2 (nand2_1479)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/NA3/out (nand2_1479)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/THIRD/Out (mux2_1_493)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/Out<2> (mux2_1_4bit_123)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/Out<2> (mux2_1_16bit_30)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/Out<2> (mux4_1_16bit_10)      0.00       0.49 f
+  fifo_control/first/Out<18> (mux4_1_64bit_2)             0.00       0.49 f
+  fifo_control/ENTRY1/in<18> (fifo_entry_3)               0.00       0.49 f
+  fifo_control/ENTRY1/bit18/d (dff_237)                   0.00       0.49 f
+  fifo_control/ENTRY1/bit18/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY1/bit18/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit18/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop0/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit17/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop0/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop0/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop0/q (dff_256)                  0.00       0.11 f
+  fifo_state_reg/state<0> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<0> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U11/Y (AND2X2)                             0.04       0.15 f
+  fifo_control/U38/Y (AND2X2)                             0.03       0.18 f
+  fifo_control/U24/Y (OAI21X1)                            0.05       0.23 r
+  fifo_control/U23/Y (INVX4)                              0.03       0.26 f
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.26 f
+  fifo_control/first/LOWMID/S<0> (mux4_1_16bit_10)        0.00       0.26 f
+  fifo_control/first/LOWMID/LOW/S (mux2_1_16bit_32)       0.00       0.26 f
+  fifo_control/first/LOWMID/LOW/U2/Y (INVX1)              0.01       0.27 r
+  fifo_control/first/LOWMID/LOW/U3/Y (INVX1)              0.02       0.29 f
+  fifo_control/first/LOWMID/LOW/FIRST/S (mux2_1_4bit_131)
+                                                          0.00       0.29 f
+  fifo_control/first/LOWMID/LOW/FIRST/U3/Y (INVX1)        0.01       0.30 r
+  fifo_control/first/LOWMID/LOW/FIRST/U5/Y (INVX1)        0.02       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/S (mux2_1_526)
+                                                          0.00       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/NA1/in2 (nand2_1580)
+                                                          0.00       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/NA1/U1/Y (AND2X2)
+                                                          0.03       0.35 f
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/NA1/U2/Y (INVX1)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/NA1/out (nand2_1580)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/NA3/in1 (nand2_1578)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/NA3/out (nand2_1578)
+                                                          0.00       0.39 f
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/U1/Y (BUFX2)
+                                                          0.03       0.42 f
+  fifo_control/first/LOWMID/LOW/FIRST/SECOND/Out (mux2_1_526)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/LOW/FIRST/Out<1> (mux2_1_4bit_131)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/LOW/Out<1> (mux2_1_16bit_32)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/InA<1> (mux2_1_16bit_30)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/InA<1> (mux2_1_4bit_123)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/InA (mux2_1_494)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/NA2/in1 (nand2_1483)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/NA2/out (nand2_1483)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/NA3/in2 (nand2_1482)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/NA3/out (nand2_1482)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/SECOND/Out (mux2_1_494)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/Out<1> (mux2_1_4bit_123)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/Out<1> (mux2_1_16bit_30)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/Out<1> (mux4_1_16bit_10)      0.00       0.49 f
+  fifo_control/first/Out<17> (mux4_1_64bit_2)             0.00       0.49 f
+  fifo_control/ENTRY1/in<17> (fifo_entry_3)               0.00       0.49 f
+  fifo_control/ENTRY1/bit17/d (dff_238)                   0.00       0.49 f
+  fifo_control/ENTRY1/bit17/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY1/bit17/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit17/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: fifo_state_reg/state_flop0/state_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: fifo_control/ENTRY1/bit19/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fifo_state_reg/state_flop0/state_reg/CLK (DFFPOSX1)     0.00       0.00 r
+  fifo_state_reg/state_flop0/state_reg/Q (DFFPOSX1)       0.11       0.11 f
+  fifo_state_reg/state_flop0/q (dff_256)                  0.00       0.11 f
+  fifo_state_reg/state<0> (fifo_reg)                      0.00       0.11 f
+  fifo_control/state<0> (fifo_entry_controller)           0.00       0.11 f
+  fifo_control/U11/Y (AND2X2)                             0.04       0.15 f
+  fifo_control/U38/Y (AND2X2)                             0.03       0.18 f
+  fifo_control/U24/Y (OAI21X1)                            0.05       0.23 r
+  fifo_control/U23/Y (INVX4)                              0.03       0.26 f
+  fifo_control/first/S<0> (mux4_1_64bit_2)                0.00       0.26 f
+  fifo_control/first/LOWMID/S<0> (mux4_1_16bit_10)        0.00       0.26 f
+  fifo_control/first/LOWMID/LOW/S (mux2_1_16bit_32)       0.00       0.26 f
+  fifo_control/first/LOWMID/LOW/U2/Y (INVX1)              0.01       0.27 r
+  fifo_control/first/LOWMID/LOW/U3/Y (INVX1)              0.02       0.29 f
+  fifo_control/first/LOWMID/LOW/FIRST/S (mux2_1_4bit_131)
+                                                          0.00       0.29 f
+  fifo_control/first/LOWMID/LOW/FIRST/U1/Y (INVX1)        0.01       0.30 r
+  fifo_control/first/LOWMID/LOW/FIRST/U6/Y (INVX1)        0.02       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/S (mux2_1_524)
+                                                          0.00       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/NA1/in2 (nand2_1574)
+                                                          0.00       0.31 f
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/NA1/U1/Y (AND2X2)
+                                                          0.03       0.35 f
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/NA1/U2/Y (INVX1)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/NA1/out (nand2_1574)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/NA3/in1 (nand2_1572)
+                                                          0.00       0.34 r
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.37 r
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.39 f
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/NA3/out (nand2_1572)
+                                                          0.00       0.39 f
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/U1/Y (BUFX2)
+                                                          0.03       0.42 f
+  fifo_control/first/LOWMID/LOW/FIRST/LAST/Out (mux2_1_524)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/LOW/FIRST/Out<3> (mux2_1_4bit_131)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/LOW/Out<3> (mux2_1_16bit_32)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/InA<3> (mux2_1_16bit_30)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/InA<3> (mux2_1_4bit_123)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/InA (mux2_1_492)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/NA2/in1 (nand2_1477)
+                                                          0.00       0.42 f
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/NA2/out (nand2_1477)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/NA3/in2 (nand2_1476)
+                                                          0.00       0.45 r
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/NA3/out (nand2_1476)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/LAST/Out (mux2_1_492)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/FIRST/Out<3> (mux2_1_4bit_123)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/TOP/Out<3> (mux2_1_16bit_30)
+                                                          0.00       0.49 f
+  fifo_control/first/LOWMID/Out<3> (mux4_1_16bit_10)      0.00       0.49 f
+  fifo_control/first/Out<19> (mux4_1_64bit_2)             0.00       0.49 f
+  fifo_control/ENTRY1/in<19> (fifo_entry_3)               0.00       0.49 f
+  fifo_control/ENTRY1/bit19/d (dff_236)                   0.00       0.49 f
+  fifo_control/ENTRY1/bit19/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY1/bit19/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY1/bit19/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit0/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOW/S<0> (mux4_1_16bit_7)           0.00       0.28 r
+  fifo_control/second/LOW/LOW/S (mux2_1_16bit_23)         0.00       0.28 r
+  fifo_control/second/LOW/LOW/U3/Y (INVX1)                0.01       0.29 f
+  fifo_control/second/LOW/LOW/U2/Y (INVX1)                0.01       0.30 r
+  fifo_control/second/LOW/LOW/FIRST/S (mux2_1_4bit_95)
+                                                          0.00       0.30 r
+  fifo_control/second/LOW/LOW/FIRST/U5/Y (INVX1)          0.02       0.32 f
+  fifo_control/second/LOW/LOW/FIRST/U4/Y (INVX1)          0.01       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/FIRST/S (mux2_1_383)
+                                                          0.00       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/FIRST/N1/in1 (not1_383)
+                                                          0.00       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/FIRST/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/FIRST/N1/out (not1_383)
+                                                          0.00       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/FIRST/NA2/in2 (nand2_1150)
+                                                          0.00       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/FIRST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.38 f
+  fifo_control/second/LOW/LOW/FIRST/FIRST/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/FIRST/NA2/out (nand2_1150)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/FIRST/NA3/in2 (nand2_1149)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/FIRST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOW/LOW/FIRST/FIRST/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/FIRST/NA3/out (nand2_1149)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/FIRST/Out (mux2_1_383)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/Out<0> (mux2_1_4bit_95)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/Out<0> (mux2_1_16bit_23)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/InA<0> (mux2_1_16bit_21)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/InA<0> (mux2_1_4bit_87)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/FIRST/InA (mux2_1_351)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/FIRST/NA2/in1 (nand2_1054)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/FIRST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOW/TOP/FIRST/FIRST/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/FIRST/NA2/out (nand2_1054)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/FIRST/NA3/in2 (nand2_1053)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/FIRST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOW/TOP/FIRST/FIRST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/FIRST/NA3/out (nand2_1053)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/FIRST/Out (mux2_1_351)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/Out<0> (mux2_1_4bit_87)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/Out<0> (mux2_1_16bit_21)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/Out<0> (mux4_1_16bit_7)         0.00       0.49 f
+  fifo_control/second/Out<0> (mux4_1_64bit_1)             0.00       0.49 f
+  fifo_control/ENTRY2/in<0> (fifo_entry_2)                0.00       0.49 f
+  fifo_control/ENTRY2/bit0/d (dff_191)                    0.00       0.49 f
+  fifo_control/ENTRY2/bit0/U3/Y (AND2X2)                  0.03       0.52 f
+  fifo_control/ENTRY2/bit0/state_reg/D (DFFPOSX1)         0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit0/state_reg/CLK (DFFPOSX1)       0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit1/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOW/S<0> (mux4_1_16bit_7)           0.00       0.28 r
+  fifo_control/second/LOW/LOW/S (mux2_1_16bit_23)         0.00       0.28 r
+  fifo_control/second/LOW/LOW/U3/Y (INVX1)                0.01       0.29 f
+  fifo_control/second/LOW/LOW/U2/Y (INVX1)                0.01       0.30 r
+  fifo_control/second/LOW/LOW/FIRST/S (mux2_1_4bit_95)
+                                                          0.00       0.30 r
+  fifo_control/second/LOW/LOW/FIRST/U5/Y (INVX1)          0.02       0.32 f
+  fifo_control/second/LOW/LOW/FIRST/U1/Y (INVX1)          0.01       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/SECOND/S (mux2_1_382)
+                                                          0.00       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/SECOND/N1/in1 (not1_382)
+                                                          0.00       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/SECOND/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/SECOND/N1/out (not1_382)
+                                                          0.00       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/SECOND/NA2/in2 (nand2_1147)
+                                                          0.00       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.38 f
+  fifo_control/second/LOW/LOW/FIRST/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/SECOND/NA2/out (nand2_1147)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/SECOND/NA3/in2 (nand2_1146)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOW/LOW/FIRST/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/SECOND/NA3/out (nand2_1146)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/SECOND/Out (mux2_1_382)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/Out<1> (mux2_1_4bit_95)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/Out<1> (mux2_1_16bit_23)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/InA<1> (mux2_1_16bit_21)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/InA<1> (mux2_1_4bit_87)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/SECOND/InA (mux2_1_350)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/SECOND/NA2/in1 (nand2_1051)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOW/TOP/FIRST/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/SECOND/NA2/out (nand2_1051)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/SECOND/NA3/in2 (nand2_1050)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOW/TOP/FIRST/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/SECOND/NA3/out (nand2_1050)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/SECOND/Out (mux2_1_350)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/Out<1> (mux2_1_4bit_87)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/Out<1> (mux2_1_16bit_21)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/Out<1> (mux4_1_16bit_7)         0.00       0.49 f
+  fifo_control/second/Out<1> (mux4_1_64bit_1)             0.00       0.49 f
+  fifo_control/ENTRY2/in<1> (fifo_entry_2)                0.00       0.49 f
+  fifo_control/ENTRY2/bit1/d (dff_190)                    0.00       0.49 f
+  fifo_control/ENTRY2/bit1/U3/Y (AND2X2)                  0.03       0.52 f
+  fifo_control/ENTRY2/bit1/state_reg/D (DFFPOSX1)         0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit1/state_reg/CLK (DFFPOSX1)       0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit2/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOW/S<0> (mux4_1_16bit_7)           0.00       0.28 r
+  fifo_control/second/LOW/LOW/S (mux2_1_16bit_23)         0.00       0.28 r
+  fifo_control/second/LOW/LOW/U3/Y (INVX1)                0.01       0.29 f
+  fifo_control/second/LOW/LOW/U2/Y (INVX1)                0.01       0.30 r
+  fifo_control/second/LOW/LOW/FIRST/S (mux2_1_4bit_95)
+                                                          0.00       0.30 r
+  fifo_control/second/LOW/LOW/FIRST/U5/Y (INVX1)          0.02       0.32 f
+  fifo_control/second/LOW/LOW/FIRST/U2/Y (INVX1)          0.01       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/THIRD/S (mux2_1_381)
+                                                          0.00       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/THIRD/N1/in1 (not1_381)
+                                                          0.00       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/THIRD/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/THIRD/N1/out (not1_381)
+                                                          0.00       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/THIRD/NA2/in2 (nand2_1144)
+                                                          0.00       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/THIRD/NA2/U1/Y (AND2X2)
+                                                          0.03       0.38 f
+  fifo_control/second/LOW/LOW/FIRST/THIRD/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/THIRD/NA2/out (nand2_1144)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/THIRD/NA3/in2 (nand2_1143)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/THIRD/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOW/LOW/FIRST/THIRD/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/THIRD/NA3/out (nand2_1143)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/THIRD/Out (mux2_1_381)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/Out<2> (mux2_1_4bit_95)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/Out<2> (mux2_1_16bit_23)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/InA<2> (mux2_1_16bit_21)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/InA<2> (mux2_1_4bit_87)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/THIRD/InA (mux2_1_349)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/THIRD/NA2/in1 (nand2_1048)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/THIRD/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOW/TOP/FIRST/THIRD/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/THIRD/NA2/out (nand2_1048)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/THIRD/NA3/in2 (nand2_1047)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/THIRD/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOW/TOP/FIRST/THIRD/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/THIRD/NA3/out (nand2_1047)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/THIRD/Out (mux2_1_349)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/Out<2> (mux2_1_4bit_87)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/Out<2> (mux2_1_16bit_21)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/Out<2> (mux4_1_16bit_7)         0.00       0.49 f
+  fifo_control/second/Out<2> (mux4_1_64bit_1)             0.00       0.49 f
+  fifo_control/ENTRY2/in<2> (fifo_entry_2)                0.00       0.49 f
+  fifo_control/ENTRY2/bit2/d (dff_189)                    0.00       0.49 f
+  fifo_control/ENTRY2/bit2/U3/Y (AND2X2)                  0.03       0.52 f
+  fifo_control/ENTRY2/bit2/state_reg/D (DFFPOSX1)         0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit2/state_reg/CLK (DFFPOSX1)       0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit3/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOW/S<0> (mux4_1_16bit_7)           0.00       0.28 r
+  fifo_control/second/LOW/LOW/S (mux2_1_16bit_23)         0.00       0.28 r
+  fifo_control/second/LOW/LOW/U3/Y (INVX1)                0.01       0.29 f
+  fifo_control/second/LOW/LOW/U2/Y (INVX1)                0.01       0.30 r
+  fifo_control/second/LOW/LOW/FIRST/S (mux2_1_4bit_95)
+                                                          0.00       0.30 r
+  fifo_control/second/LOW/LOW/FIRST/U5/Y (INVX1)          0.02       0.32 f
+  fifo_control/second/LOW/LOW/FIRST/U3/Y (INVX1)          0.01       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/LAST/S (mux2_1_380)
+                                                          0.00       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/LAST/N1/in1 (not1_380)
+                                                          0.00       0.33 r
+  fifo_control/second/LOW/LOW/FIRST/LAST/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/LAST/N1/out (not1_380)
+                                                          0.00       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/LAST/NA2/in2 (nand2_1141)
+                                                          0.00       0.34 f
+  fifo_control/second/LOW/LOW/FIRST/LAST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.38 f
+  fifo_control/second/LOW/LOW/FIRST/LAST/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/LAST/NA2/out (nand2_1141)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/LAST/NA3/in2 (nand2_1140)
+                                                          0.00       0.37 r
+  fifo_control/second/LOW/LOW/FIRST/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOW/LOW/FIRST/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/LAST/NA3/out (nand2_1140)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/LAST/Out (mux2_1_380)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/FIRST/Out<3> (mux2_1_4bit_95)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/LOW/Out<3> (mux2_1_16bit_23)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/InA<3> (mux2_1_16bit_21)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/InA<3> (mux2_1_4bit_87)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/LAST/InA (mux2_1_348)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/LAST/NA2/in1 (nand2_1045)
+                                                          0.00       0.42 f
+  fifo_control/second/LOW/TOP/FIRST/LAST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOW/TOP/FIRST/LAST/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/LAST/NA2/out (nand2_1045)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/LAST/NA3/in2 (nand2_1044)
+                                                          0.00       0.45 r
+  fifo_control/second/LOW/TOP/FIRST/LAST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOW/TOP/FIRST/LAST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/LAST/NA3/out (nand2_1044)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/LAST/Out (mux2_1_348)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/FIRST/Out<3> (mux2_1_4bit_87)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/TOP/Out<3> (mux2_1_16bit_21)
+                                                          0.00       0.49 f
+  fifo_control/second/LOW/Out<3> (mux4_1_16bit_7)         0.00       0.49 f
+  fifo_control/second/Out<3> (mux4_1_64bit_1)             0.00       0.49 f
+  fifo_control/ENTRY2/in<3> (fifo_entry_2)                0.00       0.49 f
+  fifo_control/ENTRY2/bit3/d (dff_188)                    0.00       0.49 f
+  fifo_control/ENTRY2/bit3/U3/Y (AND2X2)                  0.03       0.52 f
+  fifo_control/ENTRY2/bit3/state_reg/D (DFFPOSX1)         0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit3/state_reg/CLK (DFFPOSX1)       0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit24/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOWMID/S<0> (mux4_1_16bit_6)        0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/S (mux2_1_16bit_20)      0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/U5/Y (INVX1)             0.02       0.30 f
+  fifo_control/second/LOWMID/LOW/U1/Y (INVX1)             0.01       0.31 r
+  fifo_control/second/LOWMID/LOW/THIRD/S (mux2_1_4bit_81)
+                                                          0.00       0.31 r
+  fifo_control/second/LOWMID/LOW/THIRD/U5/Y (INVX1)       0.01       0.33 f
+  fifo_control/second/LOWMID/LOW/THIRD/U3/Y (INVX1)       0.01       0.33 r
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/S (mux2_1_327)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/N1/in1 (not1_327)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/N1/out (not1_327)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/NA2/in2 (nand2_982)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.38 f
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/NA2/out (nand2_982)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/NA3/in2 (nand2_981)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/NA3/out (nand2_981)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/THIRD/FIRST/Out (mux2_1_327)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/THIRD/Out<0> (mux2_1_4bit_81)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/Out<8> (mux2_1_16bit_20)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/InA<8> (mux2_1_16bit_18)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/THIRD/InA<0> (mux2_1_4bit_73)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/InA (mux2_1_295)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/NA2/in1 (nand2_886)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/NA2/out (nand2_886)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/NA3/in2 (nand2_885)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/NA3/out (nand2_885)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/THIRD/FIRST/Out (mux2_1_295)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/THIRD/Out<0> (mux2_1_4bit_73)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/Out<8> (mux2_1_16bit_18)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/Out<8> (mux4_1_16bit_6)      0.00       0.49 f
+  fifo_control/second/Out<24> (mux4_1_64bit_1)            0.00       0.49 f
+  fifo_control/ENTRY2/in<24> (fifo_entry_2)               0.00       0.49 f
+  fifo_control/ENTRY2/bit24/d (dff_167)                   0.00       0.49 f
+  fifo_control/ENTRY2/bit24/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY2/bit24/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit24/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+  Startpoint: data_in_valid
+              (input port clocked by clk)
+  Endpoint: fifo_control/ENTRY2/bit25/state_reg
+            (rising edge-triggered flip-flop clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.10       0.10 r
+  data_in_valid (in)                                      0.02       0.12 r
+  fifo_control/data_in_valid (fifo_entry_controller)      0.00       0.12 r
+  fifo_control/U22/Y (AND2X2)                             0.03       0.15 r
+  fifo_control/U39/Y (AND2X2)                             0.03       0.18 r
+  fifo_control/U40/Y (INVX1)                              0.02       0.19 f
+  fifo_control/U84/Y (OAI21X1)                            0.04       0.23 r
+  fifo_control/second/S<0> (mux4_1_64bit_1)               0.00       0.23 r
+  fifo_control/second/U1/Y (INVX1)                        0.03       0.26 f
+  fifo_control/second/U4/Y (INVX1)                        0.02       0.28 r
+  fifo_control/second/LOWMID/S<0> (mux4_1_16bit_6)        0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/S (mux2_1_16bit_20)      0.00       0.28 r
+  fifo_control/second/LOWMID/LOW/U5/Y (INVX1)             0.02       0.30 f
+  fifo_control/second/LOWMID/LOW/U1/Y (INVX1)             0.01       0.31 r
+  fifo_control/second/LOWMID/LOW/THIRD/S (mux2_1_4bit_81)
+                                                          0.00       0.31 r
+  fifo_control/second/LOWMID/LOW/THIRD/U5/Y (INVX1)       0.01       0.33 f
+  fifo_control/second/LOWMID/LOW/THIRD/U4/Y (INVX1)       0.01       0.33 r
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/S (mux2_1_326)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/N1/in1 (not1_326)
+                                                          0.00       0.33 r
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/N1/U1/Y (INVX1)
+                                                          0.01       0.34 f
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/N1/out (not1_326)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/NA2/in2 (nand2_979)
+                                                          0.00       0.34 f
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.38 f
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/NA2/out (nand2_979)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/NA3/in2 (nand2_978)
+                                                          0.00       0.37 r
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.40 r
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.42 f
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/NA3/out (nand2_978)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/THIRD/SECOND/Out (mux2_1_326)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/THIRD/Out<1> (mux2_1_4bit_81)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/LOW/Out<9> (mux2_1_16bit_20)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/InA<9> (mux2_1_16bit_18)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/THIRD/InA<1> (mux2_1_4bit_73)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/InA (mux2_1_294)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/NA2/in1 (nand2_883)
+                                                          0.00       0.42 f
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/NA2/U1/Y (AND2X2)
+                                                          0.03       0.45 f
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/NA2/U2/Y (INVX1)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/NA2/out (nand2_883)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/NA3/in2 (nand2_882)
+                                                          0.00       0.45 r
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/NA3/U1/Y (AND2X2)
+                                                          0.03       0.48 r
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/NA3/U2/Y (INVX1)
+                                                          0.01       0.49 f
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/NA3/out (nand2_882)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/THIRD/SECOND/Out (mux2_1_294)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/THIRD/Out<1> (mux2_1_4bit_73)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/TOP/Out<9> (mux2_1_16bit_18)
+                                                          0.00       0.49 f
+  fifo_control/second/LOWMID/Out<9> (mux4_1_16bit_6)      0.00       0.49 f
+  fifo_control/second/Out<25> (mux4_1_64bit_1)            0.00       0.49 f
+  fifo_control/ENTRY2/in<25> (fifo_entry_2)               0.00       0.49 f
+  fifo_control/ENTRY2/bit25/d (dff_166)                   0.00       0.49 f
+  fifo_control/ENTRY2/bit25/U3/Y (AND2X2)                 0.03       0.52 f
+  fifo_control/ENTRY2/bit25/state_reg/D (DFFPOSX1)        0.00       0.52 f
+  data arrival time                                                  0.52
+
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  fifo_control/ENTRY2/bit25/state_reg/CLK (DFFPOSX1)      0.00       0.50 r
+  library setup time                                     -0.05       0.45
+  data required time                                                 0.45
+  --------------------------------------------------------------------------
+  data required time                                                 0.45
+  data arrival time                                                 -0.52
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.08
+
+
+1

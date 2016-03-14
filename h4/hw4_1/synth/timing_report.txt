@@ -1,0 +1,1624 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 20
+Design : rf_bypass
+Version: B-2008.09-SP3
+Date   : Sun Mar 13 18:49:28 2016
+****************************************
+
+Operating Conditions: typical   Library: gscl45nm
+Wire Load Model Mode: top
+
+  Startpoint: REG/REGS/THREE/ONE/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<1>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/THREE/ONE/state_reg/CLK (DFFPOSX1)             0.00       0.50 r
+  REG/REGS/THREE/ONE/state_reg/Q (DFFPOSX1)               0.10       0.60 f
+  REG/REGS/THREE/ONE/q (dff_78)                           0.00       0.60 f
+  REG/REGS/THREE/readdata<1> (reg16bit_4)                 0.00       0.60 f
+  REG/REGS/read3<1> (eight_registers)                     0.00       0.60 f
+  REG/READ2/InD<1> (mux8_1_16bit_0)                       0.00       0.60 f
+  REG/READ2/LOW/InD<1> (mux4_1_16bit_1)                   0.00       0.60 f
+  REG/READ2/LOW/HIGH/InB<1> (mux2_1_16bit_4)              0.00       0.60 f
+  REG/READ2/LOW/HIGH/FIRST/InB<1> (mux2_1_4bit_19)        0.00       0.60 f
+  REG/READ2/LOW/HIGH/FIRST/SECOND/InB (mux2_1_78)         0.00       0.60 f
+  REG/READ2/LOW/HIGH/FIRST/SECOND/NA1/in1 (nand2_236)     0.00       0.60 f
+  REG/READ2/LOW/HIGH/FIRST/SECOND/NA1/U1/Y (AND2X1)       0.03       0.64 f
+  REG/READ2/LOW/HIGH/FIRST/SECOND/NA1/U2/Y (INVX1)        0.00       0.64 r
+  REG/READ2/LOW/HIGH/FIRST/SECOND/NA1/out (nand2_236)     0.00       0.64 r
+  REG/READ2/LOW/HIGH/FIRST/SECOND/NA3/in1 (nand2_234)     0.00       0.64 r
+  REG/READ2/LOW/HIGH/FIRST/SECOND/NA3/U2/Y (AND2X2)       0.03       0.67 r
+  REG/READ2/LOW/HIGH/FIRST/SECOND/NA3/U1/Y (INVX1)        0.01       0.68 f
+  REG/READ2/LOW/HIGH/FIRST/SECOND/NA3/out (nand2_234)     0.00       0.68 f
+  REG/READ2/LOW/HIGH/FIRST/SECOND/Out (mux2_1_78)         0.00       0.68 f
+  REG/READ2/LOW/HIGH/FIRST/Out<1> (mux2_1_4bit_19)        0.00       0.68 f
+  REG/READ2/LOW/HIGH/Out<1> (mux2_1_16bit_4)              0.00       0.68 f
+  REG/READ2/LOW/TOP/InB<1> (mux2_1_16bit_3)               0.00       0.68 f
+  REG/READ2/LOW/TOP/FIRST/InB<1> (mux2_1_4bit_15)         0.00       0.68 f
+  REG/READ2/LOW/TOP/FIRST/SECOND/InB (mux2_1_62)          0.00       0.68 f
+  REG/READ2/LOW/TOP/FIRST/SECOND/NA1/in1 (nand2_188)      0.00       0.68 f
+  REG/READ2/LOW/TOP/FIRST/SECOND/NA1/U1/Y (AND2X2)        0.03       0.71 f
+  REG/READ2/LOW/TOP/FIRST/SECOND/NA1/U2/Y (INVX1)         0.00       0.71 r
+  REG/READ2/LOW/TOP/FIRST/SECOND/NA1/out (nand2_188)      0.00       0.71 r
+  REG/READ2/LOW/TOP/FIRST/SECOND/U1/Y (BUFX2)             0.03       0.74 r
+  REG/READ2/LOW/TOP/FIRST/SECOND/NA3/in1 (nand2_186)      0.00       0.74 r
+  REG/READ2/LOW/TOP/FIRST/SECOND/NA3/U1/Y (AND2X2)        0.03       0.77 r
+  REG/READ2/LOW/TOP/FIRST/SECOND/NA3/U2/Y (INVX1)         0.01       0.79 f
+  REG/READ2/LOW/TOP/FIRST/SECOND/NA3/out (nand2_186)      0.00       0.79 f
+  REG/READ2/LOW/TOP/FIRST/SECOND/Out (mux2_1_62)          0.00       0.79 f
+  REG/READ2/LOW/TOP/FIRST/Out<1> (mux2_1_4bit_15)         0.00       0.79 f
+  REG/READ2/LOW/TOP/Out<1> (mux2_1_16bit_3)               0.00       0.79 f
+  REG/READ2/LOW/Out<1> (mux4_1_16bit_1)                   0.00       0.79 f
+  REG/READ2/TOP/InA<1> (mux2_1_16bit_12)                  0.00       0.79 f
+  REG/READ2/TOP/FIRST/InA<1> (mux2_1_4bit_51)             0.00       0.79 f
+  REG/READ2/TOP/FIRST/SECOND/InA (mux2_1_206)             0.00       0.79 f
+  REG/READ2/TOP/FIRST/SECOND/NA2/in1 (nand2_619)          0.00       0.79 f
+  REG/READ2/TOP/FIRST/SECOND/NA2/U1/Y (AND2X2)            0.03       0.82 f
+  REG/READ2/TOP/FIRST/SECOND/NA2/U2/Y (INVX1)             0.00       0.82 r
+  REG/READ2/TOP/FIRST/SECOND/NA2/out (nand2_619)          0.00       0.82 r
+  REG/READ2/TOP/FIRST/SECOND/NA3/in2 (nand2_618)          0.00       0.82 r
+  REG/READ2/TOP/FIRST/SECOND/NA3/U2/Y (AND2X2)            0.03       0.85 r
+  REG/READ2/TOP/FIRST/SECOND/NA3/U1/Y (INVX1)             0.01       0.86 f
+  REG/READ2/TOP/FIRST/SECOND/NA3/out (nand2_618)          0.00       0.86 f
+  REG/READ2/TOP/FIRST/SECOND/Out (mux2_1_206)             0.00       0.86 f
+  REG/READ2/TOP/FIRST/Out<1> (mux2_1_4bit_51)             0.00       0.86 f
+  REG/READ2/TOP/Out<1> (mux2_1_16bit_12)                  0.00       0.86 f
+  REG/READ2/Out<1> (mux8_1_16bit_0)                       0.00       0.86 f
+  REG/read2data<1> (rf)                                   0.00       0.86 f
+  U162/Y (AND2X1)                                         0.03       0.89 f
+  U197/Y (INVX1)                                          0.00       0.89 r
+  U34/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<1> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/SIX/FIFTE/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<15>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/SIX/FIFTE/state_reg/CLK (DFFPOSX1)             0.00       0.50 r
+  REG/REGS/SIX/FIFTE/state_reg/Q (DFFPOSX1)               0.10       0.60 f
+  REG/REGS/SIX/FIFTE/q (dff_16)                           0.00       0.60 f
+  REG/REGS/SIX/readdata<15> (reg16bit_1)                  0.00       0.60 f
+  REG/REGS/read6<15> (eight_registers)                    0.00       0.60 f
+  REG/READ2/InG<15> (mux8_1_16bit_0)                      0.00       0.60 f
+  REG/READ2/HIGH/InC<15> (mux4_1_16bit_0)                 0.00       0.60 f
+  REG/READ2/HIGH/HIGH/InA<15> (mux2_1_16bit_1)            0.00       0.60 f
+  REG/READ2/HIGH/HIGH/LAST/InA<3> (mux2_1_4bit_4)         0.00       0.60 f
+  REG/READ2/HIGH/HIGH/LAST/LAST/InA (mux2_1_16)           0.00       0.60 f
+  REG/READ2/HIGH/HIGH/LAST/LAST/NA2/in1 (nand2_49)        0.00       0.60 f
+  REG/READ2/HIGH/HIGH/LAST/LAST/NA2/U1/Y (AND2X1)         0.04       0.65 f
+  REG/READ2/HIGH/HIGH/LAST/LAST/NA2/U2/Y (INVX1)          0.00       0.65 r
+  REG/READ2/HIGH/HIGH/LAST/LAST/NA2/out (nand2_49)        0.00       0.65 r
+  REG/READ2/HIGH/HIGH/LAST/LAST/NA3/in2 (nand2_48)        0.00       0.65 r
+  REG/READ2/HIGH/HIGH/LAST/LAST/NA3/U1/Y (AND2X2)         0.03       0.68 r
+  REG/READ2/HIGH/HIGH/LAST/LAST/NA3/U2/Y (INVX1)          0.01       0.69 f
+  REG/READ2/HIGH/HIGH/LAST/LAST/NA3/out (nand2_48)        0.00       0.69 f
+  REG/READ2/HIGH/HIGH/LAST/LAST/Out (mux2_1_16)           0.00       0.69 f
+  REG/READ2/HIGH/HIGH/LAST/Out<3> (mux2_1_4bit_4)         0.00       0.69 f
+  REG/READ2/HIGH/HIGH/Out<15> (mux2_1_16bit_1)            0.00       0.69 f
+  REG/READ2/HIGH/TOP/InB<15> (mux2_1_16bit_0)             0.00       0.69 f
+  REG/READ2/HIGH/TOP/LAST/InB<3> (mux2_1_4bit_0)          0.00       0.69 f
+  REG/READ2/HIGH/TOP/LAST/LAST/InB (mux2_1_0)             0.00       0.69 f
+  REG/READ2/HIGH/TOP/LAST/LAST/NA1/in1 (nand2_2)          0.00       0.69 f
+  REG/READ2/HIGH/TOP/LAST/LAST/NA1/U1/Y (AND2X2)          0.04       0.73 f
+  REG/READ2/HIGH/TOP/LAST/LAST/NA1/U2/Y (INVX1)           0.00       0.74 r
+  REG/READ2/HIGH/TOP/LAST/LAST/NA1/out (nand2_2)          0.00       0.74 r
+  REG/READ2/HIGH/TOP/LAST/LAST/NA3/in1 (nand2_0)          0.00       0.74 r
+  REG/READ2/HIGH/TOP/LAST/LAST/NA3/U1/Y (AND2X2)          0.03       0.77 r
+  REG/READ2/HIGH/TOP/LAST/LAST/NA3/U2/Y (INVX1)           0.01       0.78 f
+  REG/READ2/HIGH/TOP/LAST/LAST/NA3/out (nand2_0)          0.00       0.78 f
+  REG/READ2/HIGH/TOP/LAST/LAST/Out (mux2_1_0)             0.00       0.78 f
+  REG/READ2/HIGH/TOP/LAST/Out<3> (mux2_1_4bit_0)          0.00       0.78 f
+  REG/READ2/HIGH/TOP/Out<15> (mux2_1_16bit_0)             0.00       0.78 f
+  REG/READ2/HIGH/Out<15> (mux4_1_16bit_0)                 0.00       0.78 f
+  REG/READ2/TOP/InB<15> (mux2_1_16bit_12)                 0.00       0.78 f
+  REG/READ2/TOP/LAST/InB<3> (mux2_1_4bit_48)              0.00       0.78 f
+  REG/READ2/TOP/LAST/LAST/InB (mux2_1_192)                0.00       0.78 f
+  REG/READ2/TOP/LAST/LAST/NA1/in1 (nand2_578)             0.00       0.78 f
+  REG/READ2/TOP/LAST/LAST/NA1/U1/Y (AND2X2)               0.04       0.82 f
+  REG/READ2/TOP/LAST/LAST/NA1/U2/Y (INVX1)                0.00       0.82 r
+  REG/READ2/TOP/LAST/LAST/NA1/out (nand2_578)             0.00       0.82 r
+  REG/READ2/TOP/LAST/LAST/NA3/in1 (nand2_576)             0.00       0.82 r
+  REG/READ2/TOP/LAST/LAST/NA3/U1/Y (AND2X2)               0.03       0.85 r
+  REG/READ2/TOP/LAST/LAST/NA3/U2/Y (INVX1)                0.01       0.86 f
+  REG/READ2/TOP/LAST/LAST/NA3/out (nand2_576)             0.00       0.86 f
+  REG/READ2/TOP/LAST/LAST/Out (mux2_1_192)                0.00       0.86 f
+  REG/READ2/TOP/LAST/Out<3> (mux2_1_4bit_48)              0.00       0.86 f
+  REG/READ2/TOP/Out<15> (mux2_1_16bit_12)                 0.00       0.86 f
+  REG/READ2/Out<15> (mux8_1_16bit_0)                      0.00       0.86 f
+  REG/read2data<15> (rf)                                  0.00       0.86 f
+  U146/Y (AND2X1)                                         0.03       0.89 f
+  U196/Y (INVX1)                                          0.00       0.89 r
+  U36/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<15> (out)                                     0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FIVE/SEVEN/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<7>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FIVE/SEVEN/state_reg/CLK (DFFPOSX1)            0.00       0.50 r
+  REG/REGS/FIVE/SEVEN/state_reg/Q (DFFPOSX1)              0.10       0.60 f
+  REG/REGS/FIVE/SEVEN/q (dff_40)                          0.00       0.60 f
+  REG/REGS/FIVE/readdata<7> (reg16bit_2)                  0.00       0.60 f
+  REG/REGS/read5<7> (eight_registers)                     0.00       0.60 f
+  REG/READ2/InF<7> (mux8_1_16bit_0)                       0.00       0.60 f
+  REG/READ2/HIGH/InB<7> (mux4_1_16bit_0)                  0.00       0.60 f
+  REG/READ2/HIGH/LOW/InB<7> (mux2_1_16bit_2)              0.00       0.60 f
+  REG/READ2/HIGH/LOW/SECOND/InB<3> (mux2_1_4bit_10)       0.00       0.60 f
+  REG/READ2/HIGH/LOW/SECOND/LAST/InB (mux2_1_40)          0.00       0.60 f
+  REG/READ2/HIGH/LOW/SECOND/LAST/NA1/in1 (nand2_122)      0.00       0.60 f
+  REG/READ2/HIGH/LOW/SECOND/LAST/NA1/U1/Y (AND2X1)        0.03       0.64 f
+  REG/READ2/HIGH/LOW/SECOND/LAST/NA1/U2/Y (INVX1)         0.00       0.64 r
+  REG/READ2/HIGH/LOW/SECOND/LAST/NA1/out (nand2_122)      0.00       0.64 r
+  REG/READ2/HIGH/LOW/SECOND/LAST/NA3/in1 (nand2_120)      0.00       0.64 r
+  REG/READ2/HIGH/LOW/SECOND/LAST/NA3/U1/Y (AND2X1)        0.04       0.68 r
+  REG/READ2/HIGH/LOW/SECOND/LAST/NA3/U2/Y (INVX1)         0.02       0.70 f
+  REG/READ2/HIGH/LOW/SECOND/LAST/NA3/out (nand2_120)      0.00       0.70 f
+  REG/READ2/HIGH/LOW/SECOND/LAST/Out (mux2_1_40)          0.00       0.70 f
+  REG/READ2/HIGH/LOW/SECOND/Out<3> (mux2_1_4bit_10)       0.00       0.70 f
+  REG/READ2/HIGH/LOW/Out<7> (mux2_1_16bit_2)              0.00       0.70 f
+  REG/READ2/HIGH/TOP/InA<7> (mux2_1_16bit_0)              0.00       0.70 f
+  REG/READ2/HIGH/TOP/SECOND/InA<3> (mux2_1_4bit_2)        0.00       0.70 f
+  REG/READ2/HIGH/TOP/SECOND/LAST/InA (mux2_1_8)           0.00       0.70 f
+  REG/READ2/HIGH/TOP/SECOND/LAST/NA2/in1 (nand2_25)       0.00       0.70 f
+  REG/READ2/HIGH/TOP/SECOND/LAST/NA2/U1/Y (AND2X1)        0.03       0.73 f
+  REG/READ2/HIGH/TOP/SECOND/LAST/NA2/U2/Y (INVX1)         0.00       0.74 r
+  REG/READ2/HIGH/TOP/SECOND/LAST/NA2/out (nand2_25)       0.00       0.74 r
+  REG/READ2/HIGH/TOP/SECOND/LAST/NA3/in2 (nand2_24)       0.00       0.74 r
+  REG/READ2/HIGH/TOP/SECOND/LAST/NA3/U1/Y (AND2X2)        0.03       0.77 r
+  REG/READ2/HIGH/TOP/SECOND/LAST/NA3/U2/Y (INVX1)         0.01       0.78 f
+  REG/READ2/HIGH/TOP/SECOND/LAST/NA3/out (nand2_24)       0.00       0.78 f
+  REG/READ2/HIGH/TOP/SECOND/LAST/Out (mux2_1_8)           0.00       0.78 f
+  REG/READ2/HIGH/TOP/SECOND/Out<3> (mux2_1_4bit_2)        0.00       0.78 f
+  REG/READ2/HIGH/TOP/Out<7> (mux2_1_16bit_0)              0.00       0.78 f
+  REG/READ2/HIGH/Out<7> (mux4_1_16bit_0)                  0.00       0.78 f
+  REG/READ2/TOP/InB<7> (mux2_1_16bit_12)                  0.00       0.78 f
+  REG/READ2/TOP/SECOND/InB<3> (mux2_1_4bit_50)            0.00       0.78 f
+  REG/READ2/TOP/SECOND/LAST/InB (mux2_1_200)              0.00       0.78 f
+  REG/READ2/TOP/SECOND/LAST/NA1/in1 (nand2_602)           0.00       0.78 f
+  REG/READ2/TOP/SECOND/LAST/NA1/U1/Y (AND2X2)             0.04       0.82 f
+  REG/READ2/TOP/SECOND/LAST/NA1/U2/Y (INVX1)              0.00       0.82 r
+  REG/READ2/TOP/SECOND/LAST/NA1/out (nand2_602)           0.00       0.82 r
+  REG/READ2/TOP/SECOND/LAST/NA3/in1 (nand2_600)           0.00       0.82 r
+  REG/READ2/TOP/SECOND/LAST/NA3/U2/Y (AND2X2)             0.03       0.85 r
+  REG/READ2/TOP/SECOND/LAST/NA3/U1/Y (INVX1)              0.01       0.86 f
+  REG/READ2/TOP/SECOND/LAST/NA3/out (nand2_600)           0.00       0.86 f
+  REG/READ2/TOP/SECOND/LAST/Out (mux2_1_200)              0.00       0.86 f
+  REG/READ2/TOP/SECOND/Out<3> (mux2_1_4bit_50)            0.00       0.86 f
+  REG/READ2/TOP/Out<7> (mux2_1_16bit_12)                  0.00       0.86 f
+  REG/READ2/Out<7> (mux8_1_16bit_0)                       0.00       0.86 f
+  REG/read2data<7> (rf)                                   0.00       0.86 f
+  U139/Y (AND2X1)                                         0.03       0.89 f
+  U199/Y (INVX1)                                          0.00       0.89 r
+  U22/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<7> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FIVE/TEN/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<10>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FIVE/TEN/state_reg/CLK (DFFPOSX1)              0.00       0.50 r
+  REG/REGS/FIVE/TEN/state_reg/Q (DFFPOSX1)                0.10       0.60 f
+  REG/REGS/FIVE/TEN/q (dff_37)                            0.00       0.60 f
+  REG/REGS/FIVE/readdata<10> (reg16bit_2)                 0.00       0.60 f
+  REG/REGS/read5<10> (eight_registers)                    0.00       0.60 f
+  REG/READ1/InF<10> (mux8_1_16bit_1)                      0.00       0.60 f
+  REG/READ1/HIGH/InB<10> (mux4_1_16bit_2)                 0.00       0.60 f
+  REG/READ1/HIGH/LOW/InB<10> (mux2_1_16bit_8)             0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/InB<2> (mux2_1_4bit_33)        0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/THIRD/InB (mux2_1_133)         0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/THIRD/NA1/in1 (nand2_401)      0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/THIRD/NA1/U1/Y (AND2X2)        0.04       0.64 f
+  REG/READ1/HIGH/LOW/THIRD/THIRD/NA1/U2/Y (INVX1)         0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/THIRD/NA1/out (nand2_401)      0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/THIRD/NA3/in1 (nand2_399)      0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/THIRD/NA3/U1/Y (AND2X1)        0.04       0.68 r
+  REG/READ1/HIGH/LOW/THIRD/THIRD/NA3/U2/Y (INVX1)         0.02       0.70 f
+  REG/READ1/HIGH/LOW/THIRD/THIRD/NA3/out (nand2_399)      0.00       0.70 f
+  REG/READ1/HIGH/LOW/THIRD/THIRD/Out (mux2_1_133)         0.00       0.70 f
+  REG/READ1/HIGH/LOW/THIRD/Out<2> (mux2_1_4bit_33)        0.00       0.70 f
+  REG/READ1/HIGH/LOW/Out<10> (mux2_1_16bit_8)             0.00       0.70 f
+  REG/READ1/HIGH/TOP/InA<10> (mux2_1_16bit_6)             0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/InA<2> (mux2_1_4bit_25)        0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/THIRD/InA (mux2_1_101)         0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/THIRD/NA2/in1 (nand2_304)      0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/THIRD/NA2/U1/Y (AND2X1)        0.03       0.73 f
+  REG/READ1/HIGH/TOP/THIRD/THIRD/NA2/U2/Y (INVX1)         0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/THIRD/NA2/out (nand2_304)      0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/THIRD/NA3/in2 (nand2_303)      0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/THIRD/NA3/U1/Y (AND2X2)        0.03       0.77 r
+  REG/READ1/HIGH/TOP/THIRD/THIRD/NA3/U2/Y (INVX1)         0.01       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/THIRD/NA3/out (nand2_303)      0.00       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/THIRD/Out (mux2_1_101)         0.00       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/Out<2> (mux2_1_4bit_25)        0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<10> (mux2_1_16bit_6)             0.00       0.78 f
+  REG/READ1/HIGH/Out<10> (mux4_1_16bit_2)                 0.00       0.78 f
+  REG/READ1/TOP/InB<10> (mux2_1_16bit_13)                 0.00       0.78 f
+  REG/READ1/TOP/THIRD/InB<2> (mux2_1_4bit_53)             0.00       0.78 f
+  REG/READ1/TOP/THIRD/THIRD/InB (mux2_1_213)              0.00       0.78 f
+  REG/READ1/TOP/THIRD/THIRD/NA1/in1 (nand2_641)           0.00       0.78 f
+  REG/READ1/TOP/THIRD/THIRD/NA1/U1/Y (AND2X2)             0.04       0.82 f
+  REG/READ1/TOP/THIRD/THIRD/NA1/U2/Y (INVX1)              0.00       0.82 r
+  REG/READ1/TOP/THIRD/THIRD/NA1/out (nand2_641)           0.00       0.82 r
+  REG/READ1/TOP/THIRD/THIRD/NA3/in1 (nand2_639)           0.00       0.82 r
+  REG/READ1/TOP/THIRD/THIRD/NA3/U2/Y (AND2X2)             0.03       0.85 r
+  REG/READ1/TOP/THIRD/THIRD/NA3/U1/Y (INVX1)              0.01       0.86 f
+  REG/READ1/TOP/THIRD/THIRD/NA3/out (nand2_639)           0.00       0.86 f
+  REG/READ1/TOP/THIRD/THIRD/Out (mux2_1_213)              0.00       0.86 f
+  REG/READ1/TOP/THIRD/Out<2> (mux2_1_4bit_53)             0.00       0.86 f
+  REG/READ1/TOP/Out<10> (mux2_1_16bit_13)                 0.00       0.86 f
+  REG/READ1/Out<10> (mux8_1_16bit_1)                      0.00       0.86 f
+  REG/read1data<10> (rf)                                  0.00       0.86 f
+  U155/Y (AND2X1)                                         0.03       0.89 f
+  U180/Y (INVX1)                                          0.00       0.89 r
+  U83/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<10> (out)                                     0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FIVE/FOURT/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<14>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FIVE/FOURT/state_reg/CLK (DFFPOSX1)            0.00       0.50 r
+  REG/REGS/FIVE/FOURT/state_reg/Q (DFFPOSX1)              0.10       0.60 f
+  REG/REGS/FIVE/FOURT/q (dff_33)                          0.00       0.60 f
+  REG/REGS/FIVE/readdata<14> (reg16bit_2)                 0.00       0.60 f
+  REG/REGS/read5<14> (eight_registers)                    0.00       0.60 f
+  REG/READ2/InF<14> (mux8_1_16bit_0)                      0.00       0.60 f
+  REG/READ2/HIGH/InB<14> (mux4_1_16bit_0)                 0.00       0.60 f
+  REG/READ2/HIGH/LOW/InB<14> (mux2_1_16bit_2)             0.00       0.60 f
+  REG/READ2/HIGH/LOW/LAST/InB<2> (mux2_1_4bit_8)          0.00       0.60 f
+  REG/READ2/HIGH/LOW/LAST/THIRD/InB (mux2_1_33)           0.00       0.60 f
+  REG/READ2/HIGH/LOW/LAST/THIRD/NA1/in1 (nand2_101)       0.00       0.60 f
+  REG/READ2/HIGH/LOW/LAST/THIRD/NA1/U1/Y (AND2X1)         0.03       0.64 f
+  REG/READ2/HIGH/LOW/LAST/THIRD/NA1/U2/Y (INVX1)          0.00       0.64 r
+  REG/READ2/HIGH/LOW/LAST/THIRD/NA1/out (nand2_101)       0.00       0.64 r
+  REG/READ2/HIGH/LOW/LAST/THIRD/NA3/in1 (nand2_99)        0.00       0.64 r
+  REG/READ2/HIGH/LOW/LAST/THIRD/NA3/U1/Y (AND2X1)         0.04       0.68 r
+  REG/READ2/HIGH/LOW/LAST/THIRD/NA3/U2/Y (INVX1)          0.02       0.70 f
+  REG/READ2/HIGH/LOW/LAST/THIRD/NA3/out (nand2_99)        0.00       0.70 f
+  REG/READ2/HIGH/LOW/LAST/THIRD/Out (mux2_1_33)           0.00       0.70 f
+  REG/READ2/HIGH/LOW/LAST/Out<2> (mux2_1_4bit_8)          0.00       0.70 f
+  REG/READ2/HIGH/LOW/Out<14> (mux2_1_16bit_2)             0.00       0.70 f
+  REG/READ2/HIGH/TOP/InA<14> (mux2_1_16bit_0)             0.00       0.70 f
+  REG/READ2/HIGH/TOP/LAST/InA<2> (mux2_1_4bit_0)          0.00       0.70 f
+  REG/READ2/HIGH/TOP/LAST/THIRD/InA (mux2_1_1)            0.00       0.70 f
+  REG/READ2/HIGH/TOP/LAST/THIRD/NA2/in1 (nand2_4)         0.00       0.70 f
+  REG/READ2/HIGH/TOP/LAST/THIRD/NA2/U1/Y (AND2X1)         0.03       0.73 f
+  REG/READ2/HIGH/TOP/LAST/THIRD/NA2/U2/Y (INVX1)          0.00       0.74 r
+  REG/READ2/HIGH/TOP/LAST/THIRD/NA2/out (nand2_4)         0.00       0.74 r
+  REG/READ2/HIGH/TOP/LAST/THIRD/NA3/in2 (nand2_3)         0.00       0.74 r
+  REG/READ2/HIGH/TOP/LAST/THIRD/NA3/U1/Y (AND2X2)         0.03       0.77 r
+  REG/READ2/HIGH/TOP/LAST/THIRD/NA3/U2/Y (INVX1)          0.01       0.78 f
+  REG/READ2/HIGH/TOP/LAST/THIRD/NA3/out (nand2_3)         0.00       0.78 f
+  REG/READ2/HIGH/TOP/LAST/THIRD/Out (mux2_1_1)            0.00       0.78 f
+  REG/READ2/HIGH/TOP/LAST/Out<2> (mux2_1_4bit_0)          0.00       0.78 f
+  REG/READ2/HIGH/TOP/Out<14> (mux2_1_16bit_0)             0.00       0.78 f
+  REG/READ2/HIGH/Out<14> (mux4_1_16bit_0)                 0.00       0.78 f
+  REG/READ2/TOP/InB<14> (mux2_1_16bit_12)                 0.00       0.78 f
+  REG/READ2/TOP/LAST/InB<2> (mux2_1_4bit_48)              0.00       0.78 f
+  REG/READ2/TOP/LAST/THIRD/InB (mux2_1_193)               0.00       0.78 f
+  REG/READ2/TOP/LAST/THIRD/NA1/in1 (nand2_581)            0.00       0.78 f
+  REG/READ2/TOP/LAST/THIRD/NA1/U1/Y (AND2X2)              0.04       0.82 f
+  REG/READ2/TOP/LAST/THIRD/NA1/U2/Y (INVX1)               0.00       0.81 r
+  REG/READ2/TOP/LAST/THIRD/NA1/out (nand2_581)            0.00       0.81 r
+  REG/READ2/TOP/LAST/THIRD/NA3/in1 (nand2_579)            0.00       0.81 r
+  REG/READ2/TOP/LAST/THIRD/NA3/U2/Y (AND2X2)              0.03       0.85 r
+  REG/READ2/TOP/LAST/THIRD/NA3/U1/Y (INVX1)               0.01       0.86 f
+  REG/READ2/TOP/LAST/THIRD/NA3/out (nand2_579)            0.00       0.86 f
+  REG/READ2/TOP/LAST/THIRD/Out (mux2_1_193)               0.00       0.86 f
+  REG/READ2/TOP/LAST/Out<2> (mux2_1_4bit_48)              0.00       0.86 f
+  REG/READ2/TOP/Out<14> (mux2_1_16bit_12)                 0.00       0.86 f
+  REG/READ2/Out<14> (mux8_1_16bit_0)                      0.00       0.86 f
+  REG/read2data<14> (rf)                                  0.00       0.86 f
+  U145/Y (AND2X1)                                         0.03       0.89 f
+  U195/Y (INVX1)                                          0.00       0.89 r
+  U38/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<14> (out)                                     0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/SIX/SIX/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<6>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/SIX/SIX/state_reg/CLK (DFFPOSX1)               0.00       0.50 r
+  REG/REGS/SIX/SIX/state_reg/Q (DFFPOSX1)                 0.10       0.60 f
+  REG/REGS/SIX/SIX/q (dff_25)                             0.00       0.60 f
+  REG/REGS/SIX/readdata<6> (reg16bit_1)                   0.00       0.60 f
+  REG/REGS/read6<6> (eight_registers)                     0.00       0.60 f
+  REG/READ2/InG<6> (mux8_1_16bit_0)                       0.00       0.60 f
+  REG/READ2/HIGH/InC<6> (mux4_1_16bit_0)                  0.00       0.60 f
+  REG/READ2/HIGH/HIGH/InA<6> (mux2_1_16bit_1)             0.00       0.60 f
+  REG/READ2/HIGH/HIGH/SECOND/InA<2> (mux2_1_4bit_6)       0.00       0.60 f
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/InA (mux2_1_25)        0.00       0.60 f
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/NA2/in1 (nand2_76)     0.00       0.60 f
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/NA2/U1/Y (AND2X1)      0.03       0.64 f
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/NA2/U2/Y (INVX1)       0.00       0.64 r
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/NA2/out (nand2_76)     0.00       0.64 r
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/NA3/in2 (nand2_75)     0.00       0.64 r
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/NA3/U1/Y (AND2X2)      0.03       0.67 r
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/NA3/U2/Y (INVX1)       0.01       0.68 f
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/NA3/out (nand2_75)     0.00       0.68 f
+  REG/READ2/HIGH/HIGH/SECOND/THIRD/Out (mux2_1_25)        0.00       0.68 f
+  REG/READ2/HIGH/HIGH/SECOND/Out<2> (mux2_1_4bit_6)       0.00       0.68 f
+  REG/READ2/HIGH/HIGH/Out<6> (mux2_1_16bit_1)             0.00       0.68 f
+  REG/READ2/HIGH/TOP/InB<6> (mux2_1_16bit_0)              0.00       0.68 f
+  REG/READ2/HIGH/TOP/SECOND/InB<2> (mux2_1_4bit_2)        0.00       0.68 f
+  REG/READ2/HIGH/TOP/SECOND/THIRD/InB (mux2_1_9)          0.00       0.68 f
+  REG/READ2/HIGH/TOP/SECOND/THIRD/NA1/in1 (nand2_29)      0.00       0.68 f
+  REG/READ2/HIGH/TOP/SECOND/THIRD/NA1/U1/Y (AND2X2)       0.04       0.72 f
+  REG/READ2/HIGH/TOP/SECOND/THIRD/NA1/U2/Y (INVX1)        0.00       0.73 r
+  REG/READ2/HIGH/TOP/SECOND/THIRD/NA1/out (nand2_29)      0.00       0.73 r
+  REG/READ2/HIGH/TOP/SECOND/THIRD/NA3/in1 (nand2_27)      0.00       0.73 r
+  REG/READ2/HIGH/TOP/SECOND/THIRD/NA3/U1/Y (AND2X2)       0.03       0.76 r
+  REG/READ2/HIGH/TOP/SECOND/THIRD/NA3/U2/Y (INVX1)        0.02       0.77 f
+  REG/READ2/HIGH/TOP/SECOND/THIRD/NA3/out (nand2_27)      0.00       0.77 f
+  REG/READ2/HIGH/TOP/SECOND/THIRD/Out (mux2_1_9)          0.00       0.77 f
+  REG/READ2/HIGH/TOP/SECOND/Out<2> (mux2_1_4bit_2)        0.00       0.77 f
+  REG/READ2/HIGH/TOP/Out<6> (mux2_1_16bit_0)              0.00       0.77 f
+  REG/READ2/HIGH/Out<6> (mux4_1_16bit_0)                  0.00       0.77 f
+  REG/READ2/TOP/InB<6> (mux2_1_16bit_12)                  0.00       0.77 f
+  REG/READ2/TOP/SECOND/InB<2> (mux2_1_4bit_50)            0.00       0.77 f
+  REG/READ2/TOP/SECOND/THIRD/InB (mux2_1_201)             0.00       0.77 f
+  REG/READ2/TOP/SECOND/THIRD/NA1/in1 (nand2_605)          0.00       0.77 f
+  REG/READ2/TOP/SECOND/THIRD/NA1/U1/Y (AND2X1)            0.04       0.81 f
+  REG/READ2/TOP/SECOND/THIRD/NA1/U2/Y (INVX1)             0.00       0.81 r
+  REG/READ2/TOP/SECOND/THIRD/NA1/out (nand2_605)          0.00       0.81 r
+  REG/READ2/TOP/SECOND/THIRD/NA3/in1 (nand2_603)          0.00       0.81 r
+  REG/READ2/TOP/SECOND/THIRD/NA3/U2/Y (AND2X2)            0.03       0.85 r
+  REG/READ2/TOP/SECOND/THIRD/NA3/U1/Y (INVX1)             0.01       0.86 f
+  REG/READ2/TOP/SECOND/THIRD/NA3/out (nand2_603)          0.00       0.86 f
+  REG/READ2/TOP/SECOND/THIRD/Out (mux2_1_201)             0.00       0.86 f
+  REG/READ2/TOP/SECOND/Out<2> (mux2_1_4bit_50)            0.00       0.86 f
+  REG/READ2/TOP/Out<6> (mux2_1_16bit_12)                  0.00       0.86 f
+  REG/READ2/Out<6> (mux8_1_16bit_0)                       0.00       0.86 f
+  REG/read2data<6> (rf)                                   0.00       0.86 f
+  U138/Y (AND2X1)                                         0.03       0.89 f
+  U198/Y (INVX1)                                          0.00       0.89 r
+  U24/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<6> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FOUR/ELEVE/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<11>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FOUR/ELEVE/state_reg/CLK (DFFPOSX1)            0.00       0.50 r
+  REG/REGS/FOUR/ELEVE/state_reg/Q (DFFPOSX1)              0.10       0.60 f
+  REG/REGS/FOUR/ELEVE/q (dff_52)                          0.00       0.60 f
+  REG/REGS/FOUR/readdata<11> (reg16bit_3)                 0.00       0.60 f
+  REG/REGS/read4<11> (eight_registers)                    0.00       0.60 f
+  REG/READ1/InE<11> (mux8_1_16bit_1)                      0.00       0.60 f
+  REG/READ1/HIGH/InA<11> (mux4_1_16bit_2)                 0.00       0.60 f
+  REG/READ1/HIGH/LOW/InA<11> (mux2_1_16bit_8)             0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/InA<3> (mux2_1_4bit_33)        0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/LAST/InA (mux2_1_132)          0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/LAST/NA2/in1 (nand2_397)       0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/LAST/NA2/U1/Y (AND2X1)         0.03       0.64 f
+  REG/READ1/HIGH/LOW/THIRD/LAST/NA2/U2/Y (INVX1)          0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/LAST/NA2/out (nand2_397)       0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/LAST/NA3/in2 (nand2_396)       0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/LAST/NA3/U1/Y (AND2X2)         0.03       0.67 r
+  REG/READ1/HIGH/LOW/THIRD/LAST/NA3/U2/Y (INVX1)          0.01       0.68 f
+  REG/READ1/HIGH/LOW/THIRD/LAST/NA3/out (nand2_396)       0.00       0.68 f
+  REG/READ1/HIGH/LOW/THIRD/LAST/Out (mux2_1_132)          0.00       0.68 f
+  REG/READ1/HIGH/LOW/THIRD/Out<3> (mux2_1_4bit_33)        0.00       0.68 f
+  REG/READ1/HIGH/LOW/Out<11> (mux2_1_16bit_8)             0.00       0.68 f
+  REG/READ1/HIGH/TOP/InA<11> (mux2_1_16bit_6)             0.00       0.68 f
+  REG/READ1/HIGH/TOP/THIRD/InA<3> (mux2_1_4bit_25)        0.00       0.68 f
+  REG/READ1/HIGH/TOP/THIRD/LAST/InA (mux2_1_100)          0.00       0.68 f
+  REG/READ1/HIGH/TOP/THIRD/LAST/NA2/in1 (nand2_301)       0.00       0.68 f
+  REG/READ1/HIGH/TOP/THIRD/LAST/NA2/U1/Y (AND2X1)         0.03       0.72 f
+  REG/READ1/HIGH/TOP/THIRD/LAST/NA2/U2/Y (INVX1)          0.00       0.72 r
+  REG/READ1/HIGH/TOP/THIRD/LAST/NA2/out (nand2_301)       0.00       0.72 r
+  REG/READ1/HIGH/TOP/THIRD/LAST/NA3/in2 (nand2_300)       0.00       0.72 r
+  REG/READ1/HIGH/TOP/THIRD/LAST/NA3/U1/Y (AND2X1)         0.04       0.76 r
+  REG/READ1/HIGH/TOP/THIRD/LAST/NA3/U2/Y (INVX1)          0.02       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/LAST/NA3/out (nand2_300)       0.00       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/LAST/Out (mux2_1_100)          0.00       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/Out<3> (mux2_1_4bit_25)        0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<11> (mux2_1_16bit_6)             0.00       0.78 f
+  REG/READ1/HIGH/Out<11> (mux4_1_16bit_2)                 0.00       0.78 f
+  REG/READ1/TOP/InB<11> (mux2_1_16bit_13)                 0.00       0.78 f
+  REG/READ1/TOP/THIRD/InB<3> (mux2_1_4bit_53)             0.00       0.78 f
+  REG/READ1/TOP/THIRD/LAST/InB (mux2_1_212)               0.00       0.78 f
+  REG/READ1/TOP/THIRD/LAST/NA1/in1 (nand2_638)            0.00       0.78 f
+  REG/READ1/TOP/THIRD/LAST/NA1/U1/Y (AND2X2)              0.04       0.82 f
+  REG/READ1/TOP/THIRD/LAST/NA1/U2/Y (INVX1)               0.00       0.81 r
+  REG/READ1/TOP/THIRD/LAST/NA1/out (nand2_638)            0.00       0.81 r
+  REG/READ1/TOP/THIRD/LAST/NA3/in1 (nand2_636)            0.00       0.81 r
+  REG/READ1/TOP/THIRD/LAST/NA3/U2/Y (AND2X2)              0.03       0.85 r
+  REG/READ1/TOP/THIRD/LAST/NA3/U1/Y (INVX1)               0.01       0.86 f
+  REG/READ1/TOP/THIRD/LAST/NA3/out (nand2_636)            0.00       0.86 f
+  REG/READ1/TOP/THIRD/LAST/Out (mux2_1_212)               0.00       0.86 f
+  REG/READ1/TOP/THIRD/Out<3> (mux2_1_4bit_53)             0.00       0.86 f
+  REG/READ1/TOP/Out<11> (mux2_1_16bit_13)                 0.00       0.86 f
+  REG/READ1/Out<11> (mux8_1_16bit_1)                      0.00       0.86 f
+  REG/read1data<11> (rf)                                  0.00       0.86 f
+  U156/Y (AND2X1)                                         0.03       0.89 f
+  U181/Y (INVX1)                                          0.00       0.89 r
+  U81/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<11> (out)                                     0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FIVE/THREE/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<3>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FIVE/THREE/state_reg/CLK (DFFPOSX1)            0.00       0.50 r
+  REG/REGS/FIVE/THREE/state_reg/Q (DFFPOSX1)              0.10       0.60 f
+  REG/REGS/FIVE/THREE/q (dff_44)                          0.00       0.60 f
+  REG/REGS/FIVE/readdata<3> (reg16bit_2)                  0.00       0.60 f
+  REG/REGS/read5<3> (eight_registers)                     0.00       0.60 f
+  REG/READ1/InF<3> (mux8_1_16bit_1)                       0.00       0.60 f
+  REG/READ1/HIGH/InB<3> (mux4_1_16bit_2)                  0.00       0.60 f
+  REG/READ1/HIGH/LOW/InB<3> (mux2_1_16bit_8)              0.00       0.60 f
+  REG/READ1/HIGH/LOW/FIRST/InB<3> (mux2_1_4bit_35)        0.00       0.60 f
+  REG/READ1/HIGH/LOW/FIRST/LAST/InB (mux2_1_140)          0.00       0.60 f
+  REG/READ1/HIGH/LOW/FIRST/LAST/NA1/in1 (nand2_422)       0.00       0.60 f
+  REG/READ1/HIGH/LOW/FIRST/LAST/NA1/U1/Y (AND2X2)         0.04       0.64 f
+  REG/READ1/HIGH/LOW/FIRST/LAST/NA1/U2/Y (INVX1)          0.00       0.64 r
+  REG/READ1/HIGH/LOW/FIRST/LAST/NA1/out (nand2_422)       0.00       0.64 r
+  REG/READ1/HIGH/LOW/FIRST/LAST/NA3/in1 (nand2_420)       0.00       0.64 r
+  REG/READ1/HIGH/LOW/FIRST/LAST/NA3/U1/Y (AND2X1)         0.04       0.68 r
+  REG/READ1/HIGH/LOW/FIRST/LAST/NA3/U2/Y (INVX1)          0.02       0.70 f
+  REG/READ1/HIGH/LOW/FIRST/LAST/NA3/out (nand2_420)       0.00       0.70 f
+  REG/READ1/HIGH/LOW/FIRST/LAST/Out (mux2_1_140)          0.00       0.70 f
+  REG/READ1/HIGH/LOW/FIRST/Out<3> (mux2_1_4bit_35)        0.00       0.70 f
+  REG/READ1/HIGH/LOW/Out<3> (mux2_1_16bit_8)              0.00       0.70 f
+  REG/READ1/HIGH/TOP/InA<3> (mux2_1_16bit_6)              0.00       0.70 f
+  REG/READ1/HIGH/TOP/FIRST/InA<3> (mux2_1_4bit_27)        0.00       0.70 f
+  REG/READ1/HIGH/TOP/FIRST/LAST/InA (mux2_1_108)          0.00       0.70 f
+  REG/READ1/HIGH/TOP/FIRST/LAST/NA2/in1 (nand2_325)       0.00       0.70 f
+  REG/READ1/HIGH/TOP/FIRST/LAST/NA2/U1/Y (AND2X1)         0.03       0.73 f
+  REG/READ1/HIGH/TOP/FIRST/LAST/NA2/U2/Y (INVX1)          0.00       0.74 r
+  REG/READ1/HIGH/TOP/FIRST/LAST/NA2/out (nand2_325)       0.00       0.74 r
+  REG/READ1/HIGH/TOP/FIRST/LAST/NA3/in2 (nand2_324)       0.00       0.74 r
+  REG/READ1/HIGH/TOP/FIRST/LAST/NA3/U1/Y (AND2X2)         0.03       0.77 r
+  REG/READ1/HIGH/TOP/FIRST/LAST/NA3/U2/Y (INVX1)          0.01       0.78 f
+  REG/READ1/HIGH/TOP/FIRST/LAST/NA3/out (nand2_324)       0.00       0.78 f
+  REG/READ1/HIGH/TOP/FIRST/LAST/Out (mux2_1_108)          0.00       0.78 f
+  REG/READ1/HIGH/TOP/FIRST/Out<3> (mux2_1_4bit_27)        0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<3> (mux2_1_16bit_6)              0.00       0.78 f
+  REG/READ1/HIGH/Out<3> (mux4_1_16bit_2)                  0.00       0.78 f
+  REG/READ1/TOP/InB<3> (mux2_1_16bit_13)                  0.00       0.78 f
+  REG/READ1/TOP/FIRST/InB<3> (mux2_1_4bit_55)             0.00       0.78 f
+  REG/READ1/TOP/FIRST/LAST/InB (mux2_1_220)               0.00       0.78 f
+  REG/READ1/TOP/FIRST/LAST/NA1/in1 (nand2_662)            0.00       0.78 f
+  REG/READ1/TOP/FIRST/LAST/NA1/U1/Y (AND2X2)              0.04       0.82 f
+  REG/READ1/TOP/FIRST/LAST/NA1/U2/Y (INVX1)               0.00       0.82 r
+  REG/READ1/TOP/FIRST/LAST/NA1/out (nand2_662)            0.00       0.82 r
+  REG/READ1/TOP/FIRST/LAST/NA3/in1 (nand2_660)            0.00       0.82 r
+  REG/READ1/TOP/FIRST/LAST/NA3/U2/Y (AND2X2)              0.03       0.85 r
+  REG/READ1/TOP/FIRST/LAST/NA3/U1/Y (INVX1)               0.01       0.86 f
+  REG/READ1/TOP/FIRST/LAST/NA3/out (nand2_660)            0.00       0.86 f
+  REG/READ1/TOP/FIRST/LAST/Out (mux2_1_220)               0.00       0.86 f
+  REG/READ1/TOP/FIRST/Out<3> (mux2_1_4bit_55)             0.00       0.86 f
+  REG/READ1/TOP/Out<3> (mux2_1_16bit_13)                  0.00       0.86 f
+  REG/READ1/Out<3> (mux8_1_16bit_1)                       0.00       0.86 f
+  REG/read1data<3> (rf)                                   0.00       0.86 f
+  U150/Y (AND2X1)                                         0.03       0.89 f
+  U187/Y (INVX1)                                          0.00       0.89 r
+  U67/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<3> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FIVE/THIRT/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<13>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FIVE/THIRT/state_reg/CLK (DFFPOSX1)            0.00       0.50 r
+  REG/REGS/FIVE/THIRT/state_reg/Q (DFFPOSX1)              0.10       0.60 f
+  REG/REGS/FIVE/THIRT/q (dff_34)                          0.00       0.60 f
+  REG/REGS/FIVE/readdata<13> (reg16bit_2)                 0.00       0.60 f
+  REG/REGS/read5<13> (eight_registers)                    0.00       0.60 f
+  REG/READ1/InF<13> (mux8_1_16bit_1)                      0.00       0.60 f
+  REG/READ1/HIGH/InB<13> (mux4_1_16bit_2)                 0.00       0.60 f
+  REG/READ1/HIGH/LOW/InB<13> (mux2_1_16bit_8)             0.00       0.60 f
+  REG/READ1/HIGH/LOW/LAST/InB<1> (mux2_1_4bit_32)         0.00       0.60 f
+  REG/READ1/HIGH/LOW/LAST/SECOND/InB (mux2_1_130)         0.00       0.60 f
+  REG/READ1/HIGH/LOW/LAST/SECOND/NA1/in1 (nand2_392)      0.00       0.60 f
+  REG/READ1/HIGH/LOW/LAST/SECOND/NA1/U1/Y (AND2X1)        0.03       0.64 f
+  REG/READ1/HIGH/LOW/LAST/SECOND/NA1/U2/Y (INVX1)         0.00       0.64 r
+  REG/READ1/HIGH/LOW/LAST/SECOND/NA1/out (nand2_392)      0.00       0.64 r
+  REG/READ1/HIGH/LOW/LAST/SECOND/NA3/in1 (nand2_390)      0.00       0.64 r
+  REG/READ1/HIGH/LOW/LAST/SECOND/NA3/U1/Y (AND2X1)        0.04       0.68 r
+  REG/READ1/HIGH/LOW/LAST/SECOND/NA3/U2/Y (INVX1)         0.02       0.70 f
+  REG/READ1/HIGH/LOW/LAST/SECOND/NA3/out (nand2_390)      0.00       0.70 f
+  REG/READ1/HIGH/LOW/LAST/SECOND/Out (mux2_1_130)         0.00       0.70 f
+  REG/READ1/HIGH/LOW/LAST/Out<1> (mux2_1_4bit_32)         0.00       0.70 f
+  REG/READ1/HIGH/LOW/Out<13> (mux2_1_16bit_8)             0.00       0.70 f
+  REG/READ1/HIGH/TOP/InA<13> (mux2_1_16bit_6)             0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/InA<1> (mux2_1_4bit_24)         0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/SECOND/InA (mux2_1_98)          0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/SECOND/NA2/in1 (nand2_295)      0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/SECOND/NA2/U1/Y (AND2X1)        0.03       0.73 f
+  REG/READ1/HIGH/TOP/LAST/SECOND/NA2/U2/Y (INVX1)         0.00       0.73 r
+  REG/READ1/HIGH/TOP/LAST/SECOND/NA2/out (nand2_295)      0.00       0.73 r
+  REG/READ1/HIGH/TOP/LAST/SECOND/NA3/in2 (nand2_294)      0.00       0.73 r
+  REG/READ1/HIGH/TOP/LAST/SECOND/NA3/U1/Y (AND2X2)        0.03       0.77 r
+  REG/READ1/HIGH/TOP/LAST/SECOND/NA3/U2/Y (INVX1)         0.01       0.78 f
+  REG/READ1/HIGH/TOP/LAST/SECOND/NA3/out (nand2_294)      0.00       0.78 f
+  REG/READ1/HIGH/TOP/LAST/SECOND/Out (mux2_1_98)          0.00       0.78 f
+  REG/READ1/HIGH/TOP/LAST/Out<1> (mux2_1_4bit_24)         0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<13> (mux2_1_16bit_6)             0.00       0.78 f
+  REG/READ1/HIGH/Out<13> (mux4_1_16bit_2)                 0.00       0.78 f
+  REG/READ1/TOP/InB<13> (mux2_1_16bit_13)                 0.00       0.78 f
+  REG/READ1/TOP/LAST/InB<1> (mux2_1_4bit_52)              0.00       0.78 f
+  REG/READ1/TOP/LAST/SECOND/InB (mux2_1_210)              0.00       0.78 f
+  REG/READ1/TOP/LAST/SECOND/NA1/in1 (nand2_632)           0.00       0.78 f
+  REG/READ1/TOP/LAST/SECOND/NA1/U1/Y (AND2X2)             0.04       0.82 f
+  REG/READ1/TOP/LAST/SECOND/NA1/U2/Y (INVX1)              0.00       0.81 r
+  REG/READ1/TOP/LAST/SECOND/NA1/out (nand2_632)           0.00       0.81 r
+  REG/READ1/TOP/LAST/SECOND/NA3/in1 (nand2_630)           0.00       0.81 r
+  REG/READ1/TOP/LAST/SECOND/NA3/U2/Y (AND2X2)             0.03       0.85 r
+  REG/READ1/TOP/LAST/SECOND/NA3/U1/Y (INVX1)              0.01       0.86 f
+  REG/READ1/TOP/LAST/SECOND/NA3/out (nand2_630)           0.00       0.86 f
+  REG/READ1/TOP/LAST/SECOND/Out (mux2_1_210)              0.00       0.86 f
+  REG/READ1/TOP/LAST/Out<1> (mux2_1_4bit_52)              0.00       0.86 f
+  REG/READ1/TOP/Out<13> (mux2_1_16bit_13)                 0.00       0.86 f
+  REG/READ1/Out<13> (mux8_1_16bit_1)                      0.00       0.86 f
+  REG/read1data<13> (rf)                                  0.00       0.86 f
+  U158/Y (AND2X1)                                         0.03       0.89 f
+  U182/Y (INVX1)                                          0.00       0.89 r
+  U77/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<13> (out)                                     0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/SIX/NINE/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<9>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/SIX/NINE/state_reg/CLK (DFFPOSX1)              0.00       0.50 r
+  REG/REGS/SIX/NINE/state_reg/Q (DFFPOSX1)                0.10       0.60 f
+  REG/REGS/SIX/NINE/q (dff_22)                            0.00       0.60 f
+  REG/REGS/SIX/readdata<9> (reg16bit_1)                   0.00       0.60 f
+  REG/REGS/read6<9> (eight_registers)                     0.00       0.60 f
+  REG/READ1/InG<9> (mux8_1_16bit_1)                       0.00       0.60 f
+  REG/READ1/HIGH/InC<9> (mux4_1_16bit_2)                  0.00       0.60 f
+  REG/READ1/HIGH/HIGH/InA<9> (mux2_1_16bit_7)             0.00       0.60 f
+  REG/READ1/HIGH/HIGH/THIRD/InA<1> (mux2_1_4bit_29)       0.00       0.60 f
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/InA (mux2_1_118)       0.00       0.60 f
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/NA2/in1 (nand2_355)
+                                                          0.00       0.60 f
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/NA2/U1/Y (AND2X2)      0.04       0.64 f
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/NA2/U2/Y (INVX1)       0.00       0.64 r
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/NA2/out (nand2_355)
+                                                          0.00       0.64 r
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/NA3/in2 (nand2_354)
+                                                          0.00       0.64 r
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/NA3/U1/Y (AND2X1)      0.04       0.68 r
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/NA3/U2/Y (INVX1)       0.02       0.70 f
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/NA3/out (nand2_354)
+                                                          0.00       0.70 f
+  REG/READ1/HIGH/HIGH/THIRD/SECOND/Out (mux2_1_118)       0.00       0.70 f
+  REG/READ1/HIGH/HIGH/THIRD/Out<1> (mux2_1_4bit_29)       0.00       0.70 f
+  REG/READ1/HIGH/HIGH/Out<9> (mux2_1_16bit_7)             0.00       0.70 f
+  REG/READ1/HIGH/TOP/InB<9> (mux2_1_16bit_6)              0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/InB<1> (mux2_1_4bit_25)        0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/SECOND/InB (mux2_1_102)        0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/SECOND/NA1/in1 (nand2_308)     0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/SECOND/NA1/U1/Y (AND2X1)       0.03       0.73 f
+  REG/READ1/HIGH/TOP/THIRD/SECOND/NA1/U2/Y (INVX1)        0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/SECOND/NA1/out (nand2_308)     0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/SECOND/NA3/in1 (nand2_306)     0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/SECOND/NA3/U1/Y (AND2X2)       0.03       0.77 r
+  REG/READ1/HIGH/TOP/THIRD/SECOND/NA3/U2/Y (INVX1)        0.01       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/SECOND/NA3/out (nand2_306)     0.00       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/SECOND/Out (mux2_1_102)        0.00       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/Out<1> (mux2_1_4bit_25)        0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<9> (mux2_1_16bit_6)              0.00       0.78 f
+  REG/READ1/HIGH/Out<9> (mux4_1_16bit_2)                  0.00       0.78 f
+  REG/READ1/TOP/InB<9> (mux2_1_16bit_13)                  0.00       0.78 f
+  REG/READ1/TOP/THIRD/InB<1> (mux2_1_4bit_53)             0.00       0.78 f
+  REG/READ1/TOP/THIRD/SECOND/InB (mux2_1_214)             0.00       0.78 f
+  REG/READ1/TOP/THIRD/SECOND/NA1/in1 (nand2_644)          0.00       0.78 f
+  REG/READ1/TOP/THIRD/SECOND/NA1/U1/Y (AND2X2)            0.04       0.82 f
+  REG/READ1/TOP/THIRD/SECOND/NA1/U2/Y (INVX1)             0.00       0.81 r
+  REG/READ1/TOP/THIRD/SECOND/NA1/out (nand2_644)          0.00       0.81 r
+  REG/READ1/TOP/THIRD/SECOND/NA3/in1 (nand2_642)          0.00       0.81 r
+  REG/READ1/TOP/THIRD/SECOND/NA3/U2/Y (AND2X2)            0.03       0.85 r
+  REG/READ1/TOP/THIRD/SECOND/NA3/U1/Y (INVX1)             0.01       0.86 f
+  REG/READ1/TOP/THIRD/SECOND/NA3/out (nand2_642)          0.00       0.86 f
+  REG/READ1/TOP/THIRD/SECOND/Out (mux2_1_214)             0.00       0.86 f
+  REG/READ1/TOP/THIRD/Out<1> (mux2_1_4bit_53)             0.00       0.86 f
+  REG/READ1/TOP/Out<9> (mux2_1_16bit_13)                  0.00       0.86 f
+  REG/READ1/Out<9> (mux8_1_16bit_1)                       0.00       0.86 f
+  REG/read1data<9> (rf)                                   0.00       0.86 f
+  U163/Y (AND2X1)                                         0.03       0.89 f
+  U191/Y (INVX1)                                          0.00       0.89 r
+  U55/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<9> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/TWO/SIX/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<6>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/TWO/SIX/state_reg/CLK (DFFPOSX1)               0.00       0.50 r
+  REG/REGS/TWO/SIX/state_reg/Q (DFFPOSX1)                 0.11       0.61 f
+  REG/REGS/TWO/SIX/q (dff_89)                             0.00       0.61 f
+  REG/REGS/TWO/readdata<6> (reg16bit_5)                   0.00       0.61 f
+  REG/REGS/read2<6> (eight_registers)                     0.00       0.61 f
+  REG/READ1/InC<6> (mux8_1_16bit_1)                       0.00       0.61 f
+  REG/READ1/LOW/InC<6> (mux4_1_16bit_3)                   0.00       0.61 f
+  REG/READ1/LOW/HIGH/InA<6> (mux2_1_16bit_10)             0.00       0.61 f
+  REG/READ1/LOW/HIGH/SECOND/InA<2> (mux2_1_4bit_42)       0.00       0.61 f
+  REG/READ1/LOW/HIGH/SECOND/THIRD/InA (mux2_1_169)        0.00       0.61 f
+  REG/READ1/LOW/HIGH/SECOND/THIRD/NA2/in1 (nand2_508)     0.00       0.61 f
+  REG/READ1/LOW/HIGH/SECOND/THIRD/NA2/U1/Y (AND2X1)       0.04       0.65 f
+  REG/READ1/LOW/HIGH/SECOND/THIRD/NA2/U2/Y (INVX1)        0.00       0.65 r
+  REG/READ1/LOW/HIGH/SECOND/THIRD/NA2/out (nand2_508)     0.00       0.65 r
+  REG/READ1/LOW/HIGH/SECOND/THIRD/NA3/in2 (nand2_507)     0.00       0.65 r
+  REG/READ1/LOW/HIGH/SECOND/THIRD/NA3/U2/Y (AND2X2)       0.03       0.68 r
+  REG/READ1/LOW/HIGH/SECOND/THIRD/NA3/U1/Y (INVX1)        0.01       0.70 f
+  REG/READ1/LOW/HIGH/SECOND/THIRD/NA3/out (nand2_507)     0.00       0.70 f
+  REG/READ1/LOW/HIGH/SECOND/THIRD/Out (mux2_1_169)        0.00       0.70 f
+  REG/READ1/LOW/HIGH/SECOND/Out<2> (mux2_1_4bit_42)       0.00       0.70 f
+  REG/READ1/LOW/HIGH/Out<6> (mux2_1_16bit_10)             0.00       0.70 f
+  REG/READ1/LOW/TOP/InB<6> (mux2_1_16bit_9)               0.00       0.70 f
+  REG/READ1/LOW/TOP/SECOND/InB<2> (mux2_1_4bit_38)        0.00       0.70 f
+  REG/READ1/LOW/TOP/SECOND/THIRD/InB (mux2_1_153)         0.00       0.70 f
+  REG/READ1/LOW/TOP/SECOND/THIRD/NA1/in1 (nand2_461)      0.00       0.70 f
+  REG/READ1/LOW/TOP/SECOND/THIRD/NA1/U1/Y (AND2X2)        0.04       0.73 f
+  REG/READ1/LOW/TOP/SECOND/THIRD/NA1/U2/Y (INVX1)         0.00       0.73 r
+  REG/READ1/LOW/TOP/SECOND/THIRD/NA1/out (nand2_461)      0.00       0.73 r
+  REG/READ1/LOW/TOP/SECOND/THIRD/U1/Y (INVX1)             0.01       0.74 f
+  REG/READ1/LOW/TOP/SECOND/THIRD/U2/Y (INVX1)             0.00       0.74 r
+  REG/READ1/LOW/TOP/SECOND/THIRD/NA3/in1 (nand2_459)      0.00       0.74 r
+  REG/READ1/LOW/TOP/SECOND/THIRD/NA3/U1/Y (AND2X2)        0.03       0.77 r
+  REG/READ1/LOW/TOP/SECOND/THIRD/NA3/U2/Y (INVX1)         0.01       0.79 f
+  REG/READ1/LOW/TOP/SECOND/THIRD/NA3/out (nand2_459)      0.00       0.79 f
+  REG/READ1/LOW/TOP/SECOND/THIRD/Out (mux2_1_153)         0.00       0.79 f
+  REG/READ1/LOW/TOP/SECOND/Out<2> (mux2_1_4bit_38)        0.00       0.79 f
+  REG/READ1/LOW/TOP/Out<6> (mux2_1_16bit_9)               0.00       0.79 f
+  REG/READ1/LOW/Out<6> (mux4_1_16bit_3)                   0.00       0.79 f
+  REG/READ1/TOP/InA<6> (mux2_1_16bit_13)                  0.00       0.79 f
+  REG/READ1/TOP/SECOND/InA<2> (mux2_1_4bit_54)            0.00       0.79 f
+  REG/READ1/TOP/SECOND/THIRD/InA (mux2_1_217)             0.00       0.79 f
+  REG/READ1/TOP/SECOND/THIRD/NA2/in1 (nand2_652)          0.00       0.79 f
+  REG/READ1/TOP/SECOND/THIRD/NA2/U1/Y (AND2X2)            0.03       0.82 f
+  REG/READ1/TOP/SECOND/THIRD/NA2/U2/Y (INVX1)             0.00       0.81 r
+  REG/READ1/TOP/SECOND/THIRD/NA2/out (nand2_652)          0.00       0.81 r
+  REG/READ1/TOP/SECOND/THIRD/NA3/in2 (nand2_651)          0.00       0.81 r
+  REG/READ1/TOP/SECOND/THIRD/NA3/U1/Y (AND2X2)            0.03       0.85 r
+  REG/READ1/TOP/SECOND/THIRD/NA3/U2/Y (INVX1)             0.01       0.86 f
+  REG/READ1/TOP/SECOND/THIRD/NA3/out (nand2_651)          0.00       0.86 f
+  REG/READ1/TOP/SECOND/THIRD/Out (mux2_1_217)             0.00       0.86 f
+  REG/READ1/TOP/SECOND/Out<2> (mux2_1_4bit_54)            0.00       0.86 f
+  REG/READ1/TOP/Out<6> (mux2_1_16bit_13)                  0.00       0.86 f
+  REG/READ1/Out<6> (mux8_1_16bit_1)                       0.00       0.86 f
+  REG/read1data<6> (rf)                                   0.00       0.86 f
+  U152/Y (AND2X1)                                         0.03       0.89 f
+  U172/Y (INVX1)                                          0.00       0.89 r
+  U61/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<6> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/TWO/SEVEN/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<7>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/TWO/SEVEN/state_reg/CLK (DFFPOSX1)             0.00       0.50 r
+  REG/REGS/TWO/SEVEN/state_reg/Q (DFFPOSX1)               0.11       0.61 f
+  REG/REGS/TWO/SEVEN/q (dff_88)                           0.00       0.61 f
+  REG/REGS/TWO/readdata<7> (reg16bit_5)                   0.00       0.61 f
+  REG/REGS/read2<7> (eight_registers)                     0.00       0.61 f
+  REG/READ1/InC<7> (mux8_1_16bit_1)                       0.00       0.61 f
+  REG/READ1/LOW/InC<7> (mux4_1_16bit_3)                   0.00       0.61 f
+  REG/READ1/LOW/HIGH/InA<7> (mux2_1_16bit_10)             0.00       0.61 f
+  REG/READ1/LOW/HIGH/SECOND/InA<3> (mux2_1_4bit_42)       0.00       0.61 f
+  REG/READ1/LOW/HIGH/SECOND/LAST/InA (mux2_1_168)         0.00       0.61 f
+  REG/READ1/LOW/HIGH/SECOND/LAST/NA2/in1 (nand2_505)      0.00       0.61 f
+  REG/READ1/LOW/HIGH/SECOND/LAST/NA2/U1/Y (AND2X1)        0.04       0.65 f
+  REG/READ1/LOW/HIGH/SECOND/LAST/NA2/U2/Y (INVX1)         0.00       0.65 r
+  REG/READ1/LOW/HIGH/SECOND/LAST/NA2/out (nand2_505)      0.00       0.65 r
+  REG/READ1/LOW/HIGH/SECOND/LAST/NA3/in2 (nand2_504)      0.00       0.65 r
+  REG/READ1/LOW/HIGH/SECOND/LAST/NA3/U2/Y (AND2X2)        0.03       0.68 r
+  REG/READ1/LOW/HIGH/SECOND/LAST/NA3/U1/Y (INVX1)         0.01       0.70 f
+  REG/READ1/LOW/HIGH/SECOND/LAST/NA3/out (nand2_504)      0.00       0.70 f
+  REG/READ1/LOW/HIGH/SECOND/LAST/Out (mux2_1_168)         0.00       0.70 f
+  REG/READ1/LOW/HIGH/SECOND/Out<3> (mux2_1_4bit_42)       0.00       0.70 f
+  REG/READ1/LOW/HIGH/Out<7> (mux2_1_16bit_10)             0.00       0.70 f
+  REG/READ1/LOW/TOP/InB<7> (mux2_1_16bit_9)               0.00       0.70 f
+  REG/READ1/LOW/TOP/SECOND/InB<3> (mux2_1_4bit_38)        0.00       0.70 f
+  REG/READ1/LOW/TOP/SECOND/LAST/InB (mux2_1_152)          0.00       0.70 f
+  REG/READ1/LOW/TOP/SECOND/LAST/NA1/in1 (nand2_458)       0.00       0.70 f
+  REG/READ1/LOW/TOP/SECOND/LAST/NA1/U1/Y (AND2X2)         0.04       0.73 f
+  REG/READ1/LOW/TOP/SECOND/LAST/NA1/U2/Y (INVX1)          0.00       0.73 r
+  REG/READ1/LOW/TOP/SECOND/LAST/NA1/out (nand2_458)       0.00       0.73 r
+  REG/READ1/LOW/TOP/SECOND/LAST/U1/Y (INVX1)              0.01       0.74 f
+  REG/READ1/LOW/TOP/SECOND/LAST/U2/Y (INVX1)              0.00       0.74 r
+  REG/READ1/LOW/TOP/SECOND/LAST/NA3/in1 (nand2_456)       0.00       0.74 r
+  REG/READ1/LOW/TOP/SECOND/LAST/NA3/U1/Y (AND2X2)         0.03       0.77 r
+  REG/READ1/LOW/TOP/SECOND/LAST/NA3/U2/Y (INVX1)          0.01       0.79 f
+  REG/READ1/LOW/TOP/SECOND/LAST/NA3/out (nand2_456)       0.00       0.79 f
+  REG/READ1/LOW/TOP/SECOND/LAST/Out (mux2_1_152)          0.00       0.79 f
+  REG/READ1/LOW/TOP/SECOND/Out<3> (mux2_1_4bit_38)        0.00       0.79 f
+  REG/READ1/LOW/TOP/Out<7> (mux2_1_16bit_9)               0.00       0.79 f
+  REG/READ1/LOW/Out<7> (mux4_1_16bit_3)                   0.00       0.79 f
+  REG/READ1/TOP/InA<7> (mux2_1_16bit_13)                  0.00       0.79 f
+  REG/READ1/TOP/SECOND/InA<3> (mux2_1_4bit_54)            0.00       0.79 f
+  REG/READ1/TOP/SECOND/LAST/InA (mux2_1_216)              0.00       0.79 f
+  REG/READ1/TOP/SECOND/LAST/NA2/in1 (nand2_649)           0.00       0.79 f
+  REG/READ1/TOP/SECOND/LAST/NA2/U1/Y (AND2X2)             0.03       0.82 f
+  REG/READ1/TOP/SECOND/LAST/NA2/U2/Y (INVX1)              0.00       0.81 r
+  REG/READ1/TOP/SECOND/LAST/NA2/out (nand2_649)           0.00       0.81 r
+  REG/READ1/TOP/SECOND/LAST/NA3/in2 (nand2_648)           0.00       0.81 r
+  REG/READ1/TOP/SECOND/LAST/NA3/U1/Y (AND2X2)             0.03       0.85 r
+  REG/READ1/TOP/SECOND/LAST/NA3/U2/Y (INVX1)              0.01       0.86 f
+  REG/READ1/TOP/SECOND/LAST/NA3/out (nand2_648)           0.00       0.86 f
+  REG/READ1/TOP/SECOND/LAST/Out (mux2_1_216)              0.00       0.86 f
+  REG/READ1/TOP/SECOND/Out<3> (mux2_1_4bit_54)            0.00       0.86 f
+  REG/READ1/TOP/Out<7> (mux2_1_16bit_13)                  0.00       0.86 f
+  REG/READ1/Out<7> (mux8_1_16bit_1)                       0.00       0.86 f
+  REG/read1data<7> (rf)                                   0.00       0.86 f
+  U153/Y (AND2X1)                                         0.03       0.89 f
+  U190/Y (INVX1)                                          0.00       0.89 r
+  U59/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<7> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FIVE/TWELV/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<12>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FIVE/TWELV/state_reg/CLK (DFFPOSX1)            0.00       0.50 r
+  REG/REGS/FIVE/TWELV/state_reg/Q (DFFPOSX1)              0.10       0.60 f
+  REG/REGS/FIVE/TWELV/q (dff_35)                          0.00       0.60 f
+  REG/REGS/FIVE/readdata<12> (reg16bit_2)                 0.00       0.60 f
+  REG/REGS/read5<12> (eight_registers)                    0.00       0.60 f
+  REG/READ1/InF<12> (mux8_1_16bit_1)                      0.00       0.60 f
+  REG/READ1/HIGH/InB<12> (mux4_1_16bit_2)                 0.00       0.60 f
+  REG/READ1/HIGH/LOW/InB<12> (mux2_1_16bit_8)             0.00       0.60 f
+  REG/READ1/HIGH/LOW/LAST/InB<0> (mux2_1_4bit_32)         0.00       0.60 f
+  REG/READ1/HIGH/LOW/LAST/FIRST/InB (mux2_1_131)          0.00       0.60 f
+  REG/READ1/HIGH/LOW/LAST/FIRST/NA1/in1 (nand2_395)       0.00       0.60 f
+  REG/READ1/HIGH/LOW/LAST/FIRST/NA1/U1/Y (AND2X1)         0.03       0.64 f
+  REG/READ1/HIGH/LOW/LAST/FIRST/NA1/U2/Y (INVX1)          0.00       0.64 r
+  REG/READ1/HIGH/LOW/LAST/FIRST/NA1/out (nand2_395)       0.00       0.64 r
+  REG/READ1/HIGH/LOW/LAST/FIRST/NA3/in1 (nand2_393)       0.00       0.64 r
+  REG/READ1/HIGH/LOW/LAST/FIRST/NA3/U1/Y (AND2X1)         0.04       0.68 r
+  REG/READ1/HIGH/LOW/LAST/FIRST/NA3/U2/Y (INVX1)          0.02       0.70 f
+  REG/READ1/HIGH/LOW/LAST/FIRST/NA3/out (nand2_393)       0.00       0.70 f
+  REG/READ1/HIGH/LOW/LAST/FIRST/Out (mux2_1_131)          0.00       0.70 f
+  REG/READ1/HIGH/LOW/LAST/Out<0> (mux2_1_4bit_32)         0.00       0.70 f
+  REG/READ1/HIGH/LOW/Out<12> (mux2_1_16bit_8)             0.00       0.70 f
+  REG/READ1/HIGH/TOP/InA<12> (mux2_1_16bit_6)             0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/InA<0> (mux2_1_4bit_24)         0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/FIRST/InA (mux2_1_99)           0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/FIRST/NA2/in1 (nand2_298)       0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/FIRST/NA2/U1/Y (AND2X1)         0.03       0.73 f
+  REG/READ1/HIGH/TOP/LAST/FIRST/NA2/U2/Y (INVX1)          0.00       0.74 r
+  REG/READ1/HIGH/TOP/LAST/FIRST/NA2/out (nand2_298)       0.00       0.74 r
+  REG/READ1/HIGH/TOP/LAST/FIRST/NA3/in2 (nand2_297)       0.00       0.74 r
+  REG/READ1/HIGH/TOP/LAST/FIRST/NA3/U1/Y (AND2X2)         0.03       0.77 r
+  REG/READ1/HIGH/TOP/LAST/FIRST/NA3/U2/Y (INVX1)          0.01       0.78 f
+  REG/READ1/HIGH/TOP/LAST/FIRST/NA3/out (nand2_297)       0.00       0.78 f
+  REG/READ1/HIGH/TOP/LAST/FIRST/Out (mux2_1_99)           0.00       0.78 f
+  REG/READ1/HIGH/TOP/LAST/Out<0> (mux2_1_4bit_24)         0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<12> (mux2_1_16bit_6)             0.00       0.78 f
+  REG/READ1/HIGH/Out<12> (mux4_1_16bit_2)                 0.00       0.78 f
+  REG/READ1/TOP/InB<12> (mux2_1_16bit_13)                 0.00       0.78 f
+  REG/READ1/TOP/LAST/InB<0> (mux2_1_4bit_52)              0.00       0.78 f
+  REG/READ1/TOP/LAST/FIRST/InB (mux2_1_211)               0.00       0.78 f
+  REG/READ1/TOP/LAST/FIRST/NA1/in1 (nand2_635)            0.00       0.78 f
+  REG/READ1/TOP/LAST/FIRST/NA1/U1/Y (AND2X2)              0.04       0.82 f
+  REG/READ1/TOP/LAST/FIRST/NA1/U2/Y (INVX1)               0.00       0.81 r
+  REG/READ1/TOP/LAST/FIRST/NA1/out (nand2_635)            0.00       0.81 r
+  REG/READ1/TOP/LAST/FIRST/NA3/in1 (nand2_633)            0.00       0.81 r
+  REG/READ1/TOP/LAST/FIRST/NA3/U2/Y (AND2X2)              0.03       0.85 r
+  REG/READ1/TOP/LAST/FIRST/NA3/U1/Y (INVX1)               0.01       0.86 f
+  REG/READ1/TOP/LAST/FIRST/NA3/out (nand2_633)            0.00       0.86 f
+  REG/READ1/TOP/LAST/FIRST/Out (mux2_1_211)               0.00       0.86 f
+  REG/READ1/TOP/LAST/Out<0> (mux2_1_4bit_52)              0.00       0.86 f
+  REG/READ1/TOP/Out<12> (mux2_1_16bit_13)                 0.00       0.86 f
+  REG/READ1/Out<12> (mux8_1_16bit_1)                      0.00       0.86 f
+  REG/read1data<12> (rf)                                  0.00       0.86 f
+  U157/Y (AND2X1)                                         0.03       0.89 f
+  U165/Y (INVX1)                                          0.00       0.89 r
+  U79/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<12> (out)                                     0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FIVE/TWO/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<2>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FIVE/TWO/state_reg/CLK (DFFPOSX1)              0.00       0.50 r
+  REG/REGS/FIVE/TWO/state_reg/Q (DFFPOSX1)                0.10       0.60 f
+  REG/REGS/FIVE/TWO/q (dff_45)                            0.00       0.60 f
+  REG/REGS/FIVE/readdata<2> (reg16bit_2)                  0.00       0.60 f
+  REG/REGS/read5<2> (eight_registers)                     0.00       0.60 f
+  REG/READ1/InF<2> (mux8_1_16bit_1)                       0.00       0.60 f
+  REG/READ1/HIGH/InB<2> (mux4_1_16bit_2)                  0.00       0.60 f
+  REG/READ1/HIGH/LOW/InB<2> (mux2_1_16bit_8)              0.00       0.60 f
+  REG/READ1/HIGH/LOW/FIRST/InB<2> (mux2_1_4bit_35)        0.00       0.60 f
+  REG/READ1/HIGH/LOW/FIRST/THIRD/InB (mux2_1_141)         0.00       0.60 f
+  REG/READ1/HIGH/LOW/FIRST/THIRD/NA1/in1 (nand2_425)      0.00       0.60 f
+  REG/READ1/HIGH/LOW/FIRST/THIRD/NA1/U1/Y (AND2X2)        0.04       0.64 f
+  REG/READ1/HIGH/LOW/FIRST/THIRD/NA1/U2/Y (INVX1)         0.00       0.64 r
+  REG/READ1/HIGH/LOW/FIRST/THIRD/NA1/out (nand2_425)      0.00       0.64 r
+  REG/READ1/HIGH/LOW/FIRST/THIRD/NA3/in1 (nand2_423)      0.00       0.64 r
+  REG/READ1/HIGH/LOW/FIRST/THIRD/NA3/U1/Y (AND2X1)        0.04       0.68 r
+  REG/READ1/HIGH/LOW/FIRST/THIRD/NA3/U2/Y (INVX1)         0.02       0.70 f
+  REG/READ1/HIGH/LOW/FIRST/THIRD/NA3/out (nand2_423)      0.00       0.70 f
+  REG/READ1/HIGH/LOW/FIRST/THIRD/Out (mux2_1_141)         0.00       0.70 f
+  REG/READ1/HIGH/LOW/FIRST/Out<2> (mux2_1_4bit_35)        0.00       0.70 f
+  REG/READ1/HIGH/LOW/Out<2> (mux2_1_16bit_8)              0.00       0.70 f
+  REG/READ1/HIGH/TOP/InA<2> (mux2_1_16bit_6)              0.00       0.70 f
+  REG/READ1/HIGH/TOP/FIRST/InA<2> (mux2_1_4bit_27)        0.00       0.70 f
+  REG/READ1/HIGH/TOP/FIRST/THIRD/InA (mux2_1_109)         0.00       0.70 f
+  REG/READ1/HIGH/TOP/FIRST/THIRD/NA2/in1 (nand2_328)      0.00       0.70 f
+  REG/READ1/HIGH/TOP/FIRST/THIRD/NA2/U1/Y (AND2X1)        0.03       0.73 f
+  REG/READ1/HIGH/TOP/FIRST/THIRD/NA2/U2/Y (INVX1)         0.00       0.73 r
+  REG/READ1/HIGH/TOP/FIRST/THIRD/NA2/out (nand2_328)      0.00       0.73 r
+  REG/READ1/HIGH/TOP/FIRST/THIRD/NA3/in2 (nand2_327)      0.00       0.73 r
+  REG/READ1/HIGH/TOP/FIRST/THIRD/NA3/U1/Y (AND2X2)        0.03       0.77 r
+  REG/READ1/HIGH/TOP/FIRST/THIRD/NA3/U2/Y (INVX1)         0.01       0.78 f
+  REG/READ1/HIGH/TOP/FIRST/THIRD/NA3/out (nand2_327)      0.00       0.78 f
+  REG/READ1/HIGH/TOP/FIRST/THIRD/Out (mux2_1_109)         0.00       0.78 f
+  REG/READ1/HIGH/TOP/FIRST/Out<2> (mux2_1_4bit_27)        0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<2> (mux2_1_16bit_6)              0.00       0.78 f
+  REG/READ1/HIGH/Out<2> (mux4_1_16bit_2)                  0.00       0.78 f
+  REG/READ1/TOP/InB<2> (mux2_1_16bit_13)                  0.00       0.78 f
+  REG/READ1/TOP/FIRST/InB<2> (mux2_1_4bit_55)             0.00       0.78 f
+  REG/READ1/TOP/FIRST/THIRD/InB (mux2_1_221)              0.00       0.78 f
+  REG/READ1/TOP/FIRST/THIRD/NA1/in1 (nand2_665)           0.00       0.78 f
+  REG/READ1/TOP/FIRST/THIRD/NA1/U1/Y (AND2X2)             0.04       0.82 f
+  REG/READ1/TOP/FIRST/THIRD/NA1/U2/Y (INVX1)              0.00       0.81 r
+  REG/READ1/TOP/FIRST/THIRD/NA1/out (nand2_665)           0.00       0.81 r
+  REG/READ1/TOP/FIRST/THIRD/NA3/in1 (nand2_663)           0.00       0.81 r
+  REG/READ1/TOP/FIRST/THIRD/NA3/U2/Y (AND2X2)             0.03       0.85 r
+  REG/READ1/TOP/FIRST/THIRD/NA3/U1/Y (INVX1)              0.01       0.86 f
+  REG/READ1/TOP/FIRST/THIRD/NA3/out (nand2_663)           0.00       0.86 f
+  REG/READ1/TOP/FIRST/THIRD/Out (mux2_1_221)              0.00       0.86 f
+  REG/READ1/TOP/FIRST/Out<2> (mux2_1_4bit_55)             0.00       0.86 f
+  REG/READ1/TOP/Out<2> (mux2_1_16bit_13)                  0.00       0.86 f
+  REG/READ1/Out<2> (mux8_1_16bit_1)                       0.00       0.86 f
+  REG/read1data<2> (rf)                                   0.00       0.86 f
+  U149/Y (AND2X1)                                         0.03       0.89 f
+  U186/Y (INVX1)                                          0.00       0.89 r
+  U69/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<2> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/THREE/ZERO/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<0>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/THREE/ZERO/state_reg/CLK (DFFPOSX1)            0.00       0.50 r
+  REG/REGS/THREE/ZERO/state_reg/Q (DFFPOSX1)              0.10       0.60 f
+  REG/REGS/THREE/ZERO/q (dff_79)                          0.00       0.60 f
+  REG/REGS/THREE/readdata<0> (reg16bit_4)                 0.00       0.60 f
+  REG/REGS/read3<0> (eight_registers)                     0.00       0.60 f
+  REG/READ2/InD<0> (mux8_1_16bit_0)                       0.00       0.60 f
+  REG/READ2/LOW/InD<0> (mux4_1_16bit_1)                   0.00       0.60 f
+  REG/READ2/LOW/HIGH/InB<0> (mux2_1_16bit_4)              0.00       0.60 f
+  REG/READ2/LOW/HIGH/FIRST/InB<0> (mux2_1_4bit_19)        0.00       0.60 f
+  REG/READ2/LOW/HIGH/FIRST/FIRST/InB (mux2_1_79)          0.00       0.60 f
+  REG/READ2/LOW/HIGH/FIRST/FIRST/NA1/in1 (nand2_239)      0.00       0.60 f
+  REG/READ2/LOW/HIGH/FIRST/FIRST/NA1/U1/Y (AND2X2)        0.04       0.64 f
+  REG/READ2/LOW/HIGH/FIRST/FIRST/NA1/U2/Y (INVX1)         0.00       0.64 r
+  REG/READ2/LOW/HIGH/FIRST/FIRST/NA1/out (nand2_239)      0.00       0.64 r
+  REG/READ2/LOW/HIGH/FIRST/FIRST/NA3/in1 (nand2_237)      0.00       0.64 r
+  REG/READ2/LOW/HIGH/FIRST/FIRST/NA3/U1/Y (AND2X1)        0.04       0.69 r
+  REG/READ2/LOW/HIGH/FIRST/FIRST/NA3/U2/Y (INVX1)         0.02       0.71 f
+  REG/READ2/LOW/HIGH/FIRST/FIRST/NA3/out (nand2_237)      0.00       0.71 f
+  REG/READ2/LOW/HIGH/FIRST/FIRST/Out (mux2_1_79)          0.00       0.71 f
+  REG/READ2/LOW/HIGH/FIRST/Out<0> (mux2_1_4bit_19)        0.00       0.71 f
+  REG/READ2/LOW/HIGH/Out<0> (mux2_1_16bit_4)              0.00       0.71 f
+  REG/READ2/LOW/TOP/InB<0> (mux2_1_16bit_3)               0.00       0.71 f
+  REG/READ2/LOW/TOP/FIRST/InB<0> (mux2_1_4bit_15)         0.00       0.71 f
+  REG/READ2/LOW/TOP/FIRST/FIRST/InB (mux2_1_63)           0.00       0.71 f
+  REG/READ2/LOW/TOP/FIRST/FIRST/NA1/in1 (nand2_191)       0.00       0.71 f
+  REG/READ2/LOW/TOP/FIRST/FIRST/NA1/U1/Y (AND2X2)         0.04       0.74 f
+  REG/READ2/LOW/TOP/FIRST/FIRST/NA1/U2/Y (INVX1)          0.00       0.74 r
+  REG/READ2/LOW/TOP/FIRST/FIRST/NA1/out (nand2_191)       0.00       0.74 r
+  REG/READ2/LOW/TOP/FIRST/FIRST/NA3/in1 (nand2_189)       0.00       0.74 r
+  REG/READ2/LOW/TOP/FIRST/FIRST/NA3/U1/Y (AND2X2)         0.03       0.77 r
+  REG/READ2/LOW/TOP/FIRST/FIRST/NA3/U2/Y (INVX1)          0.01       0.79 f
+  REG/READ2/LOW/TOP/FIRST/FIRST/NA3/out (nand2_189)       0.00       0.79 f
+  REG/READ2/LOW/TOP/FIRST/FIRST/Out (mux2_1_63)           0.00       0.79 f
+  REG/READ2/LOW/TOP/FIRST/Out<0> (mux2_1_4bit_15)         0.00       0.79 f
+  REG/READ2/LOW/TOP/Out<0> (mux2_1_16bit_3)               0.00       0.79 f
+  REG/READ2/LOW/Out<0> (mux4_1_16bit_1)                   0.00       0.79 f
+  REG/READ2/TOP/InA<0> (mux2_1_16bit_12)                  0.00       0.79 f
+  REG/READ2/TOP/FIRST/InA<0> (mux2_1_4bit_51)             0.00       0.79 f
+  REG/READ2/TOP/FIRST/FIRST/InA (mux2_1_207)              0.00       0.79 f
+  REG/READ2/TOP/FIRST/FIRST/NA2/in1 (nand2_622)           0.00       0.79 f
+  REG/READ2/TOP/FIRST/FIRST/NA2/U1/Y (AND2X2)             0.03       0.82 f
+  REG/READ2/TOP/FIRST/FIRST/NA2/U2/Y (INVX1)              0.00       0.81 r
+  REG/READ2/TOP/FIRST/FIRST/NA2/out (nand2_622)           0.00       0.81 r
+  REG/READ2/TOP/FIRST/FIRST/NA3/in2 (nand2_621)           0.00       0.81 r
+  REG/READ2/TOP/FIRST/FIRST/NA3/U1/Y (AND2X2)             0.03       0.85 r
+  REG/READ2/TOP/FIRST/FIRST/NA3/U2/Y (INVX1)              0.01       0.86 f
+  REG/READ2/TOP/FIRST/FIRST/NA3/out (nand2_621)           0.00       0.86 f
+  REG/READ2/TOP/FIRST/FIRST/Out (mux2_1_207)              0.00       0.86 f
+  REG/READ2/TOP/FIRST/Out<0> (mux2_1_4bit_51)             0.00       0.86 f
+  REG/READ2/TOP/Out<0> (mux2_1_16bit_12)                  0.00       0.86 f
+  REG/READ2/Out<0> (mux8_1_16bit_0)                       0.00       0.86 f
+  REG/read2data<0> (rf)                                   0.00       0.86 f
+  U177/Y (AND2X1)                                         0.03       0.89 f
+  U192/Y (INVX1)                                          0.00       0.89 r
+  U48/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<0> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/SEVEN/FOURT/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<14>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/SEVEN/FOURT/state_reg/CLK (DFFPOSX1)           0.00       0.50 r
+  REG/REGS/SEVEN/FOURT/state_reg/Q (DFFPOSX1)             0.10       0.60 f
+  REG/REGS/SEVEN/FOURT/q (dff_1)                          0.00       0.60 f
+  REG/REGS/SEVEN/readdata<14> (reg16bit_0)                0.00       0.60 f
+  REG/REGS/read7<14> (eight_registers)                    0.00       0.60 f
+  REG/READ1/InH<14> (mux8_1_16bit_1)                      0.00       0.60 f
+  REG/READ1/HIGH/InD<14> (mux4_1_16bit_2)                 0.00       0.60 f
+  REG/READ1/HIGH/HIGH/InB<14> (mux2_1_16bit_7)            0.00       0.60 f
+  REG/READ1/HIGH/HIGH/LAST/InB<2> (mux2_1_4bit_28)        0.00       0.60 f
+  REG/READ1/HIGH/HIGH/LAST/THIRD/InB (mux2_1_113)         0.00       0.60 f
+  REG/READ1/HIGH/HIGH/LAST/THIRD/NA1/in1 (nand2_341)      0.00       0.60 f
+  REG/READ1/HIGH/HIGH/LAST/THIRD/NA1/U1/Y (AND2X1)        0.03       0.64 f
+  REG/READ1/HIGH/HIGH/LAST/THIRD/NA1/U2/Y (INVX1)         0.00       0.64 r
+  REG/READ1/HIGH/HIGH/LAST/THIRD/NA1/out (nand2_341)      0.00       0.64 r
+  REG/READ1/HIGH/HIGH/LAST/THIRD/NA3/in1 (nand2_339)      0.00       0.64 r
+  REG/READ1/HIGH/HIGH/LAST/THIRD/NA3/U1/Y (AND2X1)        0.04       0.68 r
+  REG/READ1/HIGH/HIGH/LAST/THIRD/NA3/U2/Y (INVX1)         0.02       0.70 f
+  REG/READ1/HIGH/HIGH/LAST/THIRD/NA3/out (nand2_339)      0.00       0.70 f
+  REG/READ1/HIGH/HIGH/LAST/THIRD/Out (mux2_1_113)         0.00       0.70 f
+  REG/READ1/HIGH/HIGH/LAST/Out<2> (mux2_1_4bit_28)        0.00       0.70 f
+  REG/READ1/HIGH/HIGH/Out<14> (mux2_1_16bit_7)            0.00       0.70 f
+  REG/READ1/HIGH/TOP/InB<14> (mux2_1_16bit_6)             0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/InB<2> (mux2_1_4bit_24)         0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/THIRD/InB (mux2_1_97)           0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/THIRD/NA1/in1 (nand2_293)       0.00       0.70 f
+  REG/READ1/HIGH/TOP/LAST/THIRD/NA1/U1/Y (AND2X1)         0.03       0.73 f
+  REG/READ1/HIGH/TOP/LAST/THIRD/NA1/U2/Y (INVX1)          0.00       0.73 r
+  REG/READ1/HIGH/TOP/LAST/THIRD/NA1/out (nand2_293)       0.00       0.73 r
+  REG/READ1/HIGH/TOP/LAST/THIRD/NA3/in1 (nand2_291)       0.00       0.73 r
+  REG/READ1/HIGH/TOP/LAST/THIRD/NA3/U1/Y (AND2X2)         0.03       0.77 r
+  REG/READ1/HIGH/TOP/LAST/THIRD/NA3/U2/Y (INVX1)          0.01       0.78 f
+  REG/READ1/HIGH/TOP/LAST/THIRD/NA3/out (nand2_291)       0.00       0.78 f
+  REG/READ1/HIGH/TOP/LAST/THIRD/Out (mux2_1_97)           0.00       0.78 f
+  REG/READ1/HIGH/TOP/LAST/Out<2> (mux2_1_4bit_24)         0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<14> (mux2_1_16bit_6)             0.00       0.78 f
+  REG/READ1/HIGH/Out<14> (mux4_1_16bit_2)                 0.00       0.78 f
+  REG/READ1/TOP/InB<14> (mux2_1_16bit_13)                 0.00       0.78 f
+  REG/READ1/TOP/LAST/InB<2> (mux2_1_4bit_52)              0.00       0.78 f
+  REG/READ1/TOP/LAST/THIRD/InB (mux2_1_209)               0.00       0.78 f
+  REG/READ1/TOP/LAST/THIRD/NA1/in1 (nand2_629)            0.00       0.78 f
+  REG/READ1/TOP/LAST/THIRD/NA1/U1/Y (AND2X2)              0.04       0.82 f
+  REG/READ1/TOP/LAST/THIRD/NA1/U2/Y (INVX1)               0.00       0.81 r
+  REG/READ1/TOP/LAST/THIRD/NA1/out (nand2_629)            0.00       0.81 r
+  REG/READ1/TOP/LAST/THIRD/NA3/in1 (nand2_627)            0.00       0.81 r
+  REG/READ1/TOP/LAST/THIRD/NA3/U2/Y (AND2X2)              0.03       0.85 r
+  REG/READ1/TOP/LAST/THIRD/NA3/U1/Y (INVX1)               0.01       0.86 f
+  REG/READ1/TOP/LAST/THIRD/NA3/out (nand2_627)            0.00       0.86 f
+  REG/READ1/TOP/LAST/THIRD/Out (mux2_1_209)               0.00       0.86 f
+  REG/READ1/TOP/LAST/Out<2> (mux2_1_4bit_52)              0.00       0.86 f
+  REG/READ1/TOP/Out<14> (mux2_1_16bit_13)                 0.00       0.86 f
+  REG/READ1/Out<14> (mux8_1_16bit_1)                      0.00       0.86 f
+  REG/read1data<14> (rf)                                  0.00       0.86 f
+  U159/Y (AND2X1)                                         0.03       0.89 f
+  U183/Y (INVX1)                                          0.00       0.89 r
+  U75/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<14> (out)                                     0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/SIX/NINE/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<9>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/SIX/NINE/state_reg/CLK (DFFPOSX1)              0.00       0.50 r
+  REG/REGS/SIX/NINE/state_reg/Q (DFFPOSX1)                0.10       0.60 f
+  REG/REGS/SIX/NINE/q (dff_22)                            0.00       0.60 f
+  REG/REGS/SIX/readdata<9> (reg16bit_1)                   0.00       0.60 f
+  REG/REGS/read6<9> (eight_registers)                     0.00       0.60 f
+  REG/READ2/InG<9> (mux8_1_16bit_0)                       0.00       0.60 f
+  REG/READ2/HIGH/InC<9> (mux4_1_16bit_0)                  0.00       0.60 f
+  REG/READ2/HIGH/HIGH/InA<9> (mux2_1_16bit_1)             0.00       0.60 f
+  REG/READ2/HIGH/HIGH/THIRD/InA<1> (mux2_1_4bit_5)        0.00       0.60 f
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/InA (mux2_1_22)        0.00       0.60 f
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/NA2/in1 (nand2_67)     0.00       0.60 f
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/NA2/U1/Y (AND2X2)      0.04       0.64 f
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/NA2/U2/Y (INVX1)       0.00       0.64 r
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/NA2/out (nand2_67)     0.00       0.64 r
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/NA3/in2 (nand2_66)     0.00       0.64 r
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/NA3/U1/Y (AND2X1)      0.04       0.68 r
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/NA3/U2/Y (INVX1)       0.02       0.70 f
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/NA3/out (nand2_66)     0.00       0.70 f
+  REG/READ2/HIGH/HIGH/THIRD/SECOND/Out (mux2_1_22)        0.00       0.70 f
+  REG/READ2/HIGH/HIGH/THIRD/Out<1> (mux2_1_4bit_5)        0.00       0.70 f
+  REG/READ2/HIGH/HIGH/Out<9> (mux2_1_16bit_1)             0.00       0.70 f
+  REG/READ2/HIGH/TOP/InB<9> (mux2_1_16bit_0)              0.00       0.70 f
+  REG/READ2/HIGH/TOP/THIRD/InB<1> (mux2_1_4bit_1)         0.00       0.70 f
+  REG/READ2/HIGH/TOP/THIRD/SECOND/InB (mux2_1_6)          0.00       0.70 f
+  REG/READ2/HIGH/TOP/THIRD/SECOND/NA1/in1 (nand2_20)      0.00       0.70 f
+  REG/READ2/HIGH/TOP/THIRD/SECOND/NA1/U1/Y (AND2X1)       0.03       0.73 f
+  REG/READ2/HIGH/TOP/THIRD/SECOND/NA1/U2/Y (INVX1)        0.00       0.73 r
+  REG/READ2/HIGH/TOP/THIRD/SECOND/NA1/out (nand2_20)      0.00       0.73 r
+  REG/READ2/HIGH/TOP/THIRD/SECOND/NA3/in1 (nand2_18)      0.00       0.73 r
+  REG/READ2/HIGH/TOP/THIRD/SECOND/NA3/U2/Y (AND2X2)       0.03       0.76 r
+  REG/READ2/HIGH/TOP/THIRD/SECOND/NA3/U1/Y (INVX1)        0.01       0.78 f
+  REG/READ2/HIGH/TOP/THIRD/SECOND/NA3/out (nand2_18)      0.00       0.78 f
+  REG/READ2/HIGH/TOP/THIRD/SECOND/Out (mux2_1_6)          0.00       0.78 f
+  REG/READ2/HIGH/TOP/THIRD/Out<1> (mux2_1_4bit_1)         0.00       0.78 f
+  REG/READ2/HIGH/TOP/Out<9> (mux2_1_16bit_0)              0.00       0.78 f
+  REG/READ2/HIGH/Out<9> (mux4_1_16bit_0)                  0.00       0.78 f
+  REG/READ2/TOP/InB<9> (mux2_1_16bit_12)                  0.00       0.78 f
+  REG/READ2/TOP/THIRD/InB<1> (mux2_1_4bit_49)             0.00       0.78 f
+  REG/READ2/TOP/THIRD/SECOND/InB (mux2_1_198)             0.00       0.78 f
+  REG/READ2/TOP/THIRD/SECOND/NA1/in1 (nand2_596)          0.00       0.78 f
+  REG/READ2/TOP/THIRD/SECOND/NA1/U1/Y (AND2X2)            0.04       0.81 f
+  REG/READ2/TOP/THIRD/SECOND/NA1/U2/Y (INVX1)             0.00       0.81 r
+  REG/READ2/TOP/THIRD/SECOND/NA1/out (nand2_596)          0.00       0.81 r
+  REG/READ2/TOP/THIRD/SECOND/NA3/in1 (nand2_594)          0.00       0.81 r
+  REG/READ2/TOP/THIRD/SECOND/NA3/U2/Y (AND2X2)            0.03       0.84 r
+  REG/READ2/TOP/THIRD/SECOND/NA3/U1/Y (INVX1)             0.01       0.86 f
+  REG/READ2/TOP/THIRD/SECOND/NA3/out (nand2_594)          0.00       0.86 f
+  REG/READ2/TOP/THIRD/SECOND/Out (mux2_1_198)             0.00       0.86 f
+  REG/READ2/TOP/THIRD/Out<1> (mux2_1_4bit_49)             0.00       0.86 f
+  REG/READ2/TOP/Out<9> (mux2_1_16bit_12)                  0.00       0.86 f
+  REG/READ2/Out<9> (mux8_1_16bit_0)                       0.00       0.86 f
+  REG/read2data<9> (rf)                                   0.00       0.86 f
+  U141/Y (AND2X1)                                         0.03       0.89 f
+  U175/Y (INVX1)                                          0.00       0.89 r
+  U18/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<9> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/ONE/THIRT/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<13>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/ONE/THIRT/state_reg/CLK (DFFPOSX1)             0.00       0.50 r
+  REG/REGS/ONE/THIRT/state_reg/Q (DFFPOSX1)               0.10       0.60 f
+  REG/REGS/ONE/THIRT/q (dff_98)                           0.00       0.60 f
+  REG/REGS/ONE/readdata<13> (reg16bit_6)                  0.00       0.60 f
+  REG/REGS/read1<13> (eight_registers)                    0.00       0.60 f
+  REG/READ2/InB<13> (mux8_1_16bit_0)                      0.00       0.60 f
+  REG/READ2/LOW/InB<13> (mux4_1_16bit_1)                  0.00       0.60 f
+  REG/READ2/LOW/LOW/InB<13> (mux2_1_16bit_5)              0.00       0.60 f
+  REG/READ2/LOW/LOW/LAST/InB<1> (mux2_1_4bit_20)          0.00       0.60 f
+  REG/READ2/LOW/LOW/LAST/SECOND/InB (mux2_1_82)           0.00       0.60 f
+  REG/READ2/LOW/LOW/LAST/SECOND/NA1/in1 (nand2_248)       0.00       0.60 f
+  REG/READ2/LOW/LOW/LAST/SECOND/NA1/U1/Y (AND2X1)         0.03       0.64 f
+  REG/READ2/LOW/LOW/LAST/SECOND/NA1/U2/Y (INVX1)          0.00       0.64 r
+  REG/READ2/LOW/LOW/LAST/SECOND/NA1/out (nand2_248)       0.00       0.64 r
+  REG/READ2/LOW/LOW/LAST/SECOND/NA3/in1 (nand2_246)       0.00       0.64 r
+  REG/READ2/LOW/LOW/LAST/SECOND/NA3/U1/Y (AND2X1)         0.04       0.68 r
+  REG/READ2/LOW/LOW/LAST/SECOND/NA3/U2/Y (INVX1)          0.02       0.70 f
+  REG/READ2/LOW/LOW/LAST/SECOND/NA3/out (nand2_246)       0.00       0.70 f
+  REG/READ2/LOW/LOW/LAST/SECOND/Out (mux2_1_82)           0.00       0.70 f
+  REG/READ2/LOW/LOW/LAST/Out<1> (mux2_1_4bit_20)          0.00       0.70 f
+  REG/READ2/LOW/LOW/Out<13> (mux2_1_16bit_5)              0.00       0.70 f
+  REG/READ2/LOW/TOP/InA<13> (mux2_1_16bit_3)              0.00       0.70 f
+  REG/READ2/LOW/TOP/LAST/InA<1> (mux2_1_4bit_12)          0.00       0.70 f
+  REG/READ2/LOW/TOP/LAST/SECOND/InA (mux2_1_50)           0.00       0.70 f
+  REG/READ2/LOW/TOP/LAST/SECOND/NA2/in1 (nand2_151)       0.00       0.70 f
+  REG/READ2/LOW/TOP/LAST/SECOND/NA2/U1/Y (AND2X1)         0.03       0.73 f
+  REG/READ2/LOW/TOP/LAST/SECOND/NA2/U2/Y (INVX1)          0.00       0.74 r
+  REG/READ2/LOW/TOP/LAST/SECOND/NA2/out (nand2_151)       0.00       0.74 r
+  REG/READ2/LOW/TOP/LAST/SECOND/NA3/in2 (nand2_150)       0.00       0.74 r
+  REG/READ2/LOW/TOP/LAST/SECOND/NA3/U1/Y (AND2X1)         0.03       0.77 r
+  REG/READ2/LOW/TOP/LAST/SECOND/NA3/U2/Y (INVX1)          0.02       0.79 f
+  REG/READ2/LOW/TOP/LAST/SECOND/NA3/out (nand2_150)       0.00       0.79 f
+  REG/READ2/LOW/TOP/LAST/SECOND/Out (mux2_1_50)           0.00       0.79 f
+  REG/READ2/LOW/TOP/LAST/Out<1> (mux2_1_4bit_12)          0.00       0.79 f
+  REG/READ2/LOW/TOP/Out<13> (mux2_1_16bit_3)              0.00       0.79 f
+  REG/READ2/LOW/Out<13> (mux4_1_16bit_1)                  0.00       0.79 f
+  REG/READ2/TOP/InA<13> (mux2_1_16bit_12)                 0.00       0.79 f
+  REG/READ2/TOP/LAST/InA<1> (mux2_1_4bit_48)              0.00       0.79 f
+  REG/READ2/TOP/LAST/SECOND/InA (mux2_1_194)              0.00       0.79 f
+  REG/READ2/TOP/LAST/SECOND/NA2/in1 (nand2_583)           0.00       0.79 f
+  REG/READ2/TOP/LAST/SECOND/NA2/U1/Y (AND2X2)             0.03       0.82 f
+  REG/READ2/TOP/LAST/SECOND/NA2/U2/Y (INVX1)              0.00       0.81 r
+  REG/READ2/TOP/LAST/SECOND/NA2/out (nand2_583)           0.00       0.81 r
+  REG/READ2/TOP/LAST/SECOND/NA3/in2 (nand2_582)           0.00       0.81 r
+  REG/READ2/TOP/LAST/SECOND/NA3/U2/Y (AND2X2)             0.03       0.84 r
+  REG/READ2/TOP/LAST/SECOND/NA3/U1/Y (INVX1)              0.01       0.86 f
+  REG/READ2/TOP/LAST/SECOND/NA3/out (nand2_582)           0.00       0.86 f
+  REG/READ2/TOP/LAST/SECOND/Out (mux2_1_194)              0.00       0.86 f
+  REG/READ2/TOP/LAST/Out<1> (mux2_1_4bit_48)              0.00       0.86 f
+  REG/READ2/TOP/Out<13> (mux2_1_16bit_12)                 0.00       0.86 f
+  REG/READ2/Out<13> (mux8_1_16bit_0)                      0.00       0.86 f
+  REG/read2data<13> (rf)                                  0.00       0.86 f
+  U144/Y (AND2X1)                                         0.03       0.89 f
+  U194/Y (INVX1)                                          0.00       0.89 r
+  U40/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<13> (out)                                     0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/FIVE/EIGHT/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read1data<8>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/FIVE/EIGHT/state_reg/CLK (DFFPOSX1)            0.00       0.50 r
+  REG/REGS/FIVE/EIGHT/state_reg/Q (DFFPOSX1)              0.10       0.60 f
+  REG/REGS/FIVE/EIGHT/q (dff_39)                          0.00       0.60 f
+  REG/REGS/FIVE/readdata<8> (reg16bit_2)                  0.00       0.60 f
+  REG/REGS/read5<8> (eight_registers)                     0.00       0.60 f
+  REG/READ1/InF<8> (mux8_1_16bit_1)                       0.00       0.60 f
+  REG/READ1/HIGH/InB<8> (mux4_1_16bit_2)                  0.00       0.60 f
+  REG/READ1/HIGH/LOW/InB<8> (mux2_1_16bit_8)              0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/InB<0> (mux2_1_4bit_33)        0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/FIRST/InB (mux2_1_135)         0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/FIRST/NA1/in1 (nand2_407)      0.00       0.60 f
+  REG/READ1/HIGH/LOW/THIRD/FIRST/NA1/U1/Y (AND2X1)        0.03       0.64 f
+  REG/READ1/HIGH/LOW/THIRD/FIRST/NA1/U2/Y (INVX1)         0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/FIRST/NA1/out (nand2_407)      0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/FIRST/NA3/in1 (nand2_405)      0.00       0.64 r
+  REG/READ1/HIGH/LOW/THIRD/FIRST/NA3/U1/Y (AND2X1)        0.04       0.68 r
+  REG/READ1/HIGH/LOW/THIRD/FIRST/NA3/U2/Y (INVX1)         0.02       0.70 f
+  REG/READ1/HIGH/LOW/THIRD/FIRST/NA3/out (nand2_405)      0.00       0.70 f
+  REG/READ1/HIGH/LOW/THIRD/FIRST/Out (mux2_1_135)         0.00       0.70 f
+  REG/READ1/HIGH/LOW/THIRD/Out<0> (mux2_1_4bit_33)        0.00       0.70 f
+  REG/READ1/HIGH/LOW/Out<8> (mux2_1_16bit_8)              0.00       0.70 f
+  REG/READ1/HIGH/TOP/InA<8> (mux2_1_16bit_6)              0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/InA<0> (mux2_1_4bit_25)        0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/FIRST/InA (mux2_1_103)         0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/FIRST/NA2/in1 (nand2_310)      0.00       0.70 f
+  REG/READ1/HIGH/TOP/THIRD/FIRST/NA2/U1/Y (AND2X1)        0.03       0.73 f
+  REG/READ1/HIGH/TOP/THIRD/FIRST/NA2/U2/Y (INVX1)         0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/FIRST/NA2/out (nand2_310)      0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/FIRST/NA3/in2 (nand2_309)      0.00       0.74 r
+  REG/READ1/HIGH/TOP/THIRD/FIRST/NA3/U1/Y (AND2X2)        0.03       0.77 r
+  REG/READ1/HIGH/TOP/THIRD/FIRST/NA3/U2/Y (INVX1)         0.01       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/FIRST/NA3/out (nand2_309)      0.00       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/FIRST/Out (mux2_1_103)         0.00       0.78 f
+  REG/READ1/HIGH/TOP/THIRD/Out<0> (mux2_1_4bit_25)        0.00       0.78 f
+  REG/READ1/HIGH/TOP/Out<8> (mux2_1_16bit_6)              0.00       0.78 f
+  REG/READ1/HIGH/Out<8> (mux4_1_16bit_2)                  0.00       0.78 f
+  REG/READ1/TOP/InB<8> (mux2_1_16bit_13)                  0.00       0.78 f
+  REG/READ1/TOP/THIRD/InB<0> (mux2_1_4bit_53)             0.00       0.78 f
+  REG/READ1/TOP/THIRD/FIRST/InB (mux2_1_215)              0.00       0.78 f
+  REG/READ1/TOP/THIRD/FIRST/NA1/in1 (nand2_647)           0.00       0.78 f
+  REG/READ1/TOP/THIRD/FIRST/NA1/U1/Y (AND2X2)             0.04       0.82 f
+  REG/READ1/TOP/THIRD/FIRST/NA1/U2/Y (INVX1)              0.00       0.81 r
+  REG/READ1/TOP/THIRD/FIRST/NA1/out (nand2_647)           0.00       0.81 r
+  REG/READ1/TOP/THIRD/FIRST/NA3/in1 (nand2_645)           0.00       0.81 r
+  REG/READ1/TOP/THIRD/FIRST/NA3/U2/Y (AND2X2)             0.03       0.84 r
+  REG/READ1/TOP/THIRD/FIRST/NA3/U1/Y (INVX1)              0.01       0.86 f
+  REG/READ1/TOP/THIRD/FIRST/NA3/out (nand2_645)           0.00       0.86 f
+  REG/READ1/TOP/THIRD/FIRST/Out (mux2_1_215)              0.00       0.86 f
+  REG/READ1/TOP/THIRD/Out<0> (mux2_1_4bit_53)             0.00       0.86 f
+  REG/READ1/TOP/Out<8> (mux2_1_16bit_13)                  0.00       0.86 f
+  REG/READ1/Out<8> (mux8_1_16bit_1)                       0.00       0.86 f
+  REG/read1data<8> (rf)                                   0.00       0.86 f
+  U154/Y (AND2X1)                                         0.03       0.89 f
+  U168/Y (INVX1)                                          0.00       0.89 r
+  U57/Y (OAI21X1)                                         0.01       0.90 f
+  read1data<8> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: REG/REGS/ONE/FIVE/state_reg
+              (rising edge-triggered flip-flop clocked by clk')
+  Endpoint: read2data<5>
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  0.50       0.50
+  clock network delay (ideal)                             0.00       0.50
+  REG/REGS/ONE/FIVE/state_reg/CLK (DFFPOSX1)              0.00       0.50 r
+  REG/REGS/ONE/FIVE/state_reg/Q (DFFPOSX1)                0.10       0.60 f
+  REG/REGS/ONE/FIVE/q (dff_106)                           0.00       0.60 f
+  REG/REGS/ONE/readdata<5> (reg16bit_6)                   0.00       0.60 f
+  REG/REGS/read1<5> (eight_registers)                     0.00       0.60 f
+  REG/READ2/InB<5> (mux8_1_16bit_0)                       0.00       0.60 f
+  REG/READ2/LOW/InB<5> (mux4_1_16bit_1)                   0.00       0.60 f
+  REG/READ2/LOW/LOW/InB<5> (mux2_1_16bit_5)               0.00       0.60 f
+  REG/READ2/LOW/LOW/SECOND/InB<1> (mux2_1_4bit_22)        0.00       0.60 f
+  REG/READ2/LOW/LOW/SECOND/SECOND/InB (mux2_1_90)         0.00       0.60 f
+  REG/READ2/LOW/LOW/SECOND/SECOND/NA1/in1 (nand2_272)     0.00       0.60 f
+  REG/READ2/LOW/LOW/SECOND/SECOND/NA1/U2/Y (AND2X1)       0.03       0.64 f
+  REG/READ2/LOW/LOW/SECOND/SECOND/NA1/U1/Y (INVX1)        0.00       0.64 r
+  REG/READ2/LOW/LOW/SECOND/SECOND/NA1/out (nand2_272)     0.00       0.64 r
+  REG/READ2/LOW/LOW/SECOND/SECOND/NA3/in1 (nand2_270)     0.00       0.64 r
+  REG/READ2/LOW/LOW/SECOND/SECOND/NA3/U1/Y (AND2X1)       0.04       0.68 r
+  REG/READ2/LOW/LOW/SECOND/SECOND/NA3/U2/Y (INVX1)        0.02       0.70 f
+  REG/READ2/LOW/LOW/SECOND/SECOND/NA3/out (nand2_270)     0.00       0.70 f
+  REG/READ2/LOW/LOW/SECOND/SECOND/Out (mux2_1_90)         0.00       0.70 f
+  REG/READ2/LOW/LOW/SECOND/Out<1> (mux2_1_4bit_22)        0.00       0.70 f
+  REG/READ2/LOW/LOW/Out<5> (mux2_1_16bit_5)               0.00       0.70 f
+  REG/READ2/LOW/TOP/InA<5> (mux2_1_16bit_3)               0.00       0.70 f
+  REG/READ2/LOW/TOP/SECOND/InA<1> (mux2_1_4bit_14)        0.00       0.70 f
+  REG/READ2/LOW/TOP/SECOND/SECOND/InA (mux2_1_58)         0.00       0.70 f
+  REG/READ2/LOW/TOP/SECOND/SECOND/NA2/in1 (nand2_175)     0.00       0.70 f
+  REG/READ2/LOW/TOP/SECOND/SECOND/NA2/U1/Y (AND2X1)       0.03       0.73 f
+  REG/READ2/LOW/TOP/SECOND/SECOND/NA2/U2/Y (INVX1)        0.00       0.74 r
+  REG/READ2/LOW/TOP/SECOND/SECOND/NA2/out (nand2_175)     0.00       0.74 r
+  REG/READ2/LOW/TOP/SECOND/SECOND/NA3/in2 (nand2_174)     0.00       0.74 r
+  REG/READ2/LOW/TOP/SECOND/SECOND/NA3/U1/Y (AND2X1)       0.03       0.76 r
+  REG/READ2/LOW/TOP/SECOND/SECOND/NA3/U2/Y (INVX1)        0.02       0.79 f
+  REG/READ2/LOW/TOP/SECOND/SECOND/NA3/out (nand2_174)     0.00       0.79 f
+  REG/READ2/LOW/TOP/SECOND/SECOND/Out (mux2_1_58)         0.00       0.79 f
+  REG/READ2/LOW/TOP/SECOND/Out<1> (mux2_1_4bit_14)        0.00       0.79 f
+  REG/READ2/LOW/TOP/Out<5> (mux2_1_16bit_3)               0.00       0.79 f
+  REG/READ2/LOW/Out<5> (mux4_1_16bit_1)                   0.00       0.79 f
+  REG/READ2/TOP/InA<5> (mux2_1_16bit_12)                  0.00       0.79 f
+  REG/READ2/TOP/SECOND/InA<1> (mux2_1_4bit_50)            0.00       0.79 f
+  REG/READ2/TOP/SECOND/SECOND/InA (mux2_1_202)            0.00       0.79 f
+  REG/READ2/TOP/SECOND/SECOND/NA2/in1 (nand2_607)         0.00       0.79 f
+  REG/READ2/TOP/SECOND/SECOND/NA2/U1/Y (AND2X2)           0.03       0.82 f
+  REG/READ2/TOP/SECOND/SECOND/NA2/U2/Y (INVX1)            0.00       0.81 r
+  REG/READ2/TOP/SECOND/SECOND/NA2/out (nand2_607)         0.00       0.81 r
+  REG/READ2/TOP/SECOND/SECOND/NA3/in2 (nand2_606)         0.00       0.81 r
+  REG/READ2/TOP/SECOND/SECOND/NA3/U2/Y (AND2X2)           0.03       0.84 r
+  REG/READ2/TOP/SECOND/SECOND/NA3/U1/Y (INVX1)            0.01       0.86 f
+  REG/READ2/TOP/SECOND/SECOND/NA3/out (nand2_606)         0.00       0.86 f
+  REG/READ2/TOP/SECOND/SECOND/Out (mux2_1_202)            0.00       0.86 f
+  REG/READ2/TOP/SECOND/Out<1> (mux2_1_4bit_50)            0.00       0.86 f
+  REG/READ2/TOP/Out<5> (mux2_1_16bit_12)                  0.00       0.86 f
+  REG/READ2/Out<5> (mux8_1_16bit_0)                       0.00       0.86 f
+  REG/read2data<5> (rf)                                   0.00       0.86 f
+  U137/Y (AND2X1)                                         0.03       0.89 f
+  U170/Y (INVX1)                                          0.00       0.89 r
+  U26/Y (OAI21X1)                                         0.01       0.90 f
+  read2data<5> (out)                                      0.00       0.90 f
+  data arrival time                                                  0.90
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  output external delay                                  -0.10       0.90
+  data required time                                                 0.90
+  --------------------------------------------------------------------------
+  data required time                                                 0.90
+  data arrival time                                                 -0.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

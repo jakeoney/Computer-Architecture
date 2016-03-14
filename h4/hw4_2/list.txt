@@ -1,0 +1,14 @@
+dff.v
+fifo_entry_controller.v
+fifo_entry.v
+fifo_logic.v
+fifo_reg.v
+fifo.v
+mux2_1_16bit.v
+mux2_1_4bit.v
+mux2_1_64bit.v
+mux2_1.v
+mux4_1_16bit.v
+mux4_1_64bit.v
+nand2.v
+not1.v
