@@ -1,0 +1,11 @@
+          //Should jump over nop and halt, then got back to halt
+          //PC should end at 0x08
+          //R7 should have 0x0A
+0000 0800 nop
+0002 3004 jal 4
+0004 0800 nop
+0006 0000 halt
+0008 37fc jal -4
+000a 0800 nop
+000c 0800 nop
+000e 0000 halt
