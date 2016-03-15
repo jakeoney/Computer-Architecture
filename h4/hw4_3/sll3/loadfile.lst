@@ -1,0 +1,4 @@
+          //Do a shift left by 16 (shift all the bits out). Result should be 0x0000 in r3
+0000 c110 lbi r1, 16 
+0002 c27f lbi r2, 127
+0004 d22d sll, r3, r2, r1
