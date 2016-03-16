@@ -23,7 +23,6 @@ module proc (/*AUTOARG*/
 	//CONTROL Outputs
 	wire RegDst, Jump, Branch, MemRead, MemToReg, MemWrite, ALU_Src, RegWrite; 
 	wire [4:0] ALU_op;
-	wire [1:0] ALU_funct;
 
 	//write_back Outputs
 	wire [15:0] wb_out; 
@@ -37,34 +36,47 @@ module proc (/*AUTOARG*/
 	wire [15:0] ALU_result;
 	wire zero;
 	wire [15:0] branch_result;
+	wire alu_err;
 
 	//Decode Outputs
 	wire [15:0] jumpAddr;
 	wire [15:0] read1data;
 	wire [15:0] read2data;
 	wire [15:0] immediate;
+	wire decode_err;
 
 	//Fetch Outputs
 	wire [15:0] next_pc;
 	wire [15:0] instruction;
+	wire fetch_err;
+
+	//ALU Control Outputs
+	wire [2:0] op_to_alu;
+	wire invA, invB;
+	wire sign;
+	wire cin;
+	wire sign;
 
 	// instr_fetch unit
 	instr_fetch FETCH(//Input
-										.pc(wb_pc), 
+										.pc(wb_pc), .clk(clk), .rst(rst), 
 	                  //Outputs
-										.next_pc(next_pc), .instruction(instruction));
+										.next_pc(next_pc), .instruction(instruction), .err(fetch_err));
 
 	// instr_decode unit
 	instr_decode DECODE(//Inputs
-											.instruction(instruction[10:0]), .RegWrite(RegWrite), .RegDst(RegDst), .writeData(wb_out)
+											.instruction(instruction[10:0]), .RegWrite(RegWrite), .RegDst(RegDst), .writeData(wb_out),
+											.clk(clk), .rst(rst), .pc(next_pc[15:13]),
 	                    //Outputs
-											.jumpAddr(jumpAddr), .read1data(read1data), .read2data(read2data), .immediate(immediate));	
+											.jumpAddr(jumpAddr), .read1data(read1data), .read2data(read2data), .immediate(immediate),
+											.err(decode_err));	
 	
 	// execute unit
 	execute EXECUTE ( //Inputs
-										.funct(ALU_funct), .alu_op(ALU_op), .ALUSrc(ALU_Src), .read1data(read1data), .read2data(read2data), .immediate(immediate), .pc(next_pc), 
+										.alu_op(op_to_alu), .ALUSrc(ALU_Src), .read1data(read1data), .read2data(read2data), 
+										.immediate(immediate), .pc(next_pc), invA(invA), invB(invB), .cin(cin), .sign(sign),  
 	                  //Outputs
-										.ALU_result(ALU_result), .branch_result(branch_result), .zero(zero));	
+										.ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err));	
 	
 	// mem unit
 	data_mem MEM    (	//Inputs
@@ -81,9 +93,14 @@ module proc (/*AUTOARG*/
 	
 	// control unit
 	control CONTROL ( //Inputs
-										.instruction_op(instruction[15:11]), .instruction_funct(instruction[1:0]), 
+										.instruction_op(instruction[15:11]), 
 	                  //Outputs 
-										.RegDst(RegDst), .Jump(Jump), .Branch(Branch), .MemRead(MemRead), .MemToReg(MemToReg), 
-									 	.ALU_op(ALU_op), .ALU_funct(ALU_funct), .MemWrite(MemWrite), .ALU_Src(ALU_Src), .RegWrite(RegWrite));
+										.RegDst(RegDst), .Jump(Jump), .Branch(Branch), .MemRead(MemRead), .MemToReg(MemToReg),
+									 	.ALU_op(ALU_op), .MemWrite(MemWrite), .ALU_Src(ALU_Src), .RegWrite(RegWrite));
 
+	alu_control ALU_CTL(//Inputs
+											.ALU_op(ALU_op), .ALU_funct(instruction[1:0]), 
+											//Outputs
+											.invA(invA), .invB(invB), .sign(), .op_to_alu(), .cin(cin), .sign(sign));
+//ADD some output op to actual alu unit.
 endmodule 
