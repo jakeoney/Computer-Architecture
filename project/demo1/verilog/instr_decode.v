@@ -1,4 +1,4 @@
-module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc
+module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
                     jumpAddr, read1data, read2data, immediate, err);
 
 	input [10:0] instruction;	// Used for read1 & read2 regs, write reg, branch
@@ -6,7 +6,7 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc
 	input RegDst;							// Write register MUX control signal
 	input [15:0] writeData;		// From write_back stage
 	input clk, rst;
-	input [2:0] pc						//top bits from pc
+	input [4:0] pc; 					//top bits from pc
 
 	output err;
 	output [15:0] jumpAddr;		// Some sort of jump logic
@@ -38,12 +38,12 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc
 	
 	//JUMP logic
 	//shift jump digits left 2
-	shifter_two_bit SHIFT(.In(instruction), .Cnt(toShift), .Op(sll), .Out(temp_jump));
+//	shifter_two_bit SHIFT(.In(instruction), .Cnt(toShift), .Op(sll), .Out(temp_jump));
 	
 	//Combine with top bits from PC to make it a 16bit value
-	assign jumpAddr = {pc,temp_jump};
+	assign jumpAddr = {pc,instruction};
 
 	//Sign extend Immediate value
-	sign_extend5big EXTEND(.in(instruction[4:0]), .out(immediate));
+	sign_extend5bit EXTEND(.in(instruction[4:0]), .out(immediate));
 
 endmodule

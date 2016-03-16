@@ -1,4 +1,4 @@
-module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign
+module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign,
 							ALU_result, branch_result, zero, err);
 
 	input [2:0] alu_op;   //OP code
@@ -17,7 +17,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 	output err;
 
 	wire [15:0] alu_in2;
-	wire [15:0] imm_shift;  //Immediate shifted left 2 bits
+//	wire [15:0] imm_shift;  //Immediate shifted left 2 bits
 	wire [1:0] sll;					//Shift Left logical op code
 	wire toShift;						//Whether or not to shift
 	wire cin_for_branch;
@@ -37,17 +37,17 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 	alu ALU(//Inputs
 					.A(read1data), .B(alu_in2), .Cin(cin), .Op(alu_op), .invA(invA), .invB(invB), .sign(sign), 
 					//Outputs
-					.Out(ALU_result), .Ofl(alu_ofl), .Z(zero);
+					.Out(ALU_result), .Ofl(alu_ofl), .Z(zero));
 
 
 
 	//Branch Calculation
 	//shift immediate value left 2
-	shifter_two_bit SHIFT(.In(immediate), .Cnt(toShift), .Op(sll), .Out(imm_shift));
+	//shifter_two_bit SHIFT(.In(immediate), .Cnt(toShift), .Op(sll), .Out(imm_shift));
 
 	//add branch and pc
 	adder16 ADD(//Inputs
-							.A(pc), .B(imm_shift), .Cin(cin_for_branch), .sign(sign_branch), 
+							.A(pc), .B(immediate), .Cin(cin_for_branch), .sign(sign_branch), 
 							//Outputs
 							.Out(branch_result), .Ofl(branch_ofl));
 

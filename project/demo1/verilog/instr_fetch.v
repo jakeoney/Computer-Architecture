@@ -9,12 +9,12 @@ module instr_fetch(pc, clk, rst, instruction, next_pc, err);
 
 	wire [15:0] next; //next isn't actually the next pc, it is the intermediate value before add 2 
 	wire cin;
-	wire [1:0] increment_pc;
+	wire [15:0] increment_pc;
 	wire sign;
 	wire dump, wr, enable;
 	wire [15:0] data_in;
 
-	assign increment_pc = 2'b10;
+	assign increment_pc = 16'b0000_0000_0000_0010;
 	assign sign = 1'b0; //I don't think it is signed
 	assign cin = 1'b0;  //No cin
 	assign data_in = 16'b0000_0000_0000_0000;
