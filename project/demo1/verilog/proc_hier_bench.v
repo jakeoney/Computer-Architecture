@@ -124,7 +124,7 @@ module proc_hier_bench();
    // Edit the example below. You must change the signal
    // names on the right hand side
     
-   assign PC = DUT.p0.FETCH.pc;
+   assign PC = DUT.p0.FETCH.next;
    assign Inst = DUT.p0.FETCH.instruction;
    
    assign RegWrite = DUT.p0.DECODE.REGS.write;
@@ -139,7 +139,7 @@ module proc_hier_bench();
    assign MemRead =  DUT.p0.MEM.MemRead;
    // Is memory being read, one bit signal (1 means yes, 0 means no)
    
-   assign MemWrite = (DUT.p0.MEM.memReadorWrite & DUT.p0.MEM.MemWrite);
+   assign MemWrite = (DUT.p0.MEM.enable & DUT.p0.MEM.MemWrite);
    // Is memory being written to (1 bit signal)
    
    assign MemAddress = DUT.p0.MEM.ALU_result;

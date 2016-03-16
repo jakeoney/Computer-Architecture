@@ -1,4 +1,4 @@
-module data_mem(zero, Branch, branchAddr, pc, MemWrite, MemRead, ALU_result, writedata, clk, rst,
+module data_mem(zero, Branch, branchAddr, pc, MemWrite, MemRead, ALU_result, writedata, clk, rst, halt,
            branch_or_pc, readData);
 
   input zero;             //Used for branch logic
@@ -10,10 +10,14 @@ module data_mem(zero, Branch, branchAddr, pc, MemWrite, MemRead, ALU_result, wri
   input [15:0] writedata; //From instruction decode unit
   input MemRead;          //Read from Mem or not. From control
   input clk, rst;
+  input halt;
 
   output [15:0] branch_or_pc;//Result from MUX
   output [15:0] readData;    //From Memory unit
 
+  wire enable;
+
+  assign enable = (~halt) & MemRead;
   //JUMP logic
   //Will want to do some sort of jump logic in here...
   
@@ -24,6 +28,6 @@ module data_mem(zero, Branch, branchAddr, pc, MemWrite, MemRead, ALU_result, wri
 
   //Data Memory
   memory2c DMEM(.data_out(readData), .data_in(writedata), .addr(ALU_result), 
-                .enable(MemRead), .wr(MemWrite), .createdump(), .clk(clk), .rst(rst));  
+                .enable(enable), .wr(MemWrite), .createdump(halt), .clk(clk), .rst(rst));  
 
 endmodule

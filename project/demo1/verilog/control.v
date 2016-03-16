@@ -1,8 +1,9 @@
-module control(instruction_op, 
-               RegDst, Jump, Branch, MemRead, MemToReg, ALU_op, MemWrite, ALUSrc, RegWrite, err);
+module control(instruction_op, five_bit_imm,
+               RegDst, Jump, Branch, MemRead, MemToReg, ALU_op, MemWrite, ALUSrc, RegWrite, err, halt);
 
   input [4:0] instruction_op;    //OP Code from instruction fetch
 
+  output reg halt;
   output reg err;
   output reg RegDst;          // Instruction Decode -> Write register MUX control
   output reg Jump;            // To jump or not to jump MUX control
@@ -13,7 +14,7 @@ module control(instruction_op,
   output reg MemWrite;        // To write to memory or not MUX control
   output reg ALUSrc;         // Register file data2 or immediate MUX control
   output reg RegWrite;        // To write to register file or not
-
+  output reg five_bit_imm;
   assign ALU_op = instruction_op;
 
   always @(instruction_op)
@@ -27,10 +28,12 @@ module control(instruction_op,
     MemWrite = 1'b0;
     ALUSrc   = 1'b0;
     RegWrite = 1'b0;
+    halt     = 1'b0;
+    five_bit_imm = 1'b0;
     casex(instruction_op)
       5'b0_0000: //halt
         begin
-
+          halt = 1'b1;
         end
       5'b0_0001: //nop
         begin
@@ -38,59 +41,71 @@ module control(instruction_op,
         end
       5'b0_1000: //ADDI
         begin
+          five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
+          //RegDst = 1'b1;
         end
       5'b0_1001: //SUBI
         begin
+          five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
         end
       5'b0_1010: //XORI
         begin
+          five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
         end
       5'b0_1011: //ANDNI
         begin
+          five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
         end
       5'b1_0100: //ROLI
         begin
           ALUSrc = 1'b1;
+          five_bit_imm = 1'b1;
           RegWrite = 1'b1;
         end
       5'b1_0101: //SLLI
         begin
+          five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
         end
       5'b1_0110: //RORI
         begin
+          five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
         end
       5'b1_0111: //SRLI
         begin
+          five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
         end
       5'b1_0000: //ST
         begin
           ALUSrc = 1'b1;
+          five_bit_imm = 1'b1;
           MemWrite = 1'b1;
           MemToReg = 1'b1;
         end
       5'b1_0001: //LD
         begin
           MemToReg = 1'b1;
+          five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
         end
       5'b1_0011: //STU
         begin
           RegWrite = 1'b1;
+          five_bit_imm = 1'b1;
           MemToReg = 1'b1;
           MemWrite = 1'b1;
           ALUSrc = 1'b1;
@@ -154,6 +169,7 @@ module control(instruction_op,
         begin
           RegWrite = 1'b1;
           ALUSrc = 1'b1;
+          //RegDst = 1'b1;
         end
       5'b1_0010: //SLBI
         begin

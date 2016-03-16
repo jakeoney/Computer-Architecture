@@ -1,5 +1,5 @@
 module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
-                    jumpAddr, read1data, read2data, immediate, err);
+                    jumpAddr, read1data, read2data, immediate, err, five_bit_imm);
 
   input [10:0] instruction; // Used for read1 & read2 regs, write reg, branch
   input RegWrite;           // Write to register or not
@@ -7,6 +7,7 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   input [15:0] writeData;   // From write_back stage
   input clk, rst;
   input [4:0] pc;           //top bits from pc
+  input five_bit_imm;
 
   output err;
   output [15:0] jumpAddr;   // Some sort of jump logic
@@ -14,14 +15,15 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   output [15:0] read2data;
   output [15:0] immediate;
 
+  wire [15:0] imm1, imm2;
   wire [2:0] write_reg;
   wire [2:0] read1reg, read2reg, write1_reg;
   wire [12:0] temp_jump;    //Before being combined with pc
   wire [1:0] sll;           //sll op code
   wire toShift;             //Always want to shift
 
-  assign read1reg = instruction[10:8];
-  assign read2reg = instruction[7:5];
+  assign read1reg = instruction[7:5];
+  assign read2reg = instruction[10:8];
   assign write1_reg = instruction[4:2];
   assign sll = 2'b01;
   assign toShift = 1'b1;
@@ -44,6 +46,9 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   assign jumpAddr = {pc,instruction};
 
   //Sign extend Immediate value
-  sign_extend5bit EXTEND(.in(instruction[4:0]), .out(immediate));
+  sign_extend8bit EXTEND(.in(instruction[7:0]), .out(imm1));
+  sign_extend5bit EXT5  (.in(instruction[4:0]), .out(imm2));
+
+  mux2_1_16bit IMM(.InB(imm2), .InA(imm1), .S(five_bit_imm), .Out(immediate));
 
 endmodule

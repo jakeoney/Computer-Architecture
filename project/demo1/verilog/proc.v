@@ -24,6 +24,8 @@ module proc (/*AUTOARG*/
   wire RegDst, Jump, Branch, MemRead, MemToReg, MemWrite, ALU_Src, RegWrite; 
   wire [4:0] ALU_op;
   wire control_err;
+  wire halt;
+  wire five_bit_imm;
 
   //write_back Outputs
   wire [15:0] wb_out; 
@@ -56,6 +58,8 @@ module proc (/*AUTOARG*/
   wire invA, invB;
   wire sign;
   wire cin;
+  wire passA;
+  wire passB;
 
   // instr_fetch unit
   instr_fetch FETCH(//Input
@@ -66,7 +70,7 @@ module proc (/*AUTOARG*/
   // instr_decode unit
   instr_decode DECODE(//Inputs
                       .instruction(instruction[10:0]), .RegWrite(RegWrite), .RegDst(RegDst), .writeData(wb_out),
-                      .clk(clk), .rst(rst), .pc(next_pc[15:11]),
+                      .clk(clk), .rst(rst), .pc(next_pc[15:11]), .five_bit_imm(five_bit_imm),
                       //Outputs
                       .jumpAddr(jumpAddr), .read1data(read1data), .read2data(read2data), .immediate(immediate),
                       .err(decode_err));  
@@ -75,13 +79,14 @@ module proc (/*AUTOARG*/
   execute EXECUTE ( //Inputs
                     .alu_op(op_to_alu), .ALUSrc(ALU_Src), .read1data(read1data), .read2data(read2data), 
                     .immediate(immediate), .pc(next_pc), .invA(invA), .invB(invB), .cin(cin), .sign(sign),  
+                    .passThroughA(passA), .passThroughB(passB),
                     //Outputs
                     .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err));  
   
   // mem unit
   data_mem MEM    ( //Inputs
                     .zero(zero), .Branch(Branch), .branchAddr(branch_result), .pc(next_pc), .MemWrite(MemWrite), 
-                    .MemRead(MemRead), .ALU_result(ALU_result), .writedata(read2data), .clk(clk), .rst(rst), 
+                    .MemRead(MemRead), .ALU_result(ALU_result), .writedata(read2data), .clk(clk), .rst(rst), .halt(halt),
                     //Outputs
                     .branch_or_pc(branch_or_pc), .readData(data_mem_out));  
   
@@ -95,12 +100,13 @@ module proc (/*AUTOARG*/
   control CONTROL ( //Inputs
                     .instruction_op(instruction[15:11]), 
                     //Outputs 
-                    .RegDst(RegDst), .Jump(Jump), .Branch(Branch), .MemRead(MemRead), .MemToReg(MemToReg),
-                    .ALU_op(ALU_op), .MemWrite(MemWrite), .ALUSrc(ALU_Src), .RegWrite(RegWrite), .err(control_err));
+                    .RegDst(RegDst), .Jump(Jump), .Branch(Branch), .MemRead(MemRead), .MemToReg(MemToReg), .halt(halt),
+                    .ALU_op(ALU_op), .MemWrite(MemWrite), .ALUSrc(ALU_Src), .RegWrite(RegWrite), .err(control_err),
+                    .five_bit_imm(five_bit_imm));
 
   alu_control ALU_CTL(//Inputs
                       .ALU_op(ALU_op), .ALU_funct(instruction[1:0]), 
                       //Outputs
-                      .invA(invA), .invB(invB), .op_to_alu(op_to_alu), .cin(cin), .sign(sign));
+                      .invA(invA), .invB(invB), .op_to_alu(op_to_alu), .cin(cin), .sign(sign), .passA(passA), .passB(passB));
 //ADD some output op to actual alu unit.
 endmodule 

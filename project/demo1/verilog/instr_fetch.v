@@ -20,7 +20,7 @@ module instr_fetch(pc, clk, rst, instruction, next_pc, err);
   assign data_in = 16'b0000_0000_0000_0000;
   assign dump = 1'b0;
   assign wr = 1'b0;
-  assign enable = 1'b1;  //Might not want to always have this enabled
+  assign enable = ~rst;  //Might not want to always have this enabled
 
   dff ZERO(.q(next[0]),  .d(pc[0]),  .clk(clk), .rst(rst));
   dff ONE (.q(next[1]),  .d(pc[1]),  .clk(clk), .rst(rst));
