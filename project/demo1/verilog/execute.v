@@ -49,16 +49,19 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   wire [15:0] btr_result, ALU_result_temp;
   
   //ROTATE RIGHT LOGIC//
-  wire [15:0] nRead1data, newRead1data;
+  wire [15:0] nRead1data, newRead1data, nImmediate, newImmediate;
   wire isRotateRight;
   wire [2:0] ror_or_alu_op;
 
   assign nRead1data = (~read1data) + 1;
+  assign nImmediate = (~immediate) + 1;
   //If Rotate right, flip all the bits of shifter value and add 1 
   assign isRotateRight = ((~alu_op[0]) & alu_op[1] & (~alu_op[2]));   // ROR or RORI
   assign ror_or_alu_op = (isRotateRight) ? 3'b000 : alu_op; //Perform a rotate left
 
   mux2_1_16bit ROTATERIGHT(.InB(nRead1data), .InA(read1data), .S(isRotateRight), .Out(newRead1data));
+  mux2_1_16bit ROTATERIGHTIMM(.InB(nImmediate), .InA(immediate), .S(isRotateRight), .Out(newImmediate));
+   
   //END ROTATE RIGHT LOGIC
 
   assign isBTR = (instr_op[0] & (~instr_op[1]) & (~instr_op[2]) & instr_op[3] & instr_op[4]);
@@ -72,7 +75,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   mux4_1_16bit ALU_IN1(.InD(read2data), .InC(shiftBits_SLBI), .InB(read1data), .InA(read2data), .S({isSLBI, MemWrite}), .Out(alu_in1));
 
   //First, MUX read1data and immediate
-  mux4_1_16bit ALU_IN2(.InD(immediate), .InC(immediate), .InB(read2data), .InA(newRead1data), .S({ALUSrc,MemWrite}), .Out(alu_in2));
+  mux4_1_16bit ALU_IN2(.InD(newImmediate), .InC(newImmediate), .InB(read2data), .InA(newRead1data), .S({ALUSrc,MemWrite}), .Out(alu_in2));
 
   //Instanitate the ALU
   alu ALU(//Inputs
