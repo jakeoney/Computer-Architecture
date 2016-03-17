@@ -60,12 +60,14 @@ module control(instruction_op, five_bit_imm,
           five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
+          ZeroExtend = 1'b1;
         end
       5'b0_1011: //ANDNI
         begin
           five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
           RegWrite = 1'b1;
+          ZeroExtend = 1'b1;
         end
       5'b1_0100: //ROLI
         begin

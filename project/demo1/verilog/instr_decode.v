@@ -17,8 +17,8 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   output [15:0] read2data;
   output [15:0] immediate;
 
-  wire [15:0] imm1, imm2, temp_immediate, zero_imm;
-  wire [2:0] write_reg;
+  wire [15:0] imm1, imm2, temp_immediate, zero_imm1, zero_imm2, temp_zero_imm;
+  wire [2:0] write_reg, write_reg_temp;
   wire [2:0] read1reg, read2reg, write1_reg;
   wire [12:0] temp_jump;    //Before being combined with pc
   wire [1:0] sll;           //sll op code
@@ -31,8 +31,9 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   assign toShift = 1'b1;
 
   //Decide which register is to be used as the write_reg
-  assign write_reg = (RegDst == 1'b0) ? read1reg : write1_reg;
+  assign write_reg_temp = (RegDst == 1'b0) ? read1reg : write1_reg;
   
+  assign write_reg = (five_bit_imm) ? read2reg : write_reg_temp;
   //Instantiate the register file
   rf REGS(//Output
           .read1data(read1data), .read2data(read2data), .err(err),
@@ -48,11 +49,13 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   assign jumpAddr = {pc,instruction};
 
   //Sign extend Immediate value
-  sign_extend8bit EXTEND (.in(instruction[7:0]), .out(imm1));
+  sign_extend8bit EXT8 (.in(instruction[7:0]), .out(imm1));
   sign_extend5bit EXT5   (.in(instruction[4:0]), .out(imm2));
-  zero_extend8bit ZEXTEND(.in(instruction[7:0]), .out(zero_imm));
+  zero_extend8bit Z8EXT(.in(instruction[7:0]), .out(zero_imm1));
+  zero_extend5bit Z5EXT(.in(instruction[4:0]), .out(zero_imm2));
 
   mux2_1_16bit  IMM(.InB(imm2), .InA(imm1), .S(five_bit_imm), .Out(temp_immediate));
-  mux2_1_16bit ZIMM(.InB(zero_imm), .InA(temp_immediate), .S(ZeroExtend), .Out(immediate));
+  mux2_1_16bit Z5IM(.InB(zero_imm2), .InA(zero_imm1), .S(five_bit_imm), .Out(temp_zero_imm));
+  mux2_1_16bit ZIMM(.InB(temp_zero_imm), .InA(temp_immediate), .S(ZeroExtend), .Out(immediate));
 
 endmodule
