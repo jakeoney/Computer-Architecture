@@ -114,7 +114,7 @@ module control(instruction_op, five_bit_imm,
           //RegDst = 1'b1;
           RegWrite = 1'b1;
           five_bit_imm = 1'b1;
-          MemToReg = 1'b1;
+          //MemToReg = 1'b1;
           MemWrite = 1'b1;
           MemRead = 1'b1;
           ALUSrc = 1'b1;

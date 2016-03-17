@@ -2,7 +2,7 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
                     jumpAddr, read1data, read2data, immediate, err, five_bit_imm,
                     ZeroExtend, MemWrite);
 
-  input [10:0] instruction; // Used for read1 & read2 regs, write reg, branch
+  input [15:0] instruction; // Used for read1 & read2 regs, write reg, branch
   input RegWrite;           // Write to register or not
   input RegDst;             // Write register MUX control signal
   input [15:0] writeData;   // From write_back stage
@@ -25,6 +25,8 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   wire [1:0] sll;           //sll op code
   wire toShift;             //Always want to shift
   wire [15:0] read1data_temp, read2data_temp;
+  wire [2:0] stuReg, write_regtemp;
+  wire isSTU;
 
   assign read2reg = instruction[7:5];
   assign read1reg = instruction[10:8];
@@ -32,10 +34,15 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   assign sll = 2'b01;
   assign toShift = 1'b1;
 
+  assign isSTU = instruction[15] & (~instruction[14]) & (~instruction[13]) & instruction[12] & instruction[11]; 
+  assign stuReg = read1reg;
+
   //Decide which register is to be used as the write_reg
   assign write_reg_temp = (RegDst == 1'b0) ? read1reg : write1_reg;
   
-  assign write_reg = (five_bit_imm) ? read2reg : write_reg_temp;
+  assign write_regtemp = (five_bit_imm) ? read2reg : write_reg_temp;
+
+  assign write_reg = (isSTU) ? stuReg : write_regtemp;
   //Instantiate the register file
   rf REGS(//Output
           .read1data(read1data_temp), .read2data(read2data_temp), .err(err),
@@ -51,7 +58,7 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
 //  shifter_two_bit SHIFT(.In(instruction), .Cnt(toShift), .Op(sll), .Out(temp_jump));
   
   //Combine with top bits from PC to make it a 16bit value
-  assign jumpAddr = {pc,instruction};
+  assign jumpAddr = {pc,instruction[10:0]};
 
   //Sign extend Immediate value
   sign_extend8bit EXT8 (.in(instruction[7:0]), .out(imm1));
