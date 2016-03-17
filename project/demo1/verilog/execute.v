@@ -1,5 +1,5 @@
 module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign,
-              passThroughA, passThroughB, instr_op,
+              passThroughA, passThroughB, instr_op, MemWrite,
               ALU_result, branch_result, zero, ltz, err);
 
   input [2:0] alu_op;   //OP code
@@ -14,6 +14,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   input passThroughA;
   input passThroughB;
   input [4:0] instr_op;
+  input MemWrite;
   
   output [15:0] ALU_result; //From main ALU unit
   output [15:0] branch_result; //From branch calculation alu unit
@@ -58,10 +59,10 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign isSLBI = ((~instr_op[0]) & instr_op[1] & (~instr_op[2]) & (~instr_op[3]) & instr_op[4]);
   assign shiftBits_SLBI = read2data << 8;
 
-  mux2_1_16bit ALU_IN1(.InB(shiftBits_SLBI), .InA(read2data), .S(isSLBI), .Out(alu_in1));
+  mux4_1_16bit ALU_IN1(.InD(read2data), .InC(shiftBits_SLBI), .InB(read1data), .InA(read2data), .S({isSLBI, MemWrite}), .Out(alu_in1));
 
   //First, MUX read1data and immediate
-  mux2_1_16bit ALU_IN2(.InB(immediate), .InA(newRead1data), .S(ALUSrc), .Out(alu_in2));
+  mux4_1_16bit ALU_IN2(.InD(immediate), .InC(immediate), .InB(read2data), .InA(newRead1data), .S({ALUSrc,MemWrite}), .Out(alu_in2));
 
   //Instanitate the ALU
   alu ALU(//Inputs

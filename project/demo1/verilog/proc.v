@@ -73,6 +73,7 @@ module proc (/*AUTOARG*/
   instr_decode DECODE(//Inputs
                       .instruction(instruction[10:0]), .RegWrite(RegWrite), .RegDst(RegDst), .writeData(wb_out),
                       .clk(clk), .rst(rst), .pc(next_pc[15:11]), .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend),
+                      .MemWrite(MemWrite),
                       //Outputs
                       .jumpAddr(jumpAddr), .read1data(read1data), .read2data(read2data), .immediate(immediate),
                       .err(decode_err));  
@@ -81,7 +82,7 @@ module proc (/*AUTOARG*/
   execute EXECUTE ( //Inputs
                     .alu_op(op_to_alu), .ALUSrc(ALU_Src), .read1data(read1data), .read2data(read2data), 
                     .immediate(immediate), .pc(next_pc), .invA(invA), .invB(invB), .cin(cin), .sign(sign),  
-                    .passThroughA(passA), .passThroughB(passB), .instr_op(ALU_op),
+                    .passThroughA(passA), .passThroughB(passB), .instr_op(ALU_op), .MemWrite(MemWrite),
                     //Outputs
                     .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err),
                     .ltz(ltz));  

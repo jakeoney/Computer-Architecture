@@ -98,10 +98,12 @@ module control(instruction_op, five_bit_imm,
           ALUSrc = 1'b1;
           five_bit_imm = 1'b1;
           MemWrite = 1'b1;
+          MemRead = 1'b1;
           MemToReg = 1'b1;
         end
       5'b1_0001: //LD
         begin
+          MemRead = 1'b1;
           MemToReg = 1'b1;
           five_bit_imm = 1'b1;
           ALUSrc = 1'b1;
@@ -113,6 +115,7 @@ module control(instruction_op, five_bit_imm,
           five_bit_imm = 1'b1;
           MemToReg = 1'b1;
           MemWrite = 1'b1;
+          MemRead = 1'b1;
           ALUSrc = 1'b1;
         end
       5'b1_1001: //BTR

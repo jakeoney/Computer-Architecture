@@ -23,6 +23,8 @@ module data_mem(zero, Branch, branchAddr, pc, MemWrite, MemRead, ALU_result, wri
   wire lessThan_or_greatOrEqual, equalZ_or_notEqualZ;
   wire gez; //greater or equal to zero
 
+  wire [15:0] addr, in;
+
   assign nZero = ~zero;
   assign enable = (~halt) & MemRead;
   assign gez = ~ltz; 
@@ -37,8 +39,11 @@ module data_mem(zero, Branch, branchAddr, pc, MemWrite, MemRead, ALU_result, wri
   assign toBranch = Branch & isThereABranch;
   mux2_1_16bit BMUX(.InB(branchAddr), .InA(pc), .S(toBranch), .Out(branch_or_pc));
 
+  mux2_1_16bit STADDR(.InA(writedata), .InB(ALU_result), .S(MemWrite), .Out(addr));
+  mux2_1_16bit STIN(.InA(ALU_result), .InB(writedata), .S(MemWrite), .Out(in));
+
   //Data Memory
-  memory2c DMEM(.data_out(readData), .data_in(writedata), .addr(ALU_result), 
+  memory2c DMEM(.data_out(readData), .data_in(in), .addr(addr), 
                 .enable(enable), .wr(MemWrite), .createdump(halt), .clk(clk), .rst(rst));  
 
 endmodule
