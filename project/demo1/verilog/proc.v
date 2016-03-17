@@ -73,7 +73,7 @@ module proc (/*AUTOARG*/
   // instr_decode unit
   instr_decode DECODE(//Inputs
                       .instruction(instruction), .RegWrite(RegWrite), .RegDst(RegDst), .writeData(wb_out),
-                      .clk(clk), .rst(rst), .pc(next_pc[15:11]), .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend),
+                      .clk(clk), .rst(rst), .pc(next_pc[15:0]), .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend),
                       .MemWrite(MemWrite),
                       //Outputs
                       .jumpAddr(jumpAddr), .read1data(read1data), .read2data(read2data), .immediate(immediate),

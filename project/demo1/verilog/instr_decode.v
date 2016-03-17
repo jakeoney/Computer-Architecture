@@ -7,7 +7,7 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   input RegDst;             // Write register MUX control signal
   input [15:0] writeData;   // From write_back stage
   input clk, rst;
-  input [4:0] pc;           //top bits from pc
+  input [15:0] pc;           //top bits from pc
   input five_bit_imm;
   input ZeroExtend;
   input MemWrite;
@@ -21,12 +21,13 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   wire [15:0] imm1, imm2, temp_immediate, zero_imm1, zero_imm2, temp_zero_imm;
   wire [2:0] write_reg, write_reg_temp;
   wire [2:0] read1reg, read2reg, write1_reg;
-  wire [12:0] temp_jump;    //Before being combined with pc
   wire [1:0] sll;           //sll op code
   wire toShift;             //Always want to shift
   wire [15:0] read1data_temp, read2data_temp;
-  wire [2:0] stuReg, write_regtemp;
+  wire [2:0] stuReg, write_regtemp, write_regtemp2;
   wire isSTU;
+  wire jal, jalr, jal_or_jalr;
+  wire [15:0]writeData1;
 
   assign read2reg = instruction[7:5];
   assign read1reg = instruction[10:8];
@@ -37,18 +38,23 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   assign isSTU = instruction[15] & (~instruction[14]) & (~instruction[13]) & instruction[12] & instruction[11]; 
   assign stuReg = read1reg;
 
+  assign jal = (~instruction[15]) & (~instruction[14]) & instruction[13] & instruction[12] & (~instruction[11]);
+  assign jalr = (~instruction[15]) & (~instruction[14]) & instruction[13] & instruction[12] & (instruction[11]);
+  assign jal_or_jalr = jal | jalr;
   //Decide which register is to be used as the write_reg
   assign write_reg_temp = (RegDst == 1'b0) ? read1reg : write1_reg;
   
   assign write_regtemp = (five_bit_imm) ? read2reg : write_reg_temp;
 
-  assign write_reg = (isSTU) ? stuReg : write_regtemp;
+  assign write_regtemp2 = (isSTU) ? stuReg : write_regtemp;
+  assign write_reg = (jal_or_jalr) ? 3'b111 : write_regtemp2; //write to r7
+  assign writeData1 = (jal_or_jalr) ? pc : writeData;
   //Instantiate the register file
   rf REGS(//Output
           .read1data(read1data_temp), .read2data(read2data_temp), .err(err),
           //Input
           .clk(clk), .rst(rst), .read1regsel(read2reg), .read2regsel(read1reg), 
-          .writeregsel(write_reg), .writedata(writeData), .write(RegWrite));
+          .writeregsel(write_reg), .writedata(writeData1), .write(RegWrite));
   
   mux2_1_16bit MEM1(.InB(read2data_temp), .InA(read1data_temp), .S(MemWrite), .Out(read1data));
   mux2_1_16bit MEM2(.InB(read1data_temp), .InA(read2data_temp), .S(MemWrite), .Out(read2data));
@@ -57,8 +63,14 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   //shift jump digits left 2
 //  shifter_two_bit SHIFT(.In(instruction), .Cnt(toShift), .Op(sll), .Out(temp_jump));
   
+  wire jr;
+  wire [15:0] jumpAddr1, jumpAddr2;
   //Combine with top bits from PC to make it a 16bit value
-  sign_extend11bit SJUMP(.in(instruction[10:0]), .out(jumpAddr));
+  sign_extend11bit SJUMP(.in(instruction[10:0]), .out(jumpAddr1));
+  sign_extend8bit SJUMP8(.in(instruction[7:0]), .out(jumpAddr2));
+  
+  assign jr = (~instruction[15]) & (~instruction[14]) & instruction[13] & (~instruction[12]) & instruction[11];
+  mux2_1_16bit JADDR(.InB(jumpAddr2), .InA(jumpAddr1), .S(jr|jalr), .Out(jumpAddr));
 
   //Sign extend Immediate value
   sign_extend8bit EXT8 (.in(instruction[7:0]), .out(imm1));

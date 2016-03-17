@@ -108,7 +108,14 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
               //Outputs
               .Out(branch_result), .Ofl(branch_ofl));
   
-  adder16 JUMP(.A(pc), .B(jump_in), .Cin(1'b0), .sign(1'b1), .Out(jump_out), .Ofl(jump_ofl));
+  wire [15:0] a_in;
+  wire jalr, jr, any_jump;
+  assign jalr = (~instr_op[4]) & (~instr_op[3]) & instr_op[2] & instr_op[1] & instr_op[0];
+  assign jr = (~instr_op[4]) & (~instr_op[3]) & instr_op[2] & (~instr_op[1]) & (instr_op[0]);
+  assign any_jump = jalr | jr;
+  mux2_1_16bit AIN(.InB(read2data), .InA(pc), .S(jr|jalr), .Out(a_in));
+//  mux2_1_16bit AIN(.InB(), .InA(jump_in), .S(jr), .Out());
+  adder16 JUMP(.A(a_in), .B(jump_in), .Cin(1'b0), .sign(1'b1), .Out(jump_out), .Ofl(jump_ofl));
 
   //This is the only err conditions we can encounter here?
   assign err = (branch_ofl | alu_ofl) & (~(passThroughA | passThroughB)); //add jump_ofl here
