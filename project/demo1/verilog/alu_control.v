@@ -72,6 +72,10 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
         begin
           op_to_alu = 3'b100;
          end
+      7'b10010_xx: //SLBI
+        begin
+          op_to_alu = 3'b101; //OR
+         end
 
 ///////////////////////////////////////
       7'b11010_00: //ROL

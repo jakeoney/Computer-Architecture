@@ -1,5 +1,6 @@
 module control(instruction_op, five_bit_imm,
-               RegDst, Jump, Branch, MemRead, MemToReg, ALU_op, MemWrite, ALUSrc, RegWrite, err, halt);
+               RegDst, Jump, Branch, MemRead, MemToReg, ALU_op, MemWrite,
+               ALUSrc, RegWrite, err, halt, ZeroExtend);
 
   input [4:0] instruction_op;    //OP Code from instruction fetch
 
@@ -15,6 +16,7 @@ module control(instruction_op, five_bit_imm,
   output reg ALUSrc;         // Register file data2 or immediate MUX control
   output reg RegWrite;        // To write to register file or not
   output reg five_bit_imm;
+  output reg ZeroExtend;
   assign ALU_op = instruction_op;
 
   always @(instruction_op)
@@ -30,6 +32,7 @@ module control(instruction_op, five_bit_imm,
     RegWrite = 1'b0;
     halt     = 1'b0;
     five_bit_imm = 1'b0;
+    ZeroExtend = 1'b0;
     casex(instruction_op)
       5'b0_0000: //halt
         begin
@@ -175,6 +178,7 @@ module control(instruction_op, five_bit_imm,
         begin
           RegWrite = 1'b1;
           ALUSrc = 1'b1;
+          ZeroExtend = 1'b1;
         end
       5'b0_0100: //J
         begin

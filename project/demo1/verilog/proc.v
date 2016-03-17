@@ -26,6 +26,7 @@ module proc (/*AUTOARG*/
   wire control_err;
   wire halt;
   wire five_bit_imm;
+  wire ZeroExtend;
 
   //write_back Outputs
   wire [15:0] wb_out; 
@@ -71,7 +72,7 @@ module proc (/*AUTOARG*/
   // instr_decode unit
   instr_decode DECODE(//Inputs
                       .instruction(instruction[10:0]), .RegWrite(RegWrite), .RegDst(RegDst), .writeData(wb_out),
-                      .clk(clk), .rst(rst), .pc(next_pc[15:11]), .five_bit_imm(five_bit_imm),
+                      .clk(clk), .rst(rst), .pc(next_pc[15:11]), .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend),
                       //Outputs
                       .jumpAddr(jumpAddr), .read1data(read1data), .read2data(read2data), .immediate(immediate),
                       .err(decode_err));  
@@ -105,7 +106,7 @@ module proc (/*AUTOARG*/
                     //Outputs 
                     .RegDst(RegDst), .Jump(Jump), .Branch(Branch), .MemRead(MemRead), .MemToReg(MemToReg), .halt(halt),
                     .ALU_op(ALU_op), .MemWrite(MemWrite), .ALUSrc(ALU_Src), .RegWrite(RegWrite), .err(control_err),
-                    .five_bit_imm(five_bit_imm));
+                    .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend));
 
   alu_control ALU_CTL(//Inputs
                       .ALU_op(ALU_op), .ALU_funct(instruction[1:0]), 

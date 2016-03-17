@@ -21,7 +21,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   output err;
   output ltz;
 
-  wire [15:0] alu_in2;
+  wire [15:0] alu_in1, alu_in2;
 //  wire [15:0] imm_shift;  //Immediate shifted left 2 bits
   wire [1:0] sll;         //Shift Left logical op code
   wire toShift;           //Whether or not to shift
@@ -31,19 +31,28 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   wire alu_ofl;
   wire [15:0] result, temp_result;
   wire isSetOP;           //Value is 1 if we have SEQ, SLT, SLE, SCO
+  wire seq, slt, sle, sco;
+  wire [15:0] set_condition_result; 
 
   assign sll = 2'b01;
   assign toShift = 1'b1;
   assign cin_for_branch = 1'b0; //Shouldn't have to have a cin value. Already shifted
   assign sign_branch = 1'b0; //I don't think it is ever signed...
 
+  wire isSLBI;
+  wire [15:0] shiftBits_SLBI;
+  
+  assign isSLBI = ((~instr_op[0]) & instr_op[1] & (~instr_op[2]) & (~instr_op[3]) & instr_op[4]);
+  assign shiftBits_SLBI = read2data << 8;
 
-  //First, MUX read2data and immediate
+  mux2_1_16bit ALU_IN1(.InB(shiftBits_SLBI), .InA(read2data), .S(isSLBI), .Out(alu_in1));
+
+  //First, MUX read1data and immediate
   mux2_1_16bit ALU_IN2(.InB(immediate), .InA(read1data), .S(ALUSrc), .Out(alu_in2));
 
   //Instanitate the ALU
   alu ALU(//Inputs
-          .A(read2data), .B(alu_in2), .Cin(cin), .Op(alu_op), .invA(invA), .invB(invB), .sign(sign), 
+          .A(alu_in1), .B(alu_in2), .Cin(cin), .Op(alu_op), .invA(invA), .invB(invB), .sign(sign), 
           //Outputs
           .Out(result), .Ofl(alu_ofl), .Z(zero), .ltz(ltz));
 
@@ -55,9 +64,6 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   //if opcode == SLT & ltz flag -> alu_result = 1
   //if opcode == SLE & (ltz | Zero) -> alu_result = 1
   //if opcode == SCO & ofl -> alu_result = 1
-  wire seq, slt, sle, sco;
-  wire [15:0] set_condition_result; 
-
   assign seq = ((~instr_op[1]) & (~instr_op[0])) & zero;
   assign slt = ((~instr_op[1]) & instr_op[0]) & ltz;
   assign sle = (instr_op[1] & (~instr_op[0])) & (zero | ltz);
