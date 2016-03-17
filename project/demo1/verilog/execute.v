@@ -1,5 +1,5 @@
 module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign,
-              passThroughA, passThroughB, instr_op, MemWrite,
+              passThroughA, passThroughB, instr_op, MemWrite, jump_in, jump_out,
               ALU_result, branch_result, zero, ltz, err);
 
   input [2:0] alu_op;   //OP code
@@ -15,7 +15,9 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   input passThroughB;
   input [4:0] instr_op;
   input MemWrite;
+  input [15:0] jump_in;
   
+  output [15:0] jump_out;
   output [15:0] ALU_result; //From main ALU unit
   output [15:0] branch_result; //From branch calculation alu unit
   output zero;
@@ -29,7 +31,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   wire cin_for_branch;
   wire sign_branch;
   wire branch_ofl;        //Not sure we can have overflow here..?
-  wire alu_ofl;
+  wire alu_ofl, jump_ofl;
   wire [15:0] result, temp_result;
   wire isSetOP;           //Value is 1 if we have SEQ, SLT, SLE, SCO
   wire seq, slt, sle, sco;
@@ -105,8 +107,10 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
               .A(pc), .B(immediate), .Cin(cin_for_branch), .sign(sign_branch), 
               //Outputs
               .Out(branch_result), .Ofl(branch_ofl));
+  
+  adder16 JUMP(.A(pc), .B(jump_in), .Cin(1'b0), .sign(1'b1), .Out(jump_out), .Ofl(jump_ofl));
 
   //This is the only err conditions we can encounter here?
-  assign err = (branch_ofl | alu_ofl) & (~(passThroughA | passThroughB));
+  assign err = (branch_ofl | alu_ofl) & (~(passThroughA | passThroughB)); //add jump_ofl here
 
 endmodule

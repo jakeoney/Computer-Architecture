@@ -11,6 +11,9 @@ module write_back(jumpAddr, branch_or_pc, Jump, mem_data, ALU_result, MemToReg,
   output [15:0] pc;          //New PC. either jump, branch, or pc + 2
   output [15:0] out_data;    //Either mem_data or alu_result
 
+  //JUMP Logic
+
+
   //JUMP OR BRANCH_OR_PC Logic
   mux2_1_16bit PC_MUX (.InB(jumpAddr), .InA(branch_or_pc), .S(Jump), .Out(pc));
 

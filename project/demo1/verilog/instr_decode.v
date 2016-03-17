@@ -58,7 +58,7 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
 //  shifter_two_bit SHIFT(.In(instruction), .Cnt(toShift), .Op(sll), .Out(temp_jump));
   
   //Combine with top bits from PC to make it a 16bit value
-  assign jumpAddr = {pc,instruction[10:0]};
+  sign_extend11bit SJUMP(.in(instruction[10:0]), .out(jumpAddr));
 
   //Sign extend Immediate value
   sign_extend8bit EXT8 (.in(instruction[7:0]), .out(imm1));
