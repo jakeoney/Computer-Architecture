@@ -140,6 +140,10 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
         begin
           op_to_alu = 3'b100;
          end
+      7'b11001_xx: //BTR
+        begin
+          op_to_alu = 3'b100;
+        end
 ///////////////////////////////////////
 
 

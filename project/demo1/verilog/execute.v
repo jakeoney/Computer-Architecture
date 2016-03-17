@@ -43,6 +43,9 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   wire isSLBI;
   wire [15:0] shiftBits_SLBI;
 
+  wire isBTR;
+  wire [15:0] btr_result, ALU_result_temp;
+  
   //ROTATE RIGHT LOGIC//
   wire [15:0] nRead1data, newRead1data;
   wire isRotateRight;
@@ -55,6 +58,11 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 
   mux2_1_16bit ROTATERIGHT(.InB(nRead1data), .InA(read1data), .S(isRotateRight), .Out(newRead1data));
   //END ROTATE RIGHT LOGIC
+
+  assign isBTR = (instr_op[0] & (~instr_op[1]) & (~instr_op[2]) & instr_op[3] & instr_op[4]);
+  assign btr_result = {read2data[0],read2data[1],read2data[2],read2data[3],read2data[4],read2data[5],read2data[6],
+                       read2data[7], read2data[8],read2data[9],read2data[10],read2data[11],read2data[12],
+                       read2data[13],read2data[14],read2data[15]}; 
 
   assign isSLBI = ((~instr_op[0]) & instr_op[1] & (~instr_op[2]) & (~instr_op[3]) & instr_op[4]);
   assign shiftBits_SLBI = read2data << 8;
@@ -86,8 +94,8 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign isSetOP = (instr_op[2] & instr_op[3] & instr_op[4]);
   assign set_condition_result = (seq | slt | sle | sco) ? 16'h0001 : 16'h0000;
   
-  mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result));
-
+  mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result_temp));
+  mux2_1_16bit BTRresult(.InB(btr_result), .InA(ALU_result_temp), .S(isBTR), .Out(ALU_result));
   //Branch Calculation
   //shift immediate value left 
   //shifter_two_bit SHIFT(.In(immediate), .Cnt(toShift), .Op(sll), .Out(imm_shift));
