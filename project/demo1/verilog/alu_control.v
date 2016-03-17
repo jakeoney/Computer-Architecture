@@ -112,6 +112,22 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
         begin
           op_to_alu = 3'b001;
          end
+      7'b11010_10: //ROR
+        begin
+          op_to_alu = 3'b010;
+         end
+      7'b10110_xx: //RORI
+        begin
+          op_to_alu = 3'b010;
+         end
+      7'b11010_11: //SRL
+        begin
+          op_to_alu = 3'b011;
+         end
+      7'b10111_xx: //SRLI
+        begin
+          op_to_alu = 3'b011;
+         end
 ///////////////////////////////////////
 
 

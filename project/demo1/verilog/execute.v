@@ -41,18 +41,31 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 
   wire isSLBI;
   wire [15:0] shiftBits_SLBI;
-  
+
+  //ROTATE RIGHT LOGIC//
+  wire [15:0] nRead1data, newRead1data;
+  wire isRotateRight;
+  wire [2:0] ror_or_alu_op;
+
+  assign nRead1data = (~read1data) + 1;
+  //If Rotate right, flip all the bits of shifter value and add 1 
+  assign isRotateRight = ((~alu_op[0]) & alu_op[1] & (~alu_op[2]));   // ROR or RORI
+  assign ror_or_alu_op = (isRotateRight) ? 3'b000 : alu_op; //Perform a rotate left
+
+  mux2_1_16bit ROTATERIGHT(.InB(nRead1data), .InA(read1data), .S(isRotateRight), .Out(newRead1data));
+  //END ROTATE RIGHT LOGIC
+
   assign isSLBI = ((~instr_op[0]) & instr_op[1] & (~instr_op[2]) & (~instr_op[3]) & instr_op[4]);
   assign shiftBits_SLBI = read2data << 8;
 
   mux2_1_16bit ALU_IN1(.InB(shiftBits_SLBI), .InA(read2data), .S(isSLBI), .Out(alu_in1));
 
   //First, MUX read1data and immediate
-  mux2_1_16bit ALU_IN2(.InB(immediate), .InA(read1data), .S(ALUSrc), .Out(alu_in2));
+  mux2_1_16bit ALU_IN2(.InB(immediate), .InA(newRead1data), .S(ALUSrc), .Out(alu_in2));
 
   //Instanitate the ALU
   alu ALU(//Inputs
-          .A(alu_in1), .B(alu_in2), .Cin(cin), .Op(alu_op), .invA(invA), .invB(invB), .sign(sign), 
+          .A(alu_in1), .B(alu_in2), .Cin(cin), .Op(ror_or_alu_op), .invA(invA), .invB(invB), .sign(sign), 
           //Outputs
           .Out(result), .Ofl(alu_ofl), .Z(zero), .ltz(ltz));
 
