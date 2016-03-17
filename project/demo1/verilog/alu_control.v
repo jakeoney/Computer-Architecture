@@ -96,11 +96,23 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
           invB = 1'b1;
           op_to_alu = 3'b111;
          end
-///////////////////////////////////////
       7'b11010_00: //ROL
         begin
           op_to_alu = 3'b000;
          end
+      7'b10100_xx: //ROLI
+        begin
+          op_to_alu = 3'b000;
+         end
+      7'b11010_01: //SLL
+        begin
+          op_to_alu = 3'b001;
+         end
+      7'b10101_xx: //SLLI
+        begin
+          op_to_alu = 3'b001;
+         end
+///////////////////////////////////////
 
 
       default:
