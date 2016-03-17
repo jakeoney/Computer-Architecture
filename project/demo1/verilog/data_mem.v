@@ -38,9 +38,10 @@ module data_mem(zero, Branch, branchAddr, pc, MemWrite, MemRead, ALU_result, wri
   
   assign toBranch = Branch & isThereABranch;
   mux2_1_16bit BMUX(.InB(branchAddr), .InA(pc), .S(toBranch), .Out(branch_or_pc));
+  //
 
-  mux2_1_16bit STADDR(.InA(writedata), .InB(ALU_result), .S(MemWrite), .Out(addr));
-  mux2_1_16bit STIN(.InA(ALU_result), .InB(writedata), .S(MemWrite), .Out(in));
+  mux2_1_16bit STADDR(.InA(writedata), .InB(ALU_result), .S(MemRead), .Out(addr));
+  mux2_1_16bit STIN(.InA(ALU_result), .InB(writedata), .S(MemRead), .Out(in));
 
   //Data Memory
   memory2c DMEM(.data_out(readData), .data_in(in), .addr(addr), 
