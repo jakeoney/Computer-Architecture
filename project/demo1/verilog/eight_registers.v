@@ -5,6 +5,8 @@ module eight_registers(clk, rst, write, writedata, read0, read1, read2, read3, r
   input [15:0] writedata;
   output[15:0] read0, read1, read2, read3, read4, read5, read6, read7;
 
+  wire [7:0] write_reg;
+
   reg16bit ZERO (.clk(clk), .rst(rst), .write(write[0]),  .writedata(writedata[15:0]), .readdata(read0[15:0]));
   reg16bit ONE  (.clk(clk), .rst(rst), .write(write[1]),  .writedata(writedata[15:0]), .readdata(read1[15:0]));
   reg16bit TWO  (.clk(clk), .rst(rst), .write(write[2]),  .writedata(writedata[15:0]), .readdata(read2[15:0]));

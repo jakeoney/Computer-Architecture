@@ -1,4 +1,4 @@
-module alu(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z);
+module alu(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z, ltz);
   input [15:0] A;
   input [15:0] B;
   input Cin;
@@ -10,6 +10,7 @@ module alu(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z);
   output [15:0] Out;
   output Ofl;
   output Z;
+  output ltz;
 
   wire [15:0] a_inv, b_inv, muxed_A, muxed_B;
   wire [15:0] add_out, or_out, xor_out, and_out, logical_out, shift_out;
@@ -44,6 +45,6 @@ module alu(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z);
   mux4_1 OFLMUX2(.InD(1'b0), .InC(1'b0), .InB(1'b0), .InA(Ofl_temp), .S(Op[1:0]), .Out(Ofl));
 
   //zero detector of some sort...
-  zero_detector ZERO(Out[15:0], Z);
+  zero_detector ZERO(.In(Out[15:0]), .Z(Z), .ltz(ltz));
   
 endmodule

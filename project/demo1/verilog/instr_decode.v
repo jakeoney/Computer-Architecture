@@ -22,21 +22,21 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   wire [1:0] sll;           //sll op code
   wire toShift;             //Always want to shift
 
-  assign read1reg = instruction[7:5];
-  assign read2reg = instruction[10:8];
+  assign read2reg = instruction[7:5];
+  assign read1reg = instruction[10:8];
   assign write1_reg = instruction[4:2];
   assign sll = 2'b01;
   assign toShift = 1'b1;
 
   //Decide which register is to be used as the write_reg
-  assign write_reg = (RegDst == 1'b0) ? read2reg : write1_reg;
+  assign write_reg = (RegDst == 1'b0) ? read1reg : write1_reg;
   
   //Instantiate the register file
-  rf_bypass REGS(//Output
-                 .read1data(read1data), .read2data(read2data), .err(err),
-                 //Input
-                 .clk(clk), .rst(rst), .read1regsel(read1reg), .read2regsel(read2reg), 
-                 .writeregsel(write_reg), .writedata(writeData), .write(RegWrite));
+  rf REGS(//Output
+          .read1data(read1data), .read2data(read2data), .err(err),
+          //Input
+          .clk(clk), .rst(rst), .read1regsel(read2reg), .read2regsel(read1reg), 
+          .writeregsel(write_reg), .writedata(writeData), .write(RegWrite));
   
   //JUMP logic
   //shift jump digits left 2

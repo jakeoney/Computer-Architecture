@@ -40,6 +40,7 @@ module proc (/*AUTOARG*/
   wire zero;
   wire [15:0] branch_result;
   wire alu_err;
+  wire ltz;
 
   //Decode Outputs
   wire [15:0] jumpAddr;
@@ -81,12 +82,14 @@ module proc (/*AUTOARG*/
                     .immediate(immediate), .pc(next_pc), .invA(invA), .invB(invB), .cin(cin), .sign(sign),  
                     .passThroughA(passA), .passThroughB(passB),
                     //Outputs
-                    .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err));  
+                    .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err),
+                    .ltz(ltz));  
   
   // mem unit
   data_mem MEM    ( //Inputs
                     .zero(zero), .Branch(Branch), .branchAddr(branch_result), .pc(next_pc), .MemWrite(MemWrite), 
-                    .MemRead(MemRead), .ALU_result(ALU_result), .writedata(read2data), .clk(clk), .rst(rst), .halt(halt),
+                    .MemRead(MemRead), .ALU_result(ALU_result), .writedata(read2data), .clk(clk), .rst(rst), 
+                    .halt(halt), .ltz(ltz), .branch_op(ALU_op[1:0]),
                     //Outputs
                     .branch_or_pc(branch_or_pc), .readData(data_mem_out));  
   

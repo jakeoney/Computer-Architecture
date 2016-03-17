@@ -1,6 +1,6 @@
 module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign,
               passThroughA, passThroughB,
-              ALU_result, branch_result, zero, err);
+              ALU_result, branch_result, zero, ltz, err);
 
   input [2:0] alu_op;   //OP code
   input ALUSrc;         //ALUSrc MUX control signal (read2data or immediate)
@@ -18,6 +18,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   output [15:0] branch_result; //From branch calculation alu unit
   output zero;
   output err;
+  output ltz;
 
   wire [15:0] alu_in2;
 //  wire [15:0] imm_shift;  //Immediate shifted left 2 bits
@@ -36,13 +37,13 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 
 
   //First, MUX read2data and immediate
-  mux2_1_16bit ALU_IN2(.InB(immediate), .InA(read2data), .S(ALUSrc), .Out(alu_in2));
+  mux2_1_16bit ALU_IN2(.InB(immediate), .InA(read1data), .S(ALUSrc), .Out(alu_in2));
 
   //Instanitate the ALU
   alu ALU(//Inputs
-          .A(read1data), .B(alu_in2), .Cin(cin), .Op(alu_op), .invA(invA), .invB(invB), .sign(sign), 
+          .A(read2data), .B(alu_in2), .Cin(cin), .Op(alu_op), .invA(invA), .invB(invB), .sign(sign), 
           //Outputs
-          .Out(result), .Ofl(alu_ofl), .Z(zero));
+          .Out(result), .Ofl(alu_ofl), .Z(zero), .ltz(ltz));
 
   mux4_1_16bit RESULT(.InD(result), .InC(alu_in2), .InB(read1data), .InA(result), .S({passThroughB, passThroughA}), .Out(ALU_result));
 

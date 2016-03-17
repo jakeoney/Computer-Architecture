@@ -25,24 +25,47 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
         begin
 
         end
+      /*WORKING INSTRUCTIONS*/
+      7'b11000_xx: //LBI
+        begin
+          op_to_alu = 3'b000;
+          passB = 1'b1;
+        end
       7'b11011_00: //ADD
         begin
           op_to_alu = 3'b100;
         end
       7'b11011_11: //ANDN
         begin
-          invA = 1'b1;
+          invB = 1'b1;
           op_to_alu = 3'b111;
          end
+      7'b11011_01: //SUB
+        begin
+          invA = 1'b1;
+          cin = 1'b1;
+          op_to_alu = 3'b100;
+         end
+      7'b11011_10: //XOR
+        begin
+          op_to_alu = 3'b110;
+         end
+      7'b11010_00: //ROL
+        begin
+          op_to_alu = 3'b000;
+         end
+
+      7'b10001_xx: //SUBI
+        begin
+          invA = 1'b1;
+          cin = 1'b1;
+          op_to_alu = 3'b100;
+         end
+///////////////////////////////////////
       7'b01000_xx: //ADDI
         begin
           sign = 1'b1;
           op_to_alu = 3'b100;
-        end
-      7'b11000_xx: //LBI
-        begin
-          op_to_alu = 3'b000;
-          passB = 1'b1;
         end
 
       default:
