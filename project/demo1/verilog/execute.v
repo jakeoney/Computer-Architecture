@@ -1,5 +1,5 @@
 module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign,
-              passThroughA, passThroughB,
+              passThroughA, passThroughB, instr_op,
               ALU_result, branch_result, zero, ltz, err);
 
   input [2:0] alu_op;   //OP code
@@ -13,6 +13,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   input sign;
   input passThroughA;
   input passThroughB;
+  input [4:0] instr_op;
   
   output [15:0] ALU_result; //From main ALU unit
   output [15:0] branch_result; //From branch calculation alu unit
@@ -28,7 +29,8 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   wire sign_branch;
   wire branch_ofl;        //Not sure we can have overflow here..?
   wire alu_ofl;
-  wire [15:0] result;
+  wire [15:0] result, temp_result;
+  wire isSetOP;           //Value is 1 if we have SEQ, SLT, SLE, SCO
 
   assign sll = 2'b01;
   assign toShift = 1'b1;
@@ -45,7 +47,26 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
           //Outputs
           .Out(result), .Ofl(alu_ofl), .Z(zero), .ltz(ltz));
 
-  mux4_1_16bit RESULT(.InD(result), .InC(alu_in2), .InB(read1data), .InA(result), .S({passThroughB, passThroughA}), .Out(ALU_result));
+  //This mux is used to just "pass through A or B if no ALU operation is to be
+  //performed
+  mux4_1_16bit RESULT(.InD(result), .InC(alu_in2), .InB(read1data), .InA(result), .S({passThroughB, passThroughA}), .Out(temp_result));
+
+  //if opcode == SEQ & Zero flag -> alu_result = 1
+  //if opcode == SLT & ltz flag -> alu_result = 1
+  //if opcode == SLE & (ltz | Zero) -> alu_result = 1
+  //if opcode == SCO & ofl -> alu_result = 1
+  wire seq, slt, sle, sco;
+  wire [15:0] set_condition_result; 
+
+  assign seq = ((~instr_op[1]) & (~instr_op[0])) & zero;
+  assign slt = ((~instr_op[1]) & instr_op[0]) & ltz;
+  assign sle = (instr_op[1] & (~instr_op[0])) & (zero | ltz);
+  assign sco = (instr_op[1] & instr_op[0]) & alu_ofl;
+
+  assign isSetOP = (instr_op[2] & instr_op[3] & instr_op[4]);
+  assign set_condition_result = (seq | slt | sle | sco) ? 16'h0001 : 16'h0000;
+  
+  mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result));
 
   //Branch Calculation
   //shift immediate value left 

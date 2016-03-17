@@ -50,6 +50,30 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
         begin
           op_to_alu = 3'b110;
          end
+      7'b11100_xx: //SEQ
+        begin
+          invA = 1'b1;
+          cin = 1'b1;
+          op_to_alu = 3'b100;
+         end
+      7'b11101_xx: //SLT
+        begin
+          invB = 1'b1;
+          cin = 1'b1;
+          op_to_alu = 3'b100;
+         end
+      7'b11110_xx: //SLE
+        begin
+          invB = 1'b1;
+          cin = 1'b1;
+          op_to_alu = 3'b100;
+         end
+      7'b11111_xx: //SCO
+        begin
+          op_to_alu = 3'b100;
+         end
+
+///////////////////////////////////////
       7'b11010_00: //ROL
         begin
           op_to_alu = 3'b000;
@@ -61,7 +85,6 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
           cin = 1'b1;
           op_to_alu = 3'b100;
          end
-///////////////////////////////////////
       7'b01000_xx: //ADDI
         begin
           sign = 1'b1;

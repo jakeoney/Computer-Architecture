@@ -80,7 +80,7 @@ module proc (/*AUTOARG*/
   execute EXECUTE ( //Inputs
                     .alu_op(op_to_alu), .ALUSrc(ALU_Src), .read1data(read1data), .read2data(read2data), 
                     .immediate(immediate), .pc(next_pc), .invA(invA), .invB(invB), .cin(cin), .sign(sign),  
-                    .passThroughA(passA), .passThroughB(passB),
+                    .passThroughA(passA), .passThroughB(passB), .instr_op(ALU_op),
                     //Outputs
                     .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err),
                     .ltz(ltz));  
