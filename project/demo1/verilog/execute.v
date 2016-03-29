@@ -79,8 +79,15 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 
   mux4_1_16bit ALU_IN1(.InD(read2data), .InC(shiftBits_SLBI), .InB(read1data), .InA(read2data), .S({isSLBI, MemWrite}), .Out(alu_in1));
 
+  wire [15:0] alu_in2_temp;
   //First, MUX read1data and immediate
-  mux4_1_16bit ALU_IN2(.InD(immediate), .InC(immediate), .InB(read2data), .InA(newRead1data), .S({ALUSrc,MemWrite}), .Out(alu_in2));
+  mux4_1_16bit ALU_IN2(.InD(immediate), .InC(immediate), .InB(read2data), .InA(newRead1data), .S({ALUSrc,MemWrite}), .Out(alu_in2_temp));
+
+  //If branch, make zero be the input for alu_in2
+  wire isBranch;
+  assign isBranch = ((~instr_op[4]) & instr_op[3] & instr_op[2]);
+  mux2_1_16bit ALU2_BRANCH (.InB(16'h0000), .InA(alu_in2_temp), .S(isBranch), .Out(alu_in2));
+
   //Instanitate the ALU
   alu ALU(//Inputs
           .A(alu_in1), .B(alu_in2), .Cin(cin), .Op(ror_or_alu_op), .invA(invA), .invB(invB), .sign(sign), 

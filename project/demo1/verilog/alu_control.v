@@ -72,6 +72,7 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
          end
       7'b11111_xx: //SCO
         begin
+          sign = 1'b1;
           op_to_alu = 3'b100;
          end
       7'b10010_xx: //SLBI
@@ -148,6 +149,21 @@ module alu_control(ALU_op, ALU_funct, invA, invB, sign, op_to_alu, cin, passA, p
         end
 ///////////////////////////////////////
 
+      
+      7'b01110_xx: //BLTZ
+        begin
+          sign = 1'b1;
+          invB = 1'b1;
+          cin = 1'b1;
+          op_to_alu = 3'b100;
+        end
+      7'b01111_xx: //BGEZ
+        begin
+          sign = 1'b1;
+          invB = 1'b1;
+          cin = 1'b1;
+          op_to_alu = 3'b100;
+        end
 
       default:
         begin
