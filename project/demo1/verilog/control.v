@@ -84,7 +84,7 @@ module control(instruction_op, five_bit_imm,
       5'b1_0110: //RORI
         begin
           five_bit_imm = 1'b1;
-          ALUSrc = 1'b1;
+          //ALUSrc = 1'b1;
           RegWrite = 1'b1;
         end
       5'b1_0111: //SRLI
@@ -111,7 +111,7 @@ module control(instruction_op, five_bit_imm,
         end
       5'b1_0011: //STU
         begin
-          //RegDst = 1'b1;
+          //RegDst /= 1'b1;
           RegWrite = 1'b1;
           five_bit_imm = 1'b1;
           //MemToReg = 1'b1;

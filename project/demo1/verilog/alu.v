@@ -14,7 +14,7 @@ module alu(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z, ltz);
 
   wire [15:0] a_inv, b_inv, muxed_A, muxed_B;
   wire [15:0] add_out, or_out, xor_out, and_out, logical_out, shift_out;
-  wire add_Ofl, Ofl_temp;
+  wire add_Ofl, Ofl_temp, ltz_temp;
 
   //Perform the inverstion of A and B
   inverter A_INV(.In(A[15:0]), .sign(sign), .Out(a_inv[15:0]));
@@ -45,6 +45,8 @@ module alu(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z, ltz);
   mux4_1 OFLMUX2(.InD(1'b0), .InC(1'b0), .InB(1'b0), .InA(Ofl_temp), .S(Op[1:0]), .Out(Ofl));
 
   //zero detector of some sort...
-  zero_detector ZERO(.In(Out[15:0]), .Z(Z), .ltz(ltz));
+  zero_detector ZERO(.In(Out[15:0]), .Z(Z), .ltz(ltz_temp));
+
+  assign ltz = ((Ofl & (Out[15] ^ muxed_A[15])) == 1'b1)  ? ~ltz_temp : ltz_temp;
   
 endmodule

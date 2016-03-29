@@ -27,6 +27,7 @@ module proc (/*AUTOARG*/
   wire halt;
   wire five_bit_imm;
   wire ZeroExtend;
+  wire alu_ofl;
 
   //write_back Outputs
   wire [15:0] wb_out; 
@@ -105,7 +106,7 @@ module proc (/*AUTOARG*/
   
   // control unit
   control CONTROL ( //Inputs
-                    .instruction_op(instruction[15:11]), 
+                    .instruction_op(instruction[15:11]),
                     //Outputs 
                     .RegDst(RegDst), .Jump(Jump), .Branch(Branch), .MemRead(MemRead), .MemToReg(MemToReg), .halt(halt),
                     .ALU_op(ALU_op), .MemWrite(MemWrite), .ALUSrc(ALU_Src), .RegWrite(RegWrite), .err(control_err),

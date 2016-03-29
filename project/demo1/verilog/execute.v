@@ -24,6 +24,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   output err;
   output ltz;
 
+//  wire zero1, ltz1;
   wire [15:0] alu_in1, alu_in2;
 //  wire [15:0] imm_shift;  //Immediate shifted left 2 bits
   wire [1:0] sll;         //Shift Left logical op code
@@ -53,12 +54,19 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   wire isRotateRight;
   wire [2:0] ror_or_alu_op;
 
-  assign nRead1data = (~read1data) + 1;
+  wire [15:0] nRead1, rotateVal;
+  wire isRORI;
+
+  assign isRORI = ((~instr_op[0]) & instr_op[1] & instr_op[2] & (~instr_op[3]) & instr_op[4]);
+
+  mux2_1_16bit RORI(.InB(immediate), .InA(read1data), .S(isRORI), .Out(rotateVal));
+  inverter NREAD1(.In(rotateVal), .sign(1'b1), .Out(nRead1data));
+  assign nRead1 = nRead1data + 1;
   //If Rotate right, flip all the bits of shifter value and add 1 
   assign isRotateRight = ((~alu_op[0]) & alu_op[1] & (~alu_op[2]));   // ROR or RORI
   assign ror_or_alu_op = (isRotateRight) ? 3'b000 : alu_op; //Perform a rotate left
 
-  mux2_1_16bit ROTATERIGHT(.InB(nRead1data), .InA(read1data), .S(isRotateRight), .Out(newRead1data));
+  mux2_1_16bit ROTATERIGHT(.InB(nRead1), .InA(read1data), .S(isRotateRight), .Out(newRead1data));
   //END ROTATE RIGHT LOGIC
 
   assign isBTR = (instr_op[0] & (~instr_op[1]) & (~instr_op[2]) & instr_op[3] & instr_op[4]);
@@ -73,7 +81,6 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 
   //First, MUX read1data and immediate
   mux4_1_16bit ALU_IN2(.InD(immediate), .InC(immediate), .InB(read2data), .InA(newRead1data), .S({ALUSrc,MemWrite}), .Out(alu_in2));
-
   //Instanitate the ALU
   alu ALU(//Inputs
           .A(alu_in1), .B(alu_in2), .Cin(cin), .Op(ror_or_alu_op), .invA(invA), .invB(invB), .sign(sign), 
@@ -84,6 +91,15 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   //performed
   mux4_1_16bit RESULT(.InD(result), .InC(alu_in2), .InB(read1data), .InA(result), .S({passThroughB, passThroughA}), .Out(temp_result));
 
+  assign isSetOP = (instr_op[2] & instr_op[3] & instr_op[4]);
+  assign set_condition_result = (seq | slt | sle | sco) ? 16'h0001 : 16'h0000;
+  
+  mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result_temp));
+  mux2_1_16bit BTRresult(.InB(btr_result), .InA(ALU_result_temp), .S(isBTR), .Out(ALU_result));
+  //assign ltz = alu_ofl ^ (ALU_result[15]);
+  //assign ltz = ((alu_ofl & (Out[15] ^ muxed_A[15])) == 1’b1) ? ~ltz_temp : ltz_temp
+  //zero_detector ZRES(.In(ALU_result), .Z(zero), .ltz(ltz));
+  
   //if opcode == SEQ & Zero flag -> alu_result = 1
   //if opcode == SLT & ltz flag -> alu_result = 1
   //if opcode == SLE & (ltz | Zero) -> alu_result = 1
@@ -93,18 +109,14 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign sle = (instr_op[1] & (~instr_op[0])) & (zero | ltz);
   assign sco = (instr_op[1] & instr_op[0]) & alu_ofl;
 
-  assign isSetOP = (instr_op[2] & instr_op[3] & instr_op[4]);
-  assign set_condition_result = (seq | slt | sle | sco) ? 16'h0001 : 16'h0000;
-  
-  mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result_temp));
-  mux2_1_16bit BTRresult(.InB(btr_result), .InA(ALU_result_temp), .S(isBTR), .Out(ALU_result));
+
   //Branch Calculation
   //shift immediate value left 
   //shifter_two_bit SHIFT(.In(immediate), .Cnt(toShift), .Op(sll), .Out(imm_shift));
 
   //add branch and pc
   adder16 ADD(//Inputs
-              .A(pc), .B(immediate), .Cin(cin_for_branch), .sign(sign_branch), 
+      .A(pc), .B(immediate), .Cin(cin_for_branch), .sign(sign_branch), 
               //Outputs
               .Out(branch_result), .Ofl(branch_ofl));
   
