@@ -152,7 +152,7 @@ report_hierarchy
 Report : hierarchy
 Design : fifo
 Version: B-2008.09-SP3
-Date   : Sun Mar 13 19:21:38 2016
+Date   : Tue Mar 15 12:01:09 2016
 ****************************************
 
 Information: This design contains unmapped logic. (RPT-7)
@@ -451,62 +451,62 @@ Information: Updating design information... (UID-85)
     0:00:15   10021.9      0.00       0.0       3.9 fifo_control/first/HIGH/LOW/SECOND/FIRST/NA1/out
     0:00:15   10473.8      0.00       0.0       3.6 fifo_control/second/HIGH/LOW/SECOND/LAST/NA1/out
     0:00:16   11280.1      0.00       0.0       3.3 fifo_control/fourth/LOW/FIRST/FIRST/NA2/out
-    0:00:17   11743.3      0.00       0.0       3.0 fifo_control/second/LOW/HIGH/THIRD/FIRST/NA2/out
+    0:00:16   11743.3      0.00       0.0       3.0 fifo_control/second/LOW/HIGH/THIRD/FIRST/NA2/out
     0:00:17   12220.6      0.00       0.0       2.7 fifo_control/third/HIGHMID/TOP/SECOND/THIRD/NA2/out
-    0:00:18   12340.7      0.00       0.0       2.7 fifo_state_logic/n12     
+    0:00:17   12340.7      0.00       0.0       2.7 fifo_state_logic/n12     
     0:00:18   12365.1      0.00       0.0       2.7 fifo_control/net5598     
     0:00:18   12449.1      0.00       0.0       2.6 fifo_control/second/LOW/LOW/LAST/FIRST/NA2/out
     0:00:19   12483.4      0.00       0.0       2.6 fifo_control/third/LOW/LOW/LAST/SECOND/NA3/out
     0:00:19   12484.3      0.00       0.0       2.6 fifo_control/third/LOW/LOW/THIRD/THIRD/NA2/out
-    0:00:20   12486.7      0.00       0.0       2.6 fifo_control/first/HIGHMID/TOP/THIRD/LAST/NA2/out
-    0:00:21   12508.3      0.00       0.0       2.6 fifo_control/third/HIGHMID/HIGH/SECOND/FIRST/nandAS
+    0:00:19   12486.7      0.00       0.0       2.6 fifo_control/first/HIGHMID/TOP/THIRD/LAST/NA2/out
+    0:00:20   12508.3      0.00       0.0       2.6 fifo_control/third/HIGHMID/HIGH/SECOND/FIRST/nandAS
     0:00:21   12509.2      0.00       0.0       2.6 fifo_control/first/HIGHMID/TOP/SECOND/FIRST/NA2/out
-    0:00:22   12510.1      0.00       0.0       2.6 fifo_control/second/LOW/HIGH/FIRST/THIRD/Out
-    0:00:24   12511.5      0.00       0.0       2.6 fifo_control/first/net9235
-    0:00:28   12522.8      0.02       1.9       2.6 fifo_control/net6716     
-    0:00:29   13813.4      0.13      16.0       2.3 fifo_control/ENTRY4/bit2/N3
-    0:00:30   14906.4      0.16      26.9       2.1 fifo_control/first/LOW/LOW/FIRST/FIRST/NA2/out
-    0:00:31   15792.9      0.17      30.7       1.5 fifo_control/first/LOW/LOW/FIRST/FIRST/NA3/out
-    0:00:32   16966.1      0.25      38.6       0.7 fifo_control/second/HIGHMID/LOW/THIRD/THIRD/NA3/out
-    0:00:32   18046.9      0.24      46.3       0.0 fifo_control/ENTRY1/bit35/state_reg/D
-    0:00:33   18054.9      0.20      42.2       0.0 fifo_control/ENTRY2/bit7/state_reg/D
-    0:00:33   18047.9      0.19      41.0       0.0 fifo_control/ENTRY1/bit13/state_reg/D
-    0:00:34   18145.5      0.17      39.2       0.0 fifo_control/ENTRY2/bit26/state_reg/D
-    0:00:35   18130.9      0.17      38.1       0.0 fifo_control/ENTRY2/bit20/state_reg/D
-    0:00:35   18084.5      0.16      37.3       0.0 fifo_control/ENTRY2/bit47/state_reg/D
-    0:00:36   17977.5      0.15      35.6       0.0 fifo_control/ENTRY1/bit57/state_reg/D
-    0:00:37   17837.6      0.15      34.7       0.0 fifo_control/ENTRY3/bit25/state_reg/D
-    0:00:37   17714.7      0.14      33.8       0.0 fifo_control/ENTRY1/bit22/state_reg/D
-    0:00:38   17626.4      0.14      32.8       0.0 fifo_control/ENTRY3/bit28/state_reg/D
-    0:00:38   17580.4      0.13      32.2       0.0 fifo_control/ENTRY1/bit22/state_reg/D
-    0:00:39   17552.3      0.13      31.7       0.0 fifo_control/ENTRY2/bit51/state_reg/D
-    0:00:40   17542.4      0.13      30.8       0.0 fifo_control/ENTRY2/bit9/state_reg/D
-    0:00:40   17419.0      0.12      30.1       0.0 fifo_control/ENTRY3/bit7/state_reg/D
-    0:00:41   17323.3      0.12      29.6       0.0 fifo_control/ENTRY2/bit4/state_reg/D
-    0:00:42   17229.4      0.12      28.9       0.0 fifo_control/ENTRY2/bit14/state_reg/D
-    0:00:42   17091.9      0.11      27.5       0.0 fifo_control/ENTRY3/bit47/state_reg/D
-    0:00:43   16957.7      0.11      25.6       0.0 fifo_control/ENTRY1/bit50/state_reg/D
-    0:00:44   16838.0      0.11      25.0       0.0 fifo_control/ENTRY3/bit45/state_reg/D
-    0:00:44   16778.9      0.10      24.6       0.0 fifo_control/ENTRY3/bit48/state_reg/D
-    0:00:45   16743.2      0.10      24.3       0.0 fifo_control/ENTRY2/bit42/state_reg/D
-    0:00:45   16676.6      0.10      23.8       0.0 fifo_control/ENTRY2/bit4/state_reg/D
-    0:00:46   16633.4      0.10      23.6       0.0 fifo_control/ENTRY2/bit44/state_reg/D
-    0:00:46   16540.0      0.10      23.0       0.0 fifo_control/ENTRY3/bit9/state_reg/D
-    0:00:47   16524.1      0.09      22.5       0.0                          
-    0:00:47   16517.0      0.09      22.4       0.0                          
-    0:00:48   16499.6      0.09      22.3       0.0                          
-    0:00:48   16472.9      0.09      21.3       0.0                          
-    0:00:48   16443.3      0.09      21.0       0.0                          
-    0:00:49   16444.3      0.09      20.8       0.0                          
-    0:00:49   16401.1      0.09      20.6       0.0                          
-    0:00:49   16386.5      0.09      20.5       0.0                          
-    0:00:49   16372.5      0.09      20.4       0.0                          
-    0:00:50   16334.9      0.09      20.3       0.0                          
-    0:00:50   16312.4      0.09      20.2       0.0                          
-    0:00:50   16288.9      0.09      20.0       0.0                          
-    0:00:50   16261.7      0.09      19.2       0.0                          
-    0:00:51   16249.5      0.09      19.1       0.0                          
-    0:00:51   16232.6      0.09      19.1       0.0                          
+    0:00:21   12510.1      0.00       0.0       2.6 fifo_control/second/LOW/HIGH/FIRST/THIRD/Out
+    0:00:23   12511.5      0.00       0.0       2.6 fifo_control/first/net9235
+    0:00:27   12522.8      0.02       1.9       2.6 fifo_control/net6716     
+    0:00:27   13813.4      0.13      16.0       2.3 fifo_control/ENTRY4/bit2/N3
+    0:00:28   14906.4      0.16      26.9       2.1 fifo_control/first/LOW/LOW/FIRST/FIRST/NA2/out
+    0:00:30   15792.9      0.17      30.7       1.5 fifo_control/first/LOW/LOW/FIRST/FIRST/NA3/out
+    0:00:30   16966.1      0.25      38.6       0.7 fifo_control/second/HIGHMID/LOW/THIRD/THIRD/NA3/out
+    0:00:31   18046.9      0.24      46.3       0.0 fifo_control/ENTRY1/bit35/state_reg/D
+    0:00:31   18054.9      0.20      42.2       0.0 fifo_control/ENTRY2/bit7/state_reg/D
+    0:00:32   18047.9      0.19      41.0       0.0 fifo_control/ENTRY1/bit13/state_reg/D
+    0:00:32   18145.5      0.17      39.2       0.0 fifo_control/ENTRY2/bit26/state_reg/D
+    0:00:33   18130.9      0.17      38.1       0.0 fifo_control/ENTRY2/bit20/state_reg/D
+    0:00:34   18084.5      0.16      37.3       0.0 fifo_control/ENTRY2/bit47/state_reg/D
+    0:00:34   17977.5      0.15      35.6       0.0 fifo_control/ENTRY1/bit57/state_reg/D
+    0:00:35   17837.6      0.15      34.7       0.0 fifo_control/ENTRY3/bit25/state_reg/D
+    0:00:35   17714.7      0.14      33.8       0.0 fifo_control/ENTRY1/bit22/state_reg/D
+    0:00:36   17626.4      0.14      32.8       0.0 fifo_control/ENTRY3/bit28/state_reg/D
+    0:00:36   17580.4      0.13      32.2       0.0 fifo_control/ENTRY1/bit22/state_reg/D
+    0:00:37   17552.3      0.13      31.7       0.0 fifo_control/ENTRY2/bit51/state_reg/D
+    0:00:38   17542.4      0.13      30.8       0.0 fifo_control/ENTRY2/bit9/state_reg/D
+    0:00:38   17419.0      0.12      30.1       0.0 fifo_control/ENTRY3/bit7/state_reg/D
+    0:00:39   17323.3      0.12      29.6       0.0 fifo_control/ENTRY2/bit4/state_reg/D
+    0:00:39   17229.4      0.12      28.9       0.0 fifo_control/ENTRY2/bit14/state_reg/D
+    0:00:40   17091.9      0.11      27.5       0.0 fifo_control/ENTRY3/bit47/state_reg/D
+    0:00:41   16957.7      0.11      25.6       0.0 fifo_control/ENTRY1/bit50/state_reg/D
+    0:00:41   16838.0      0.11      25.0       0.0 fifo_control/ENTRY3/bit45/state_reg/D
+    0:00:42   16778.9      0.10      24.6       0.0 fifo_control/ENTRY3/bit48/state_reg/D
+    0:00:42   16743.2      0.10      24.3       0.0 fifo_control/ENTRY2/bit42/state_reg/D
+    0:00:43   16676.6      0.10      23.8       0.0 fifo_control/ENTRY2/bit4/state_reg/D
+    0:00:43   16633.4      0.10      23.6       0.0 fifo_control/ENTRY2/bit44/state_reg/D
+    0:00:44   16540.0      0.10      23.0       0.0 fifo_control/ENTRY3/bit9/state_reg/D
+    0:00:45   16524.1      0.09      22.5       0.0                          
+    0:00:45   16517.0      0.09      22.4       0.0                          
+    0:00:45   16499.6      0.09      22.3       0.0                          
+    0:00:45   16472.9      0.09      21.3       0.0                          
+    0:00:46   16443.3      0.09      21.0       0.0                          
+    0:00:46   16444.3      0.09      20.8       0.0                          
+    0:00:46   16401.1      0.09      20.6       0.0                          
+    0:00:46   16386.5      0.09      20.5       0.0                          
+    0:00:46   16372.5      0.09      20.4       0.0                          
+    0:00:47   16334.9      0.09      20.3       0.0                          
+    0:00:47   16312.4      0.09      20.2       0.0                          
+    0:00:47   16288.9      0.09      20.0       0.0                          
+    0:00:47   16261.7      0.09      19.2       0.0                          
+    0:00:48   16249.5      0.09      19.1       0.0                          
+    0:00:48   16232.6      0.09      19.1       0.0                          
 
 
   Beginning Area-Recovery Phase  (cleanup)
@@ -515,42 +515,42 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
     TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:51   16232.6      0.09      19.1       0.0                          
-    0:00:51   16232.6      0.09      19.1       0.0                          
-    0:00:52   15563.4      0.09      18.6       0.0                          
-    0:00:53   15474.2      0.09      18.7       0.0                          
-    0:00:53   15446.1      0.09      19.1       0.0                          
-    0:00:53   15441.4      0.09      19.1       0.0                          
-    0:00:53   15436.2      0.09      19.1       0.0                          
-    0:00:53   15436.2      0.09      19.1       0.0                          
-    0:00:53   15436.2      0.09      19.1       0.0                          
-    0:00:54   14913.4      0.10      20.2       0.0                          
-    0:00:54   14830.8      0.10      20.5       0.0                          
-    0:00:54   14830.8      0.10      20.5       0.0                          
-    0:00:54   14830.8      0.10      20.5       0.0                          
-    0:00:54   14830.8      0.10      20.5       0.0                          
-    0:00:54   14830.8      0.10      20.5       0.0                          
-    0:00:54   14830.8      0.10      20.5       0.0                          
-    0:00:54   14841.6      0.09      20.1       0.0                          
-    0:00:55   14854.3      0.09      19.9       0.0                          
-    0:00:55   14851.9      0.09      19.8       0.0                          
-    0:00:55   14855.7      0.09      19.7       0.0                          
-    0:00:55   14867.9      0.09      19.6       0.0                          
-    0:00:56   14866.5      0.09      19.5       0.0                          
-    0:00:56   14868.4      0.09      19.5       0.0                          
-    0:00:56   14870.2      0.09      19.5       0.0                          
-    0:00:57   14858.5      0.09      19.4       0.0                          
-    0:00:57   14858.0      0.09      19.3       0.0                          
-    0:00:57   14858.5      0.09      19.2       0.0                          
-    0:00:57   14867.4      0.09      19.2       0.0                          
-    0:00:58   14868.4      0.09      19.1       0.0                          
-    0:00:58   14874.0      0.09      19.1       0.0                          
-    0:00:58   14872.6      0.09      19.0       0.0                          
-    0:00:58   14872.1      0.09      18.8       0.0                          
-    0:00:59   14877.7      0.09      18.6       0.0                          
-    0:00:59   14882.0      0.09      18.2       0.0 fifo_control/ENTRY2/bit34/state_reg/D
-    0:01:00   14852.4      0.08      17.9       0.0 fifo_control/ENTRY1/bit39/state_reg/D
-    0:01:00   14848.2      0.08      17.7       0.0                          
+    0:00:48   16232.6      0.09      19.1       0.0                          
+    0:00:48   16232.6      0.09      19.1       0.0                          
+    0:00:49   15563.4      0.09      18.6       0.0                          
+    0:00:49   15474.2      0.09      18.7       0.0                          
+    0:00:49   15446.1      0.09      19.1       0.0                          
+    0:00:49   15441.4      0.09      19.1       0.0                          
+    0:00:49   15436.2      0.09      19.1       0.0                          
+    0:00:50   15436.2      0.09      19.1       0.0                          
+    0:00:50   15436.2      0.09      19.1       0.0                          
+    0:00:50   14913.4      0.10      20.2       0.0                          
+    0:00:50   14830.8      0.10      20.5       0.0                          
+    0:00:50   14830.8      0.10      20.5       0.0                          
+    0:00:50   14830.8      0.10      20.5       0.0                          
+    0:00:50   14830.8      0.10      20.5       0.0                          
+    0:00:50   14830.8      0.10      20.5       0.0                          
+    0:00:50   14830.8      0.10      20.5       0.0                          
+    0:00:51   14841.6      0.09      20.1       0.0                          
+    0:00:51   14854.3      0.09      19.9       0.0                          
+    0:00:51   14851.9      0.09      19.8       0.0                          
+    0:00:52   14855.7      0.09      19.7       0.0                          
+    0:00:52   14867.9      0.09      19.6       0.0                          
+    0:00:52   14866.5      0.09      19.5       0.0                          
+    0:00:53   14868.4      0.09      19.5       0.0                          
+    0:00:53   14870.2      0.09      19.5       0.0                          
+    0:00:53   14858.5      0.09      19.4       0.0                          
+    0:00:53   14858.0      0.09      19.3       0.0                          
+    0:00:54   14858.5      0.09      19.2       0.0                          
+    0:00:54   14867.4      0.09      19.2       0.0                          
+    0:00:54   14868.4      0.09      19.1       0.0                          
+    0:00:54   14874.0      0.09      19.1       0.0                          
+    0:00:54   14872.6      0.09      19.0       0.0                          
+    0:00:55   14872.1      0.09      18.8       0.0                          
+    0:00:55   14877.7      0.09      18.6       0.0                          
+    0:00:55   14882.0      0.09      18.2       0.0 fifo_control/ENTRY2/bit34/state_reg/D
+    0:00:56   14852.4      0.08      17.9       0.0 fifo_control/ENTRY1/bit39/state_reg/D
+    0:00:56   14848.2      0.08      17.7       0.0                          
 Loading db file '/u/k/a/karu/courses/cs552/cad/Synopsys_Libraries/libs/gscl45nm.db'
 
   Optimization Complete
@@ -572,7 +572,7 @@ Report : constraint
         -all_violators
 Design : fifo
 Version: B-2008.09-SP3
-Date   : Sun Mar 13 19:22:43 2016
+Date   : Tue Mar 15 12:02:10 2016
 ****************************************
 
 

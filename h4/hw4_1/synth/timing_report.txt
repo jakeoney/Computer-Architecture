@@ -6,7 +6,7 @@ Report : timing
         -max_paths 20
 Design : rf_bypass
 Version: B-2008.09-SP3
-Date   : Sun Mar 13 18:49:28 2016
+Date   : Tue Mar 15 11:58:30 2016
 ****************************************
 
 Operating Conditions: typical   Library: gscl45nm
