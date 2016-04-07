@@ -98,15 +98,6 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   //performed
   mux4_1_16bit RESULT(.InD(result), .InC(alu_in2), .InB(read1data), .InA(result), .S({passThroughB, passThroughA}), .Out(temp_result));
 
-  assign isSetOP = (instr_op[2] & instr_op[3] & instr_op[4]);
-  assign set_condition_result = (seq | slt | sle | sco) ? 16'h0001 : 16'h0000;
-  
-  mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result_temp));
-  mux2_1_16bit BTRresult(.InB(btr_result), .InA(ALU_result_temp), .S(isBTR), .Out(ALU_result));
-  //assign ltz = alu_ofl ^ (ALU_result[15]);
-  //assign ltz = ((alu_ofl & (Out[15] ^ muxed_A[15])) == 1’b1) ? ~ltz_temp : ltz_temp
-  //zero_detector ZRES(.In(ALU_result), .Z(zero), .ltz(ltz));
-  
   //if opcode == SEQ & Zero flag -> alu_result = 1
   //if opcode == SLT & ltz flag -> alu_result = 1
   //if opcode == SLE & (ltz | Zero) -> alu_result = 1
@@ -115,7 +106,15 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign slt = ((~instr_op[1]) & instr_op[0]) & ltz;
   assign sle = (instr_op[1] & (~instr_op[0])) & (zero | ltz);
   assign sco = (instr_op[1] & instr_op[0]) & alu_ofl;
-
+  
+  assign isSetOP = ((instr_op[2] & instr_op[3]) & instr_op[4]);
+  assign set_condition_result = (seq | slt | sle | sco) ? 16'h0001 : 16'h0000;
+  
+  mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result_temp));
+  mux2_1_16bit BTRresult(.InB(btr_result), .InA(ALU_result_temp), .S(isBTR), .Out(ALU_result));
+  //assign ltz = alu_ofl ^ (ALU_result[15]);
+  //assign ltz = ((alu_ofl & (Out[15] ^ muxed_A[15])) == 1’b1) ? ~ltz_temp : ltz_temp
+  //zero_detector ZRES(.In(ALU_result), .Z(zero), .ltz(ltz));
 
   //Branch Calculation
   //shift immediate value left 

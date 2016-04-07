@@ -47,7 +47,8 @@ module adder16 (A, B, Cin, sign, Out, Ofl);
   cla4    CLATOP(.G(outG[3:0]), .P(outP[3:0]), .Cin(Cin), .Cout(top_cout[3:0]), .outP(top_outP), .outG(top_outG));
 
   //Overflow logic
-  assign signed_overflow = top_cout[3] ^ cout[14];
-  mux2_1 OFL (.InB(signed_overflow), .InA(top_cout[3]), .S(sign), .Out(Ofl ));      
+  assign signed_overflow = (((A[15] & B[15]) & (~Out[15])) | (((~A[15]) & (~B[15])) & Out[15]));
+  mux2_1 OFL (.InB(signed_overflow), .InA(cout[15]), .S(sign), .Out(Ofl ));      
+
 
 endmodule
