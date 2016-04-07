@@ -24,7 +24,7 @@ module alu(A, B, Cin, Op, invA, invB, sign, Out, Ofl, Z);
 	mux2_1_16bit B_OR_BINV (.InB(b_inv[15:0]), .InA(B[15:0]), .S(invB), .Out(muxed_B[15:0]));
 
   //Adder and overflow logic
-	alu_arith A0(.Out(add_out[15:0]), .Ofl(add_Ofl),
+	adder16 A0(.Out(add_out[15:0]), .Ofl(add_Ofl),
     .A(muxed_A[15:0]), .B(muxed_B[15:0]), .Cin(Cin), .sign(sign));
 	
 	//Logical Operators

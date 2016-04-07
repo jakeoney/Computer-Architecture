@@ -1,4 +1,4 @@
-module alu_arith (A, B, Cin, sign, Out, Ofl);
+module adder16 (A, B, Cin, sign, Out, Ofl);
    
 	input [15:0] A;
   input [15:0] B;
