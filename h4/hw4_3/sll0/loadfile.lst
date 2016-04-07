@@ -1,4 +1,0 @@
-          //Don't do a shift. Result should be 127 in r3
-0000 c100 lbi r1, 0
-0002 c27f lbi r2, 127
-0004 d22d sll, r3, r2, r1

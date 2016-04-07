@@ -1,6 +1,0 @@
-          //Test with no value in r1 and an immediate
-          //PC should be 0x0c
-          //R7 should be 0x04
-0000 c100 lbi r1, 0 
-0002 390a jalr r1, 10 
-0004 0000 halt

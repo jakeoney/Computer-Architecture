@@ -1,5 +1,0 @@
-          //Max hop forward - 1023
-          //PC should end at 0x403
-          //R7 should have 0x02
-0000 33ff jal 1023
-0002 0000 halt

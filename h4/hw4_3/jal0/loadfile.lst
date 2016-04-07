@@ -1,8 +1,0 @@
-          //R7 should have 0x04
-          //PC should end at 0x0C
-0000 0800 nop
-0002 3002 jal 2 
-0004 0000 halt
-0006 0800 nop
-0008 0800 nop
-000a 0000 halt

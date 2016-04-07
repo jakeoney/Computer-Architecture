@@ -1,4 +1,0 @@
-          //Do a shift left by 8. Result should be 254 in r3
-0000 c108 lbi r1, 8 
-0002 c27f lbi r2, 127
-0004 d22d sll, r3, r2, r1
