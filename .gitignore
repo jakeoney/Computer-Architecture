@@ -11,3 +11,16 @@
 *.wlf
 *work/
 *.swp
+*.dmem
+*.lst
+*.out
+*.reg
+*.mem
+*.img
+*.ptrace
+*.trace
+command.log
+tcl_stacktrace.txt
+default.svf
+verilogsim.log
+.__afsBCDF
