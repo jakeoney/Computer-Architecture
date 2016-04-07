@@ -2,7 +2,6 @@
 *.cr.mti
 *dump.vcd
 *transcript
-*.asm
 *.vhd
 *.dat
 *.vcheck.out
