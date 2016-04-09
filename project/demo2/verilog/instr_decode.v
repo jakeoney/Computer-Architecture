@@ -1,6 +1,6 @@
 module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
                     jumpAddr, read1data, read2data, immediate, err, five_bit_imm,
-                    ZeroExtend, MemWrite);
+                    ZeroExtend, MemWrite, write_reg, write_reg_in);
 
   input [15:0] instruction; // Used for read1 & read2 regs, write reg, branch
   input RegWrite;           // Write to register or not
@@ -11,15 +11,17 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   input five_bit_imm;
   input ZeroExtend;
   input MemWrite;
+  input [2:0] write_reg_in;
 
   output err;
   output [15:0] jumpAddr;   // Some sort of jump logic
   output [15:0] read1data;
   output [15:0] read2data;
   output [15:0] immediate;
+  output [2:0] write_reg;
 
   wire [15:0] imm1, imm2, temp_immediate, zero_imm1, zero_imm2, temp_zero_imm;
-  wire [2:0] write_reg, write_reg_temp;
+  wire [2:0] write_reg_temp;
   wire [2:0] read1reg, read2reg, write1_reg;
   wire [1:0] sll;           //sll op code
   wire toShift;             //Always want to shift
@@ -54,15 +56,11 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
           .read1data(read1data_temp), .read2data(read2data_temp), .err(err),
           //Input
           .clk(clk), .rst(rst), .read1regsel(read2reg), .read2regsel(read1reg), 
-          .writeregsel(write_reg), .writedata(writeData1), .write(RegWrite));
+          .writeregsel(write_reg_in), .writedata(writeData1), .write(RegWrite));
   
   mux2_1_16bit MEM1(.InB(read2data_temp), .InA(read1data_temp), .S(MemWrite), .Out(read1data));
   mux2_1_16bit MEM2(.InB(read1data_temp), .InA(read2data_temp), .S(MemWrite), .Out(read2data));
 
-  //JUMP logic
-  //shift jump digits left 2
-//  shifter_two_bit SHIFT(.In(instruction), .Cnt(toShift), .Op(sll), .Out(temp_jump));
-  
   wire jr;
   wire [15:0] jumpAddr1, jumpAddr2;
   //Combine with top bits from PC to make it a 16bit value

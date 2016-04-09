@@ -87,17 +87,18 @@ module proc (/*AUTOARG*/
 
   // instr_decode unit
   instr_decode DECODE(//Inputs
-                      .instruction(instruction_from_if_id), .RegWrite(RegWrite), .RegDst(RegDst), .writeData(wb_out),
+                      .instruction(instruction_from_if_id), .RegWrite(RegWrite_from_mem_wb), .RegDst(RegDst), .writeData(wb_out),
                       .clk(clk), .rst(rst), .pc(next_pc_from_if_id]), .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend),
-                      .MemWrite(MemWrite),
+                      .MemWrite(MemWrite), .write_reg_in(write_reg_from_mem_wb),
                       //Outputs
                       .jumpAddr(jumpAddr), .read1data(read1data), .read2data(read2data), .immediate(immediate),
-                      .err(decode_err));  
+                      .err(decode_err), .write_reg(write_reg));  
  
  // ID/EX flip flop
  id_ex_ff ID_EX (//Inputs
                  .clk(clk), .rst(rst), .pc_in(next_pc_from_if_id), .read1_in(read1data), .read2_in(read2data), 
-                 .imm_in(immediate), .jumpaddr_in(jumpAddr),
+                 .imm_in(immediate), .jumpaddr_in(jumpAddr), .instr_in(instruction_from_if_id[1:0]), 
+                 .write_reg_in(write_reg),
                  //EX Control Inputs
                  .alu_op_in(ALU_op), .alu_src_in(ALU_Src),
                  //MEM Control Inputs
@@ -107,7 +108,8 @@ module proc (/*AUTOARG*/
 
                  //Outputs
                  .pc_out(next_pc_from_id_ex), .read1_out(read1_from_id_ex), .read2_out(read2_from_id_ex), 
-                 .imm_in(imm_from_id_ex), .jumpaddr_out(jumpAddr_from_id_ex)
+                 .imm_in(imm_from_id_ex), .jumpaddr_out(jumpAddr_from_id_ex), .instr_out(instructin_from_id_ex[1:0]), 
+                 .write_reg_out(write_reg_from_id_ex),
                  //Control Outputs
                  .alu_op_out(ALU_op_from_id_ex), .alu_src_out(ALU_Src_from_id_ex), 
                  .branch_out(Branch_from_id_ex), .mem_read_out(MemRead_from_id_ex), .mem_write_out(MemWrite_from_id_ex),
@@ -128,7 +130,7 @@ module proc (/*AUTOARG*/
   ex_mem_ff EX_MEM (//Inputs
                     .clk(clk), .rst(rst), .alu_result_in(ALU_result), .branch_result_in(branch_result), 
                     .zero_in(zero), .ltz_in(ltz), .jumpaddr_in(jump_out), .next_pc_in(next_pc_from_id_ex),
-                    .read2data_in(read2_from_id_ex), 
+                    .read2data_in(read2_from_id_ex), .alu_op_in(ALU_op_from_id_ex), .write_reg_in(write_reg_from_id_ex),
                     //Control Inputs
                     .branch_in(Branch_from_id_ex), .mem_read_in(MemRead_from_id_ex), .mem_write_in(MemWrite_from_id_ex),
                     .halt_in(halt_from_id_ex),
@@ -137,7 +139,7 @@ module proc (/*AUTOARG*/
                     //Outputs
                     .alu_result_out(ALU_result_from_ex_mem), .branch_result_out(branch_result_from_ex_mem), .zero_out(zero_from_ex_mem),
                     .ltz_out(ltz_from_ex_mem), .jumpaddr_out(jumpaddr_from_ex_mem), .next_pc_out(next_pc_from_ex_mem),
-                    .read2data_out(read2_from_ex_mem),
+                    .read2data_out(read2_from_ex_mem), .alu_op_out(ALU_op_from_ex_mem), .write_reg_out(write_reg_from_ex_mem),
                     //Control Outputs
                     .branch_out(Branch_from_ex_mem), .mem_read_out(MemRead_from_ex_mem), .mem_write_out(MemWrite_from_ex_mem),
                     .halt_out(halt_from_ex_mem),
@@ -148,14 +150,29 @@ module proc (/*AUTOARG*/
   data_mem MEM    ( //Inputs
                     .zero(zero_from_ex_mem), .Branch(Branch_from_ex_mem), .branchAddr(branch_result_from_ex_mem), .pc(next_pc_from_ex_mem), 
                     .MemWrite(MemWrite_from_ex_mem), .MemRead(MemRead_from_ex_mem), .ALU_result(ALU_result_from_ex_mem), 
-                    .writedata(read2_from_ex_mem), .clk(clk), .rst(rst), .halt(halt_from_ex_mem), .ltz(ltz_from_ex_mem), .branch_op(ALU_op[1:0]),
+                    .writedata(read2_from_ex_mem), .clk(clk), .rst(rst), .halt(halt_from_ex_mem), .ltz(ltz_from_ex_mem), 
+                    .branch_op(ALU_op_from_ex_mem[1:0]),
                     //Outputs
                     .branch_or_pc(branch_or_pc), .readData(data_mem_out));  
   
+  // MEM_WB flip flop
+  mem_wb_ff MEM_WB(//Inputs
+                   .branch_or_pc_in(branch_or_pc), .data_mem_in(data_mem_out), .jumpaddr_in(jumpaddr_from_ex_mem),
+                   .alu_result_in(ALU_result_from_ex_mem), .write_reg_in(write_reg_from_ex_mem),
+                   //Control Inputs
+                   .jump_in(Jump_from_ex_mem), .mem_to_reg_in(MemToReg_from_ex_mem), .reg_write_in(RegWrite_from_ex_mem), 
+
+                   //Outputs
+                   .branch_or_pc_out(branch_or_pc_from_mem_wb), .data_mem_out(data_mem_from_mem_wb), .jumpaddr_out(jumpaddr_from_mem_wb),
+                   .alu_result_out(ALU_result_from_mem_wb), .write_reg_out(write_reg_from_mem_wb),
+                   //Control Outputs
+                   .jump_out(Jump_from_mem_wb), .mem_to_reg_out(MemToReg_from_mem_wb), .reg_write_out(RegWrite_from_mem_wb)
+                  );
+
   // write_back unit
   write_back WB   ( //Inputs
-                    .jumpAddr(jump_out), .branch_or_pc(branch_or_pc), .Jump(Jump_from_mem_wb), .mem_data(data_mem_out), 
-                    .ALU_result(ALU_result), .MemToReg(MemToReg_from_mem_wb), 
+                    .jumpAddr(jumpaddr_from_mem_wb), .branch_or_pc(branch_or_pc_from_mem_wb), .Jump(Jump_from_mem_wb), .mem_data(data_mem_from_mem_wb), 
+                    .ALU_result(ALU_result_from_mem_wb), .MemToReg(MemToReg_from_mem_wb), 
                     //Outputs
                     .pc(wb_pc), .out_data(wb_out)); 
   
@@ -167,8 +184,9 @@ module proc (/*AUTOARG*/
                     .ALU_op(ALU_op), .MemWrite(MemWrite), .ALUSrc(ALU_Src), .RegWrite(RegWrite), .err(control_err),
                     .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend));
 
+  // alu control unit
   alu_control ALU_CTL(//Inputs
-                      .ALU_op(ALU_op_from_id_ex), .ALU_funct(instruction[1:0]),
+                      .ALU_op(ALU_op_from_id_ex), .ALU_funct(instruction_from_id_ex[1:0]),
                       //Outputs
                       .invA(invA), .invB(invB), .op_to_alu(op_to_alu), .cin(cin), .sign(sign), .passA(passA), .passB(passB));
 endmodule 
