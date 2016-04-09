@@ -33,9 +33,20 @@ module proc (/*AUTOARG*/
   wire [15:0] wb_out; 
   wire [15:0] wb_pc;
 
+  //MEM_WB Outputs
+  wire [15:0] branch_or_pc_from_mem_wb, data_mem_from_mem_wb, jumpaddr_from_mem_wb, ALU_result_from_mem_wb;
+  wire [2:0] write_reg_from_mem_wb;
+  wire Jump_from_mem_wb, MemToReg_from_mem_wb, RegWrite_from_mem_wb;
+
   //data_mem Outputs
   wire [15:0] branch_or_pc;
   wire [15:0] data_mem_out;
+
+  //EX_MEM Outputs
+  wire [15:0] ALU_result_from_ex_mem, branch_result_from_ex_mem, jumpaddr_from_ex_mem, read2_from_ex_mem, next_pc_from_ex_mem;
+  wire [4:0] ALU_op_from_ex_mem
+  wire [2:0] write_reg_from_ex_mem;
+  wire zero_from_ex_mem, ltz_from_ex_mem, Branch_from_ex_mem, MemRead_from_ex_mem, MemWrite_from_ex_mem, halt_from_ex_mem, MemToReg_from_ex_mem, RegWrite_from_ex_mem, Jump_from_ex_mem;
 
   //ALU Outputs
   wire [15:0] ALU_result;
@@ -48,7 +59,9 @@ module proc (/*AUTOARG*/
   //ID_EX Outputs
   wire [15:0] read1_from_id_ex, read2_from_id_ex, imm_from_id_ex, jumpAddr_from_id_ex, next_pc_from_id_ex;
   wire [4:0] ALU_op_from_id_ex;
-  wire ALU_Src_from_id_ex, Branch_from_id_ex, MemRead_from_id_ex, MemWrite_from_id_ex, MemToReg_from_id_ex, RegWrite_from_id_ex, Jump_from_id_ex;
+  wire [2:0] write_reg_from_id_ex;
+  wire [1:0] instruction_from_id_ex;
+  wire ALU_Src_from_id_ex, Branch_from_id_ex, MemRead_from_id_ex, MemWrite_from_id_ex, MemToReg_from_id_ex, RegWrite_from_id_ex, Jump_from_id_ex, halt_from_id_ex;
 
   //Decode Outputs
   wire [15:0] jumpAddr;
@@ -108,7 +121,7 @@ module proc (/*AUTOARG*/
 
                  //Outputs
                  .pc_out(next_pc_from_id_ex), .read1_out(read1_from_id_ex), .read2_out(read2_from_id_ex), 
-                 .imm_in(imm_from_id_ex), .jumpaddr_out(jumpAddr_from_id_ex), .instr_out(instructin_from_id_ex[1:0]), 
+                 .imm_in(imm_from_id_ex), .jumpaddr_out(jumpAddr_from_id_ex), .instr_out(instruction_from_id_ex[1:0]), 
                  .write_reg_out(write_reg_from_id_ex),
                  //Control Outputs
                  .alu_op_out(ALU_op_from_id_ex), .alu_src_out(ALU_Src_from_id_ex), 
@@ -126,7 +139,8 @@ module proc (/*AUTOARG*/
                     //Outputs
                     .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err),
                     .ltz(ltz), .jump_out(jump_out));  
-  
+ 
+  // EX/MEM flip flop
   ex_mem_ff EX_MEM (//Inputs
                     .clk(clk), .rst(rst), .alu_result_in(ALU_result), .branch_result_in(branch_result), 
                     .zero_in(zero), .ltz_in(ltz), .jumpaddr_in(jump_out), .next_pc_in(next_pc_from_id_ex),
@@ -171,6 +185,7 @@ module proc (/*AUTOARG*/
 
   // write_back unit
   write_back WB   ( //Inputs
+                    .clk(clk), .rst(rst),
                     .jumpAddr(jumpaddr_from_mem_wb), .branch_or_pc(branch_or_pc_from_mem_wb), .Jump(Jump_from_mem_wb), .mem_data(data_mem_from_mem_wb), 
                     .ALU_result(ALU_result_from_mem_wb), .MemToReg(MemToReg_from_mem_wb), 
                     //Outputs

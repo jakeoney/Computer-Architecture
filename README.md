@@ -12,3 +12,9 @@ http://pages.cs.wisc.edu/~karu/courses/cs552/spring2016//wiki/index.php/Main/HW3
 
 Homework 4:
 http://pages.cs.wisc.edu/~karu/courses/cs552/spring2016//wiki/index.php/Main/HW4
+
+Homework 5:
+http://pages.cs.wisc.edu/~karu/courses/cs552/spring2016//wiki/index.php/Main/HW5
+
+Project Details:
+http://pages.cs.wisc.edu/~karu/courses/cs552/spring2016//wiki/index.php/Main/ProjectDeadlinesAndGrading
