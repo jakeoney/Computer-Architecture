@@ -27,7 +27,7 @@ module id_ex_ff(clk, rst, pc_in, read1_in, read2_in, imm_in, jumpaddr_in,
   dff READ1_FF [15:0] (.q(read1_out),     .d(read1_in),     .clk(clk), .rst(rst));
   dff READ2_FF [15:0] (.q(read2_out),     .d(read2_in),     .clk(clk), .rst(rst));
   dff IMM_FF   [15:0] (.q(imm_out),       .d(imm_in),       .clk(clk), .rst(rst));
-  dff JUMP_FF  [15:0] (.q(jumpaddr_out),  .d(jumpaddr_in),  .clk(clk), .rst(rst));
+  dff JUMPA_FF [15:0] (.q(jumpaddr_out),  .d(jumpaddr_in),  .clk(clk), .rst(rst));
 
   dff OP_FF [4:0] (.q(alu_op_out),     .d(alu_op_in),     .clk(clk), .rst(rst));
   
@@ -35,12 +35,12 @@ module id_ex_ff(clk, rst, pc_in, read1_in, read2_in, imm_in, jumpaddr_in,
 
   dff INSTR [1:0] (.q(instr_out), .d(instr_in), .clk(clk), .rst(rst));
 
-  dff SRC_FF      (.q(alu_src_out),    .d(alu_src_in),    .clk(clk), .rst(rst);
-  dff BR_FF       (.q(branch_out),     .d(branch_in),     .clk(clk), .rst(rst);
-  dff MEMR_FF     (.q(mem_read_out),   .d(mem_read_in),   .clk(clk), .rst(rst);
-  dff MEMW_FF     (.q(mem_write_out),  .d(mem_write_in),  .clk(clk), .rst(rst);
-  dff MEMTR_FF    (.q(mem_to_reg_out), .d(mem_to_reg_in), .clk(clk), .rst(rst);
-  dff RW_FF       (.q(reg_write_out),  .d(reg_write_in),  .clk(clk), .rst(rst);
-  dff JUMP_FF     (.q(jump_out),       .d(jump_in),       .clk(clk), .rst(rst);
-  dff HALT_FF     (.q(halt_out),       .d(halt_in),       .clk(clk), .rst(rst);
+  dff SRC_FF      (.q(alu_src_out),    .d(alu_src_in),    .clk(clk), .rst(rst));
+  dff BR_FF       (.q(branch_out),     .d(branch_in),     .clk(clk), .rst(rst));
+  dff MEMR_FF     (.q(mem_read_out),   .d(mem_read_in),   .clk(clk), .rst(rst));
+  dff MEMW_FF     (.q(mem_write_out),  .d(mem_write_in),  .clk(clk), .rst(rst));
+  dff MEMTR_FF    (.q(mem_to_reg_out), .d(mem_to_reg_in), .clk(clk), .rst(rst));
+  dff RW_FF       (.q(reg_write_out),  .d(reg_write_in),  .clk(clk), .rst(rst));
+  dff JUMP_FF     (.q(jump_out),       .d(jump_in),       .clk(clk), .rst(rst));
+  dff HALT_FF     (.q(halt_out),       .d(halt_in),       .clk(clk), .rst(rst));
 endmodule

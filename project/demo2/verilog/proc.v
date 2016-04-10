@@ -31,20 +31,19 @@ module proc (/*AUTOARG*/
 
   //write_back Outputs
   wire [15:0] wb_out; 
-  wire [15:0] wb_pc;
 
   //MEM_WB Outputs
-  wire [15:0] branch_or_pc_from_mem_wb, data_mem_from_mem_wb, jumpaddr_from_mem_wb, ALU_result_from_mem_wb;
+  wire [15:0] data_mem_from_mem_wb, ALU_result_from_mem_wb;
   wire [2:0] write_reg_from_mem_wb;
-  wire Jump_from_mem_wb, MemToReg_from_mem_wb, RegWrite_from_mem_wb;
+  wire MemToReg_from_mem_wb, RegWrite_from_mem_wb;
 
   //data_mem Outputs
-  wire [15:0] branch_or_pc;
+  wire [15:0] branch_or_jump;
   wire [15:0] data_mem_out;
 
   //EX_MEM Outputs
   wire [15:0] ALU_result_from_ex_mem, branch_result_from_ex_mem, jumpaddr_from_ex_mem, read2_from_ex_mem, next_pc_from_ex_mem;
-  wire [4:0] ALU_op_from_ex_mem
+  wire [4:0] ALU_op_from_ex_mem;
   wire [2:0] write_reg_from_ex_mem;
   wire zero_from_ex_mem, ltz_from_ex_mem, Branch_from_ex_mem, MemRead_from_ex_mem, MemWrite_from_ex_mem, halt_from_ex_mem, MemToReg_from_ex_mem, RegWrite_from_ex_mem, Jump_from_ex_mem;
 
@@ -68,8 +67,8 @@ module proc (/*AUTOARG*/
   wire [15:0] read1data;
   wire [15:0] read2data;
   wire [15:0] immediate;
-  wire [15:0] id_pc;
   wire decode_err;
+  wire [2:0] write_reg;
 
   //IF_ID Outputs
   wire [15:0] next_pc_from_if_id;
@@ -90,7 +89,7 @@ module proc (/*AUTOARG*/
 
   // instr_fetch unit
   instr_fetch FETCH(//Input
-                    .pc(wb_pc), .clk(clk), .rst(rst), 
+                    .pc(next_pc), .branch_or_jump(branch_or_jump), .toJump(Jump_from_ex_mem), .toBranch(Branch_from_ex_mem), .clk(clk), .rst(rst), 
                     //Outputs
                     .next_pc(next_pc), .instruction(instruction), .err(fetch_err));
 
@@ -101,7 +100,7 @@ module proc (/*AUTOARG*/
   // instr_decode unit
   instr_decode DECODE(//Inputs
                       .instruction(instruction_from_if_id), .RegWrite(RegWrite_from_mem_wb), .RegDst(RegDst), .writeData(wb_out),
-                      .clk(clk), .rst(rst), .pc(next_pc_from_if_id]), .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend),
+                      .clk(clk), .rst(rst), .pc(next_pc_from_if_id), .five_bit_imm(five_bit_imm), .ZeroExtend(ZeroExtend),
                       .MemWrite(MemWrite), .write_reg_in(write_reg_from_mem_wb),
                       //Outputs
                       .jumpAddr(jumpAddr), .read1data(read1data), .read2data(read2data), .immediate(immediate),
@@ -121,7 +120,7 @@ module proc (/*AUTOARG*/
 
                  //Outputs
                  .pc_out(next_pc_from_id_ex), .read1_out(read1_from_id_ex), .read2_out(read2_from_id_ex), 
-                 .imm_in(imm_from_id_ex), .jumpaddr_out(jumpAddr_from_id_ex), .instr_out(instruction_from_id_ex[1:0]), 
+                 .imm_out(imm_from_id_ex), .jumpaddr_out(jumpAddr_from_id_ex), .instr_out(instruction_from_id_ex[1:0]), 
                  .write_reg_out(write_reg_from_id_ex),
                  //Control Outputs
                  .alu_op_out(ALU_op_from_id_ex), .alu_src_out(ALU_Src_from_id_ex), 
@@ -162,34 +161,30 @@ module proc (/*AUTOARG*/
 
   // mem unit
   data_mem MEM    ( //Inputs
-                    .zero(zero_from_ex_mem), .Branch(Branch_from_ex_mem), .branchAddr(branch_result_from_ex_mem), .pc(next_pc_from_ex_mem), 
+                    .zero(zero_from_ex_mem), .Branch(Branch_from_ex_mem), .branchAddr(branch_result_from_ex_mem),  
                     .MemWrite(MemWrite_from_ex_mem), .MemRead(MemRead_from_ex_mem), .ALU_result(ALU_result_from_ex_mem), 
                     .writedata(read2_from_ex_mem), .clk(clk), .rst(rst), .halt(halt_from_ex_mem), .ltz(ltz_from_ex_mem), 
-                    .branch_op(ALU_op_from_ex_mem[1:0]),
+                    .branch_op(ALU_op_from_ex_mem[1:0]), .jumpaddr(jumpaddr_from_ex_mem), 
                     //Outputs
-                    .branch_or_pc(branch_or_pc), .readData(data_mem_out));  
+                    .branch_or_jump(branch_or_jump), .readData(data_mem_out));  
   
   // MEM_WB flip flop
   mem_wb_ff MEM_WB(//Inputs
-                   .branch_or_pc_in(branch_or_pc), .data_mem_in(data_mem_out), .jumpaddr_in(jumpaddr_from_ex_mem),
-                   .alu_result_in(ALU_result_from_ex_mem), .write_reg_in(write_reg_from_ex_mem),
+                   .data_mem_in(data_mem_out), .alu_result_in(ALU_result_from_ex_mem), .write_reg_in(write_reg_from_ex_mem),
                    //Control Inputs
-                   .jump_in(Jump_from_ex_mem), .mem_to_reg_in(MemToReg_from_ex_mem), .reg_write_in(RegWrite_from_ex_mem), 
-
+                   .mem_to_reg_in(MemToReg_from_ex_mem), .reg_write_in(RegWrite_from_ex_mem), 
+                   .clk(clk), .rst(rst),
                    //Outputs
-                   .branch_or_pc_out(branch_or_pc_from_mem_wb), .data_mem_out(data_mem_from_mem_wb), .jumpaddr_out(jumpaddr_from_mem_wb),
-                   .alu_result_out(ALU_result_from_mem_wb), .write_reg_out(write_reg_from_mem_wb),
+                   .data_mem_out(data_mem_from_mem_wb), .alu_result_out(ALU_result_from_mem_wb), .write_reg_out(write_reg_from_mem_wb),
                    //Control Outputs
-                   .jump_out(Jump_from_mem_wb), .mem_to_reg_out(MemToReg_from_mem_wb), .reg_write_out(RegWrite_from_mem_wb)
+                   .mem_to_reg_out(MemToReg_from_mem_wb), .reg_write_out(RegWrite_from_mem_wb)
                   );
 
   // write_back unit
   write_back WB   ( //Inputs
-                    .clk(clk), .rst(rst),
-                    .jumpAddr(jumpaddr_from_mem_wb), .branch_or_pc(branch_or_pc_from_mem_wb), .Jump(Jump_from_mem_wb), .mem_data(data_mem_from_mem_wb), 
-                    .ALU_result(ALU_result_from_mem_wb), .MemToReg(MemToReg_from_mem_wb), 
+                    .mem_data(data_mem_from_mem_wb), .ALU_result(ALU_result_from_mem_wb), .MemToReg(MemToReg_from_mem_wb), 
                     //Outputs
-                    .pc(wb_pc), .out_data(wb_out)); 
+                    .out_data(wb_out)); 
   
   // control unit
   control CONTROL ( //Inputs

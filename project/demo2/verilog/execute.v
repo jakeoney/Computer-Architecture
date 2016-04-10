@@ -112,13 +112,6 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   
   mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result_temp));
   mux2_1_16bit BTRresult(.InB(btr_result), .InA(ALU_result_temp), .S(isBTR), .Out(ALU_result));
-  //assign ltz = alu_ofl ^ (ALU_result[15]);
-  //assign ltz = ((alu_ofl & (Out[15] ^ muxed_A[15])) == 1’b1) ? ~ltz_temp : ltz_temp
-  //zero_detector ZRES(.In(ALU_result), .Z(zero), .ltz(ltz));
-
-  //Branch Calculation
-  //shift immediate value left 
-  //shifter_two_bit SHIFT(.In(immediate), .Cnt(toShift), .Op(sll), .Out(imm_shift));
 
   //add branch and pc
   adder16 ADD(//Inputs
@@ -132,7 +125,6 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign jr = (~instr_op[4]) & (~instr_op[3]) & instr_op[2] & (~instr_op[1]) & (instr_op[0]);
   assign any_jump = jalr | jr;
   mux2_1_16bit AIN(.InB(read2data), .InA(pc), .S(jr|jalr), .Out(a_in));
-//  mux2_1_16bit AIN(.InB(), .InA(jump_in), .S(jr), .Out());
   adder16 JUMP(.A(a_in), .B(jump_in), .Cin(1'b0), .sign(1'b1), .Out(jump_out), .Ofl(jump_ofl));
 
   //This is the only err conditions we can encounter here?
