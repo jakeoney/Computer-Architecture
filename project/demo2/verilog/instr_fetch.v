@@ -1,4 +1,4 @@
-module instr_fetch(pc, clk, rst, branch_or_jump, toJump, toBranch, instruction, next_pc, err);
+module instr_fetch(pc, clk, rst, branch_or_jump, toJump, toBranch, instruction, next_pc, instr_valid, err);
 
   input [15:0] pc, branch_or_jump; 
   input clk, rst;
@@ -6,6 +6,7 @@ module instr_fetch(pc, clk, rst, branch_or_jump, toJump, toBranch, instruction, 
 
   output [15:0] next_pc;
   output [15:0] instruction;
+  output instr_valid;
   output err;
 
   wire [15:0] next; //next isn't actually the next pc, it is the intermediate value before add 2 
@@ -24,6 +25,8 @@ module instr_fetch(pc, clk, rst, branch_or_jump, toJump, toBranch, instruction, 
   assign wr = 1'b0;
   assign enable = ~rst;  //Might not want to always have this enabled
 
+  assign instr_valid = 1'b1;
+  
   mux2_1_16bit NEXTPC (.InB(branch_or_jump), .InA(pc), .S((toJump | toBranch)), .Out(jump_or_pc_or_branch));
 
   dff PC [15:0] (.q(next),  .d(jump_or_pc_or_branch),  .clk(clk), .rst(rst));

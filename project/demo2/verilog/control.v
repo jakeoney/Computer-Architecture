@@ -1,8 +1,9 @@
-module control(instruction_op, five_bit_imm,
+module control(instruction_op, instr_valid, five_bit_imm,
                RegDst, Jump, Branch, MemRead, MemToReg, ALU_op, MemWrite,
                ALUSrc, RegWrite, err, halt, ZeroExtend);
 
   input [4:0] instruction_op;    //OP Code from instruction fetch
+  input instr_valid;
 
   output reg halt;
   output reg err;
@@ -17,9 +18,13 @@ module control(instruction_op, five_bit_imm,
   output reg RegWrite;        // To write to register file or not
   output reg five_bit_imm;
   output reg ZeroExtend;
-  assign ALU_op = instruction_op;
 
-  always @(instruction_op)
+  wire [4:0] instr;
+  mux2_1 INSTR [4:0] (.InB(instruction_op), .InA(5'b00001), .S(instr_valid), .Out(instr));
+
+  assign ALU_op = instr;
+
+  always @(instr, instruction_op, instr_valid)
   begin
     /*Defaults*/
     RegDst   = 1'b0;
@@ -33,7 +38,7 @@ module control(instruction_op, five_bit_imm,
     halt     = 1'b0;
     five_bit_imm = 1'b0;
     ZeroExtend = 1'b0;
-    casex(instruction_op)
+    casex(instr)
       5'b0_0000: //halt
         begin
           halt = 1'b1;

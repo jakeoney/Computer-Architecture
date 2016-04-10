@@ -73,11 +73,13 @@ module proc (/*AUTOARG*/
   //IF_ID Outputs
   wire [15:0] next_pc_from_if_id;
   wire[15:0] instruction_from_if_id;
+  wire instr_valid_out;
 
   //Fetch Outputs
   wire [15:0] next_pc;
   wire [15:0] instruction;
   wire fetch_err;
+  wire instr_valid;
 
   //ALU Control Outputs
   wire [2:0] op_to_alu;
@@ -91,11 +93,11 @@ module proc (/*AUTOARG*/
   instr_fetch FETCH(//Input
                     .pc(next_pc), .branch_or_jump(branch_or_jump), .toJump(Jump_from_ex_mem), .toBranch(Branch_from_ex_mem), .clk(clk), .rst(rst), 
                     //Outputs
-                    .next_pc(next_pc), .instruction(instruction), .err(fetch_err));
+                    .next_pc(next_pc), .instruction(instruction), .err(fetch_err), .instr_valid(instr_valid));
 
   // IF/ID flip flop
-  if_id_ff IF_ID(.clk(clk), .rst(rst), .pc_in(next_pc), .instr_in(instruction),
-                 .pc_out(next_pc_from_if_id), .instr_out(instruction_from_if_id));
+  if_id_ff IF_ID(.clk(clk), .rst(rst), .pc_in(next_pc), .instr_in(instruction), .instr_valid(instr_valid),
+                 .pc_out(next_pc_from_if_id), .instr_out(instruction_from_if_id), .instr_valid_out(instr_valid_out));
 
   // instr_decode unit
   instr_decode DECODE(//Inputs
@@ -188,7 +190,7 @@ module proc (/*AUTOARG*/
   
   // control unit
   control CONTROL ( //Inputs
-                    .instruction_op(instruction_from_if_id[15:11]),
+                    .instruction_op(instruction_from_if_id[15:11]), .instr_valid(instr_valid_out),
                     //Outputs 
                     .RegDst(RegDst), .Jump(Jump), .Branch(Branch), .MemRead(MemRead), .MemToReg(MemToReg), .halt(halt),
                     .ALU_op(ALU_op), .MemWrite(MemWrite), .ALUSrc(ALU_Src), .RegWrite(RegWrite), .err(control_err),
