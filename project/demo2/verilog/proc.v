@@ -152,6 +152,11 @@ module proc (/*AUTOARG*/
                     .immediate(imm_from_id_ex), .pc(next_pc_from_id_ex), .invA(invA), .invB(invB), .cin(cin), .sign(sign),  
                     .passThroughA(passA), .passThroughB(passB), .instr_op(ALU_op_from_id_ex), .MemWrite(MemWrite_from_id_ex),
                     .jump_in(jumpAddr_from_id_ex),
+                    //Inputs for Data Forward Unit
+                    .Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
+                    .Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), .Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
+                    .Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
+                    .WriteReg_ex_mem(RegWrite_from_ex_mem), .WriteReg_mem_wb(RegWrite_from_mem_wb), 
                     //Outputs
                     .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err),
                     .ltz(ltz), .jump_out(jump_out));  

@@ -1,6 +1,9 @@
 module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign,
               passThroughA, passThroughB, instr_op, MemWrite, jump_in, jump_out,
-              ALU_result, branch_result, zero, ltz, err);
+              ALU_result, branch_result, zero, ltz, err,
+              Rs_id_ex, Rs_valid_id_ex, Rt_id_ex, Rt_valid_id_ex,  Rs_ex_mem, Rs_valid_ex_mem, 
+              Rt_ex_mem, Rt_valid_ex_mem, Rd_ex_mem, Rd_valid_ex_mem, Rd_mem_wb, Rd_valid_mem_wb,
+              WriteReg_ex_mem, WriteReg_mem_wb); 
 
   input [2:0] alu_op;   //OP code
   input ALUSrc;         //ALUSrc MUX control signal (read2data or immediate)
@@ -16,6 +19,10 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   input [4:0] instr_op;
   input MemWrite;
   input [15:0] jump_in;
+  //Data forward unit inputs
+  input [2:0] Rs_id_ex, Rt_id_ex, Rs_ex_mem, Rt_ex_mem, Rd_ex_mem, Rd_mem_wb; 
+  input Rs_valid_id_ex, Rt_valid_id_ex, Rs_valid_ex_mem, Rt_valid_ex_mem, Rd_valid_ex_mem, Rd_valid_mem_wb;
+  input WriteReg_ex_mem, WriteReg_mem_wb; 
   
   output [15:0] jump_out;
   output [15:0] ALU_result; //From main ALU unit
@@ -24,9 +31,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   output err;
   output ltz;
 
-//  wire zero1, ltz1;
   wire [15:0] alu_in1, alu_in2;
-//  wire [15:0] imm_shift;  //Immediate shifted left 2 bits
   wire [1:0] sll;         //Shift Left logical op code
   wire toShift;           //Whether or not to shift
   wire cin_for_branch;
@@ -56,6 +61,8 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 
   wire [15:0] nRead1, rotateVal;
   wire isRORI;
+
+  wire [1:0] forwardA, forwardB;
 
   assign isRORI = ((~instr_op[0]) & instr_op[1] & instr_op[2] & (~instr_op[3]) & instr_op[4]);
 
@@ -126,6 +133,14 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign any_jump = jalr | jr;
   mux2_1_16bit AIN(.InB(read2data), .InA(pc), .S(jr|jalr), .Out(a_in));
   adder16 JUMP(.A(a_in), .B(jump_in), .Cin(1'b0), .sign(1'b1), .Out(jump_out), .Ofl(jump_ofl));
+
+  //DATA FORWARDING UNIT
+  data_forward_unit FWD(
+                    .Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
+                    .Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), .Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
+                    .Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
+                    .WriteReg_ex_mem(WriteReg_from_ex_mem), .WriteReg_mem_wb(WriteReg_from_mem_wb),
+                    .forwardA(forwardA), .forwardB(forwardB));
 
   //This is the only err conditions we can encounter here?
   assign err = (branch_ofl | alu_ofl) & (~(passThroughA | passThroughB)); //add jump_ofl here
