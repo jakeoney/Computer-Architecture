@@ -72,8 +72,10 @@ module register_control(instruction, Rs, Rt, Rd, Rs_valid, Rt_valid, Rd_valid);
       
       5'b1_0010: //LBI
         begin
-          Rd = instruction[10:8];
-          Rd_valid = 1'b1;
+          Rs = instruction[10:8];
+          Rs_valid = 1'b1;
+          //Rd = instruction[10:8];
+          //Rd_valid = 1'b1;
         end
   
       5'b1_0010: //SLBI
