@@ -36,6 +36,8 @@ module proc (/*AUTOARG*/
   wire [15:0] data_mem_from_mem_wb, ALU_result_from_mem_wb;
   wire [2:0] write_reg_from_mem_wb;
   wire MemToReg_from_mem_wb, RegWrite_from_mem_wb;
+  wire [2:0] Rs_mem_wb, Rt_mem_wb, Rd_mem_wb;
+  wire Rs_valid_mem_wb, Rt_valid_mem_wb, Rd_valid_mem_wb;
 
   //data_mem Outputs
   wire [15:0] branch_or_jump;
@@ -46,6 +48,8 @@ module proc (/*AUTOARG*/
   wire [4:0] ALU_op_from_ex_mem;
   wire [2:0] write_reg_from_ex_mem;
   wire zero_from_ex_mem, ltz_from_ex_mem, Branch_from_ex_mem, MemRead_from_ex_mem, MemWrite_from_ex_mem, halt_from_ex_mem, MemToReg_from_ex_mem, RegWrite_from_ex_mem, Jump_from_ex_mem;
+  wire [2:0] Rs_ex_mem, Rt_ex_mem, Rd_ex_mem;
+  wire Rs_valid_ex_mem, Rt_valid_ex_mem, Rd_valid_ex_mem;
 
   //ALU Outputs
   wire [15:0] ALU_result;
@@ -61,6 +65,8 @@ module proc (/*AUTOARG*/
   wire [2:0] write_reg_from_id_ex;
   wire [1:0] instruction_from_id_ex;
   wire ALU_Src_from_id_ex, Branch_from_id_ex, MemRead_from_id_ex, MemWrite_from_id_ex, MemToReg_from_id_ex, RegWrite_from_id_ex, Jump_from_id_ex, halt_from_id_ex;
+  wire [2:0] Rs_id_ex, Rt_id_ex, Rd_id_ex;
+  wire Rs_valid_id_ex, Rt_valid_id_ex, Rd_valid_id_ex;
 
   //Decode Outputs
   wire [15:0] jumpAddr;
@@ -88,6 +94,10 @@ module proc (/*AUTOARG*/
   wire cin;
   wire passA;
   wire passB;
+
+  //Reg control Outputs
+  wire [2:0] Rs, Rt, Rd;
+  wire Rs_valid, Rt_valid, Rd_valid;
 
   // instr_fetch unit
   instr_fetch FETCH(//Input
@@ -119,6 +129,8 @@ module proc (/*AUTOARG*/
                  .branch_in(Branch), .mem_read_in(MemRead), .mem_write_in(MemWrite), .halt_in(halt), 
                  //WB Control Inputs
                  .mem_to_reg_in(MemToReg), .reg_write_in(RegWrite), .jump_in(Jump),
+                 //Register Inputs
+                 .Rs_in(Rs), .Rs_valid_in(Rs_valid), .Rt_in(Rt), .Rt_valid_in(Rt_valid), .Rd_in(Rd), .Rd_valid_in(Rd_valid),
 
                  //Outputs
                  .pc_out(next_pc_from_id_ex), .read1_out(read1_from_id_ex), .read2_out(read2_from_id_ex), 
@@ -128,7 +140,10 @@ module proc (/*AUTOARG*/
                  .alu_op_out(ALU_op_from_id_ex), .alu_src_out(ALU_Src_from_id_ex), 
                  .branch_out(Branch_from_id_ex), .mem_read_out(MemRead_from_id_ex), .mem_write_out(MemWrite_from_id_ex),
                  .halt_out(halt_from_id_ex),
-                 .mem_to_reg_out(MemToReg_from_id_ex), .reg_write_out(RegWrite_from_id_ex), .jump_out(Jump_from_id_ex)
+                 .mem_to_reg_out(MemToReg_from_id_ex), .reg_write_out(RegWrite_from_id_ex), .jump_out(Jump_from_id_ex),
+                 //Register Outputs
+                 .Rs_out(Rs_id_ex), .Rs_valid_out(Rs_valid_id_ex), .Rt_out(Rt_id_ex), .Rt_valid_out(Rt_valid_id_ex), 
+                 .Rd_out(Rd_id_ex), .Rd_valid_out(Rd_valid_id_ex)
                  ); 
 
   // execute unit
@@ -150,6 +165,9 @@ module proc (/*AUTOARG*/
                     .branch_in(Branch_from_id_ex), .mem_read_in(MemRead_from_id_ex), .mem_write_in(MemWrite_from_id_ex),
                     .halt_in(halt_from_id_ex),
                     .mem_to_reg_in(MemToReg_from_id_ex), .reg_write_in(RegWrite_from_id_ex), .jump_in(Jump_from_id_ex),
+                    //Register Inputs
+                    .Rs_in(Rs_id_ex), .Rs_valid_in(Rs_valid_id_ex), .Rt_in(Rt_id_ex), .Rt_valid_in(Rt_valid_id_ex), 
+                    .Rd_in(Rd_id_ex), .Rd_valid_in(Rd_valid_id_ex),
                     
                     //Outputs
                     .alu_result_out(ALU_result_from_ex_mem), .branch_result_out(branch_result_from_ex_mem), .zero_out(zero_from_ex_mem),
@@ -158,7 +176,10 @@ module proc (/*AUTOARG*/
                     //Control Outputs
                     .branch_out(Branch_from_ex_mem), .mem_read_out(MemRead_from_ex_mem), .mem_write_out(MemWrite_from_ex_mem),
                     .halt_out(halt_from_ex_mem),
-                    .mem_to_reg_out(MemToReg_from_ex_mem), .reg_write_out(RegWrite_from_ex_mem), .jump_out(Jump_from_ex_mem)
+                    .mem_to_reg_out(MemToReg_from_ex_mem), .reg_write_out(RegWrite_from_ex_mem), .jump_out(Jump_from_ex_mem),
+                    //Register Outputs
+                    .Rs_out(Rs_ex_mem), .Rs_valid_out(Rs_valid_ex_mem), .Rt_out(Rt_ex_mem), .Rt_valid_out(Rt_valid_ex_mem), 
+                    .Rd_out(Rd_ex_mem), .Rd_valid_out(Rd_valid_ex_mem)
                    );
 
   // mem unit
@@ -176,10 +197,17 @@ module proc (/*AUTOARG*/
                    //Control Inputs
                    .mem_to_reg_in(MemToReg_from_ex_mem), .reg_write_in(RegWrite_from_ex_mem), 
                    .clk(clk), .rst(rst),
+                   //Register Inputs
+                   .Rs_in(Rs_ex_mem), .Rs_valid_in(Rs_valid_ex_mem), .Rt_in(Rt_ex_mem), .Rt_valid_in(Rt_valid_ex_mem), 
+                   .Rd_in(Rd_ex_mem), .Rd_valid_in(Rd_valid_ex_mem),
+                   
                    //Outputs
                    .data_mem_out(data_mem_from_mem_wb), .alu_result_out(ALU_result_from_mem_wb), .write_reg_out(write_reg_from_mem_wb),
                    //Control Outputs
-                   .mem_to_reg_out(MemToReg_from_mem_wb), .reg_write_out(RegWrite_from_mem_wb)
+                   .mem_to_reg_out(MemToReg_from_mem_wb), .reg_write_out(RegWrite_from_mem_wb),
+                   //Register Outputs
+                   .Rs_out(Rs_mem_wb), .Rs_valid_out(Rs_valid_mem_wb), .Rt_out(Rt_mem_wb), .Rt_valid_out(Rt_valid_mem_wb), 
+                   .Rd_out(Rd_mem_wb), .Rd_valid_out(Rd_valid_mem_wb)
                   );
 
   // write_back unit
@@ -201,4 +229,9 @@ module proc (/*AUTOARG*/
                       .ALU_op(ALU_op_from_id_ex), .ALU_funct(instruction_from_id_ex[1:0]),
                       //Outputs
                       .invA(invA), .invB(invB), .op_to_alu(op_to_alu), .cin(cin), .sign(sign), .passA(passA), .passB(passB));
+
+  // register control unit
+  register_control REG_CTL(.instruction(instruction_from_if_id), 
+                           .Rs(Rs), .Rt(Rt), .Rd(Rd), 
+                           .Rs_valid(Rs_valid), .Rt_valid(Rt_valid), .Rd_valid(Rd_valid));
 endmodule 

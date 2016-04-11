@@ -38,6 +38,7 @@ module control(instruction_op, instr_valid, five_bit_imm,
     halt     = 1'b0;
     five_bit_imm = 1'b0;
     ZeroExtend = 1'b0;
+
     casex(instr)
       5'b0_0000: //halt
         begin
