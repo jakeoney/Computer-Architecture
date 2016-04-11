@@ -1,11 +1,12 @@
 module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign,
               passThroughA, passThroughB, instr_op, MemWrite, jump_in, jump_out,
               ALU_result, branch_result, zero, ltz, err,
-              Rs_id_ex, Rs_valid_id_ex, Rt_id_ex, Rt_valid_id_ex, 
+   //           Rs_id_ex, Rs_valid_id_ex, Rt_id_ex, Rt_valid_id_ex, 
+              forwardA, forwardB,
               //Rs_ex_mem, Rs_valid_ex_mem, Rt_ex_mem, Rt_valid_ex_mem, 
-              Rd_ex_mem, Rd_valid_ex_mem, Rd_mem_wb, Rd_valid_mem_wb,
-              ALU_result_from_ex_mem, data_mem_from_mem_wb,
-              WriteReg_ex_mem, WriteReg_mem_wb); 
+     //         Rd_ex_mem, Rd_valid_ex_mem, Rd_mem_wb, Rd_valid_mem_wb,
+              ALU_result_from_ex_mem, data_mem_from_mem_wb);
+       //       WriteReg_ex_mem, WriteReg_mem_wb); 
 
   input [2:0] alu_op;   //OP code
   input ALUSrc;         //ALUSrc MUX control signal (read2data or immediate)
@@ -22,11 +23,12 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   input MemWrite;
   input [15:0] jump_in;
   //Data forward unit inputs
-  input [2:0] Rs_id_ex, Rt_id_ex, Rd_ex_mem, Rd_mem_wb; //Rs_ex_mem, Rt_ex_mem, 
-  input Rs_valid_id_ex, Rt_valid_id_ex, Rd_valid_ex_mem, Rd_valid_mem_wb;//Rs_valid_ex_mem, Rt_valid_ex_mem, 
-  input WriteReg_ex_mem, WriteReg_mem_wb; 
+  //input [2:0] Rs_id_ex, Rt_id_ex, Rd_ex_mem, Rd_mem_wb; //Rs_ex_mem, Rt_ex_mem, 
+ // input Rs_valid_id_ex, Rt_valid_id_ex, Rd_valid_ex_mem, Rd_valid_mem_wb;//Rs_valid_ex_mem, Rt_valid_ex_mem, 
+ // input WriteReg_ex_mem, WriteReg_mem_wb; 
   input [15:0] ALU_result_from_ex_mem, data_mem_from_mem_wb;
-  
+  input [1:0] forwardA, forwardB;
+
   output [15:0] jump_out;
   output [15:0] ALU_result; //From main ALU unit
   output [15:0] branch_result; //From branch calculation alu unit
@@ -65,8 +67,6 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   wire [15:0] nRead1, rotateVal;
   wire isRORI;
 
-  wire [1:0] forwardA, forwardB;
-
   assign isRORI = ((~instr_op[0]) & instr_op[1] & instr_op[2] & (~instr_op[3]) & instr_op[4]);
 
   mux2_1_16bit RORI(.InB(immediate), .InA(read1data), .S(isRORI), .Out(rotateVal));
@@ -80,10 +80,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   //END ROTATE RIGHT LOGIC
 
   assign isBTR = (instr_op[0] & (~instr_op[1]) & (~instr_op[2]) & instr_op[3] & instr_op[4]);
-  assign btr_result = {read2data[0],read2data[1],read2data[2],read2data[3],read2data[4],read2data[5],read2data[6],
-                       read2data[7], read2data[8],read2data[9],read2data[10],read2data[11],read2data[12],
-                       read2data[13],read2data[14],read2data[15]}; 
-
+  
   assign isSLBI = ((~instr_op[0]) & instr_op[1] & (~instr_op[2]) & (~instr_op[3]) & instr_op[4]);
   assign shiftBits_SLBI = read2data << 8;
 
@@ -98,11 +95,21 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign isBranch = ((~instr_op[4]) & instr_op[3] & instr_op[2]);
   mux2_1_16bit ALU2_BRANCH (.InB(16'h0000), .InA(alu_in2_temp), .S(isBranch), .Out(alu_in2));
 
+  //DATA FORWARDING UNIT
+/*  data_forward_unit FWD(
+                    .Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
+                    //.Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), .Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
+                    .Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
+                    .WriteReg_ex_mem(WriteReg_ex_mem), .WriteReg_mem_wb(WriteReg_mem_wb),
+                    .forwardA(forwardA), .forwardB(forwardB));
+*/
   //ALU INPUTS DETERMINED BY DATA FORWARDING UNIT
   wire [15:0] wtf = 16'bzzzz_zzzz_zzzz_zzzz;//not sure how we got there
-  wire [15:0] fwd_alu_in1, fwd_alu_in2;
-  mux4_1 FWDA [15:0] (.InD(wtf), .InC(data_mem_from_mem_wb), .InB(ALU_result_from_ex_mem), .InA(alu_in1), .S(forwardA), .Out(fwd_alu_in1));
-  mux4_1 FWDB [15:0] (.InD(wtf), .InC(data_mem_from_mem_wb), .InB(ALU_result_from_ex_mem), .InA(alu_in2), .S(forwardB), .Out(fwd_alu_in2));
+  wire [15:0] fwd_alu_in1, fwd_alu_in2, fwd_alu_in1_temp;
+  mux4_1 FWDA [15:0] (.InD(wtf), .InC(ALU_result_from_ex_mem), .InB(data_mem_from_mem_wb), .InA(alu_in1), .S(forwardA), .Out(fwd_alu_in1_temp));
+  mux4_1 FWDB [15:0] (.InD(wtf), .InC(ALU_result_from_ex_mem), .InB(data_mem_from_mem_wb), .InA(alu_in2), .S(forwardB), .Out(fwd_alu_in2));
+
+  assign fwd_alu_in1 = (isSLBI) ? fwd_alu_in1_temp << 8 : fwd_alu_in1_temp;
 
   //Instanitate the ALU
   alu ALU(//Inputs
@@ -127,8 +134,12 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign set_condition_result = (seq | slt | sle | sco) ? 16'h0001 : 16'h0000;
   
   mux2_1_16bit SETRESULT(.InB(set_condition_result), .InA(temp_result), .S(isSetOP), .Out(ALU_result_temp));
+  
+  assign btr_result = {result[0],result[1],result[2],result[3],result[4],result[5],result[6], result[7], 
+                       result[8],result[9],result[10],result[11],result[12],result[13],result[14],result[15]}; 
+  
   mux2_1_16bit BTRresult(.InB(btr_result), .InA(ALU_result_temp), .S(isBTR), .Out(ALU_result));
-
+  
   //add branch and pc
   adder16 ADD(//Inputs
       .A(pc), .B(immediate), .Cin(cin_for_branch), .sign(sign_branch), 
@@ -142,14 +153,6 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   assign any_jump = jalr | jr;
   mux2_1_16bit AIN(.InB(read2data), .InA(pc), .S(jr|jalr), .Out(a_in));
   adder16 JUMP(.A(a_in), .B(jump_in), .Cin(1'b0), .sign(1'b1), .Out(jump_out), .Ofl(jump_ofl));
-
-  //DATA FORWARDING UNIT
-  data_forward_unit FWD(
-                    .Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
-                    //.Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), .Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
-                    .Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
-                    .WriteReg_ex_mem(WriteReg_ex_mem), .WriteReg_mem_wb(WriteReg_mem_wb),
-                    .forwardA(forwardA), .forwardB(forwardB));
 
   //This is the only err conditions we can encounter here?
   assign err = (branch_ofl | alu_ofl) & (~(passThroughA | passThroughB)); //add jump_ofl here

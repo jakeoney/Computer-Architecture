@@ -52,7 +52,7 @@ module instr_decode(instruction, writeData, RegWrite, RegDst, clk, rst, pc,
   assign write_reg = (jal_or_jalr) ? 3'b111 : write_regtemp2; //write to r7
   assign writeData1 = (jal_or_jalr) ? pc : writeData;
   //Instantiate the register file
-  rf REGS(//Output
+  rf_bypass REGS(//Output
           .read1data(read1data_temp), .read2data(read2data_temp), .err(err),
           //Input
           .clk(clk), .rst(rst), .read1regsel(read2reg), .read2regsel(read1reg), 

@@ -153,11 +153,12 @@ module proc (/*AUTOARG*/
                     .passThroughA(passA), .passThroughB(passB), .instr_op(ALU_op_from_id_ex), .MemWrite(MemWrite_from_id_ex),
                     .jump_in(jumpAddr_from_id_ex),
                     //Inputs for Data Forward Unit
-                    .Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
+                    //.Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
                     //.Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), .Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
-                    .Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
-                    .WriteReg_ex_mem(RegWrite_from_ex_mem), .WriteReg_mem_wb(RegWrite_from_mem_wb), 
-                    .ALU_result_from_ex_mem(ALU_result_from_ex_mem), .data_mem_from_mem_wb(data_mem_from_mem_wb),
+                    //.Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
+                    //.WriteReg_ex_mem(RegWrite_from_ex_mem), .WriteReg_mem_wb(RegWrite_from_mem_wb), 
+                    .ALU_result_from_ex_mem(ALU_result_from_ex_mem), .data_mem_from_mem_wb(wb_out),
+                    .forwardA(forwardA), .forwardB(forwardB),
                     //Outputs
                     .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err),
                     .ltz(ltz), .jump_out(jump_out));  
@@ -240,4 +241,13 @@ module proc (/*AUTOARG*/
   register_control REG_CTL(.instruction(instruction_from_if_id), 
                            .Rs(Rs), .Rt(Rt), .Rd(Rd), 
                            .Rs_valid(Rs_valid), .Rt_valid(Rt_valid), .Rd_valid(Rd_valid));
+
+wire [1:0] forwardA,forwardB;
+  //DATA FORWARDING UNIT
+  data_forward_unit FWD(
+                    .Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
+                    //.Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), .Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
+                    .Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
+                    .WriteReg_ex_mem(RegWrite_from_ex_mem), .WriteReg_mem_wb(RegWrite_from_mem_wb),
+                    .forwardA(forwardA), .forwardB(forwardB));
 endmodule 
