@@ -165,10 +165,6 @@ module proc (/*AUTOARG*/
                     .passThroughA(passA), .passThroughB(passB), .instr_op(ALU_op_from_id_ex), .MemWrite(MemWrite_from_id_ex),
                     .jump_in(jumpAddr_from_id_ex),
                     //Inputs for Data Forward Unit
-                    //.Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
-                   // .Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), //.Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
-                    //.Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
-                    //.WriteReg_ex_mem(RegWrite_from_ex_mem), .WriteReg_mem_wb(RegWrite_from_mem_wb), 
                     .ALU_result_from_ex_mem(ALU_result_from_ex_mem), .data_mem_from_mem_wb(wb_out),
                     .forwardA(forwardA), .forwardB(forwardB),
                     //Outputs
@@ -181,8 +177,8 @@ module proc (/*AUTOARG*/
   ex_mem_ff EX_MEM (//Inputs
                     .clk(clk), .rst(rst), .alu_result_in(ALU_result), .branch_result_in(branch_result), 
                     .zero_in(zero), .ltz_in(ltz), .jumpaddr_in(jump_out), .next_pc_in(next_pc_from_id_ex),
-                    //.read2data_in(read2out_ex), .alu_op_in(ALU_op_from_id_ex), .write_reg_in(write_reg_from_id_ex),
-                    .read2data_in(read2_from_id_ex), .alu_op_in(ALU_op_from_id_ex), .write_reg_in(write_reg_from_id_ex),
+                    .read2data_in(read2out_ex), .alu_op_in(ALU_op_from_id_ex), .write_reg_in(write_reg_from_id_ex),
+                    //.read2data_in(read2_from_id_ex), .alu_op_in(ALU_op_from_id_ex), .write_reg_in(write_reg_from_id_ex),
                     //Control Inputs
                     .branch_in(Branch_from_id_ex), .mem_read_in(MemRead_from_id_ex), .mem_write_in(MemWrite_from_id_ex),
                     .halt_in(halt_from_id_ex),

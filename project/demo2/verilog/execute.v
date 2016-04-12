@@ -124,11 +124,8 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 
 
  
-    assign read2out = alu_in2;
- 
- 
- 
- 
+    //assign read2out = alu_in2;
+    assign read2out = fwd_alu_in1;
  
 
 

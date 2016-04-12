@@ -86,7 +86,16 @@ module register_control(instruction, Rs, Rt, Rd, Rs_valid, Rt_valid, Rd_valid);
           Rd_valid = 1'b1;
         end
 
-      5'b1_000x: //ST, LD
+      5'b1_0000: //ST, LD
+        begin
+          Rs = instruction[10:8];
+          Rs_valid = 1'b1;
+          Rt = instruction[7:5];
+          Rt_valid = 1'b1;
+          Rd = instruction[7:5];
+          Rd_valid = 1'b1;
+        end
+      5'b1_0001: //ST, LD
         begin
           Rs = instruction[10:8];
           Rs_valid = 1'b1;
