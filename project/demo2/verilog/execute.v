@@ -1,8 +1,8 @@
 module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, cin, sign,
     passThroughA, passThroughB, instr_op, MemWrite, jump_in, jump_out,
     ALU_result, branch_result, zero, ltz, err,
-    forwardA, forwardB, data_mem_from_mem_wb, ALU_result_from_ex_mem
-    );
+    forwardA, forwardB, data_mem_from_mem_wb, ALU_result_from_ex_mem,
+    read2out);
 
   input [1:0] forwardA, forwardB;
   input [15:0] data_mem_from_mem_wb, ALU_result_from_ex_mem;
@@ -28,6 +28,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
   output zero;
   output err;
   output ltz;
+  output [15:0] read2out;
 
   wire [15:0] alu_in1, alu_in2;
   wire [1:0] sll;         //Shift Left logical op code
@@ -123,7 +124,7 @@ module execute(alu_op, ALUSrc, read1data, read2data, immediate, pc, invA, invB, 
 
 
  
- 
+    assign read2out = alu_in2;
  
  
  

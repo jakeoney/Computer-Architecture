@@ -173,14 +173,15 @@ module proc (/*AUTOARG*/
                     .forwardA(forwardA), .forwardB(forwardB),
                     //Outputs
                     .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err),
-                    .ltz(ltz), .jump_out(jump_out));  
+                    .ltz(ltz), .jump_out(jump_out), .read2out(read2out_ex));  
 
-  
+ wire [15:0] read2out_ex; 
 
   // EX/MEM flip flop
   ex_mem_ff EX_MEM (//Inputs
                     .clk(clk), .rst(rst), .alu_result_in(ALU_result), .branch_result_in(branch_result), 
                     .zero_in(zero), .ltz_in(ltz), .jumpaddr_in(jump_out), .next_pc_in(next_pc_from_id_ex),
+                    //.read2data_in(read2out_ex), .alu_op_in(ALU_op_from_id_ex), .write_reg_in(write_reg_from_id_ex),
                     .read2data_in(read2_from_id_ex), .alu_op_in(ALU_op_from_id_ex), .write_reg_in(write_reg_from_id_ex),
                     //Control Inputs
                     .branch_in(Branch_from_id_ex), .mem_read_in(MemRead_from_id_ex), .mem_write_in(MemWrite_from_id_ex),

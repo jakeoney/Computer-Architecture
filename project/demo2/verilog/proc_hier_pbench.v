@@ -139,19 +139,21 @@ module proc_hier_pbench();
    assign WriteData = DUT.p0.DECODE.REGS.writedata;
    // Data being written to the register. (16 bits)
    
-   assign MemRead =  (DUT.p0.MEM.MemRead);
+   assign MemRead =  (DUT.p0.MEM.MemRead & (~DUT.p0.MEM.MemWrite));
    // Is memory being read, one bit signal (1 means yes, 0 means no)
    
    assign MemWrite = (DUT.p0.MEM.enable & DUT.p0.MEM.MemWrite);
    // Is memory being written to (1 bit signal)
    
    assign MemAddress = DUT.p0.MEM.addr;
+   //assign MemAddress = DUT.p0.MEM.in;
    // Address to access memory with (for both reads and writes to memory, 16 bits)
    
    assign MemDataIn = DUT.p0.MEM.in;
+   //assign MemDataIn = DUT.p0.MEM.addr;
    // Data to be written to memory for memory writes (16 bits)
    
-   assign MemDataOut = DUT.p0.data_mem_out;
+   assign MemDataOut = DUT.p0.MEM.readData;
    // Data read from memory for memory reads (16 bits)
 
    // new added 05/03
