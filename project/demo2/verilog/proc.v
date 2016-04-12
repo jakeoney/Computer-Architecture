@@ -99,14 +99,21 @@ module proc (/*AUTOARG*/
   wire [2:0] Rs, Rt, Rd;
   wire Rs_valid, Rt_valid, Rd_valid;
 
+  //Data forwarding unit Outputs
+  wire [1:0] forwardA,forwardB;
+
+  //Hazard Detection Outputs
+  wire PCWrite, IF_ID_Write, zero_control_signals;
+
   // instr_fetch unit
   instr_fetch FETCH(//Input
-                    .pc(next_pc), .branch_or_jump(branch_or_jump), .toJump(Jump_from_ex_mem), .toBranch(Branch_from_ex_mem), .clk(clk), .rst(rst), 
+                    .pc(next_pc), .branch_or_jump(branch_or_jump), .toJump(Jump_from_ex_mem), .toBranch(Branch_from_ex_mem), .clk(clk), .rst(rst),
+                    .PCWrite(PCWrite),
                     //Outputs
                     .next_pc(next_pc), .instruction(instruction), .err(fetch_err), .instr_valid(instr_valid));
 
   // IF/ID flip flop
-  if_id_ff IF_ID(.clk(clk), .rst(rst), .pc_in(next_pc), .instr_in(instruction), .instr_valid(instr_valid),
+  if_id_ff IF_ID(.clk(clk), .rst(rst), .pc_in(next_pc), .instr_in(instruction), .instr_valid(instr_valid), .IF_ID_Write(IF_ID_Write),
                  .pc_out(next_pc_from_if_id), .instr_out(instruction_from_if_id), .instr_valid_out(instr_valid_out));
 
   // instr_decode unit
@@ -131,7 +138,7 @@ module proc (/*AUTOARG*/
                  .mem_to_reg_in(MemToReg), .reg_write_in(RegWrite), .jump_in(Jump),
                  //Register Inputs
                  .Rs_in(Rs), .Rs_valid_in(Rs_valid), .Rt_in(Rt), .Rt_valid_in(Rt_valid), .Rd_in(Rd), .Rd_valid_in(Rd_valid),
-
+                 .zero_control_signals(zero_control_signals),
                  //Outputs
                  .pc_out(next_pc_from_id_ex), .read1_out(read1_from_id_ex), .read2_out(read2_from_id_ex), 
                  .imm_out(imm_from_id_ex), .jumpaddr_out(jumpAddr_from_id_ex), .instr_out(instruction_from_id_ex[1:0]), 
@@ -146,6 +153,11 @@ module proc (/*AUTOARG*/
                  .Rd_out(Rd_id_ex), .Rd_valid_out(Rd_valid_id_ex)
                  ); 
 
+  //wire [15:0] execute_in1, execute_in2, execute_imm; 
+  //mux4_1 FWDA [15:0] (.InD(read2_from_id_ex), .InC(ALU_result_from_ex_mem), .InB(wb_out), .InA(read1_from_id_ex), .S(forwardA), .Out(execute_in1));
+  //mux4_1 FWDB [15:0] (.InD(read1_from_id_ex), .InC(ALU_result_from_ex_mem), .InB(wb_out), .InA(read2_from_id_ex), .S(forwardB), .Out(execute_in2));
+  //mux4_1 FWDI [15:0] (.InD(read1_from_id_ex), .InC(ALU_result_from_ex_mem), .InB(wb_out), .InA(imm_from_id_ex), .S(forwardB), .Out(execute_imm));
+  
   // execute unit
   execute EXECUTE ( //Inputs
                     .alu_op(op_to_alu), .ALUSrc(ALU_Src_from_id_ex), .read1data(read1_from_id_ex), .read2data(read2_from_id_ex), 
@@ -154,7 +166,7 @@ module proc (/*AUTOARG*/
                     .jump_in(jumpAddr_from_id_ex),
                     //Inputs for Data Forward Unit
                     //.Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
-                    //.Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), .Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
+                   // .Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), //.Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
                     //.Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
                     //.WriteReg_ex_mem(RegWrite_from_ex_mem), .WriteReg_mem_wb(RegWrite_from_mem_wb), 
                     .ALU_result_from_ex_mem(ALU_result_from_ex_mem), .data_mem_from_mem_wb(wb_out),
@@ -162,7 +174,9 @@ module proc (/*AUTOARG*/
                     //Outputs
                     .ALU_result(ALU_result), .branch_result(branch_result), .zero(zero), .err(alu_err),
                     .ltz(ltz), .jump_out(jump_out));  
- 
+
+  
+
   // EX/MEM flip flop
   ex_mem_ff EX_MEM (//Inputs
                     .clk(clk), .rst(rst), .alu_result_in(ALU_result), .branch_result_in(branch_result), 
@@ -242,12 +256,22 @@ module proc (/*AUTOARG*/
                            .Rs(Rs), .Rt(Rt), .Rd(Rd), 
                            .Rs_valid(Rs_valid), .Rt_valid(Rt_valid), .Rd_valid(Rd_valid));
 
-wire [1:0] forwardA,forwardB;
   //DATA FORWARDING UNIT
   data_forward_unit FWD(
                     .Rs_id_ex(Rs_id_ex), .Rs_valid_id_ex(Rs_valid_id_ex), .Rt_id_ex(Rt_id_ex), .Rt_valid_id_ex(Rt_valid_id_ex), 
-                    //.Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), .Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
+                    .Rs_ex_mem(Rs_ex_mem), .Rs_valid_ex_mem(Rs_valid_ex_mem), //.Rt_ex_mem(Rt_ex_mem), .Rt_valid_ex_mem(Rt_ex_mem), 
                     .Rd_ex_mem(Rd_ex_mem), .Rd_valid_ex_mem(Rd_valid_ex_mem), .Rd_mem_wb(Rd_mem_wb), .Rd_valid_mem_wb(Rd_valid_mem_wb),
                     .WriteReg_ex_mem(RegWrite_from_ex_mem), .WriteReg_mem_wb(RegWrite_from_mem_wb),
+                    .MemRead_ex_mem(MemRead_from_ex_mem),
                     .forwardA(forwardA), .forwardB(forwardB));
+
+  //HAZARD DETECTION UNIT
+  hazard_detection_unit HZD(//Inputs
+                            .MemRead_id_ex(MemRead_from_id_ex), 
+                            .Rt_id_ex(Rt_id_ex), .Rs_if_id(Rs), .Rt_if_id(Rt),
+                            .Rt_valid_id_ex(Rt_valid_id_ex), .Rs_valid_if_id(Rs_valid), .Rt_valid_if_id(Rt_valid),
+                            //Outputs
+                            .PCWrite(PCWrite), .IF_ID_Write(IF_ID_Write), .zero_control_signals(zero_control_signals)
+                           );
+
 endmodule 

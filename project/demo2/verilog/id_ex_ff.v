@@ -3,6 +3,7 @@ module id_ex_ff(clk, rst, pc_in, read1_in, read2_in, imm_in, jumpaddr_in,
                 alu_op_in, alu_src_in, branch_in, mem_read_in, mem_write_in,
                 mem_to_reg_in, reg_write_in, jump_in, halt_in,
                 Rs_in, Rd_in, Rt_in, Rs_valid_in, Rt_valid_in, Rd_valid_in,
+                zero_control_signals,
 
                 read1_out, read2_out, pc_out, imm_out, jumpaddr_out, instr_out,
                 write_reg_out,
@@ -19,6 +20,7 @@ module id_ex_ff(clk, rst, pc_in, read1_in, read2_in, imm_in, jumpaddr_in,
   input reg_write_in, jump_in, halt_in;
   input [2:0] Rs_in, Rd_in, Rt_in;
   input Rs_valid_in, Rt_valid_in, Rd_valid_in;
+  input zero_control_signals;
 
   output [4:0] alu_op_out;
   output [2:0] write_reg_out;
@@ -28,6 +30,8 @@ module id_ex_ff(clk, rst, pc_in, read1_in, read2_in, imm_in, jumpaddr_in,
   output [15:0] read1_out, read2_out, pc_out, imm_out, jumpaddr_out;
   output [2:0] Rs_out, Rd_out, Rt_out;
   output Rs_valid_out, Rt_valid_out, Rd_valid_out;
+
+  wire mem_write_in_actual, reg_write_in_actual;
 
   dff PC_FF    [15:0] (.q(pc_out),        .d(pc_in),        .clk(clk), .rst(rst));
   dff READ1_FF [15:0] (.q(read1_out),     .d(read1_in),     .clk(clk), .rst(rst));
@@ -44,9 +48,15 @@ module id_ex_ff(clk, rst, pc_in, read1_in, read2_in, imm_in, jumpaddr_in,
   dff SRC_FF      (.q(alu_src_out),    .d(alu_src_in),    .clk(clk), .rst(rst));
   dff BR_FF       (.q(branch_out),     .d(branch_in),     .clk(clk), .rst(rst));
   dff MEMR_FF     (.q(mem_read_out),   .d(mem_read_in),   .clk(clk), .rst(rst));
-  dff MEMW_FF     (.q(mem_write_out),  .d(mem_write_in),  .clk(clk), .rst(rst));
+  //Signals to be zero'd
+  assign mem_write_in_actual = (zero_control_signals) ? 1'b0 : mem_write_in;
+  assign reg_write_in_actual = (zero_control_signals) ? 1'b0 : reg_write_in;
+
+  dff MEMW_FF     (.q(mem_write_out),  .d(mem_write_in_actual),  .clk(clk), .rst(rst));
+  dff RW_FF       (.q(reg_write_out),  .d(reg_write_in_actual),  .clk(clk), .rst(rst));
+  //end signals to be zero'd
+
   dff MEMTR_FF    (.q(mem_to_reg_out), .d(mem_to_reg_in), .clk(clk), .rst(rst));
-  dff RW_FF       (.q(reg_write_out),  .d(reg_write_in),  .clk(clk), .rst(rst));
   dff JUMP_FF     (.q(jump_out),       .d(jump_in),       .clk(clk), .rst(rst));
   dff HALT_FF     (.q(halt_out),       .d(halt_in),       .clk(clk), .rst(rst));
 
