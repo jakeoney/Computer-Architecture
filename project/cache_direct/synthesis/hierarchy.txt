@@ -1,0 +1,74 @@
+ 
+****************************************
+Report : hierarchy
+Design : mem_system
+Version: B-2008.09-SP3
+Date   : Tue Apr 19 23:17:32 2016
+****************************************
+
+Information: This design contains unmapped logic. (RPT-7)
+
+mem_system
+    GTECH_AND2                               gtech
+    GTECH_BUF                                gtech
+    GTECH_NOT                                gtech
+    GTECH_OR2                                gtech
+    cache_cache_id0
+        GTECH_AND2                           gtech
+        GTECH_BUF                            gtech
+        GTECH_NOT                            gtech
+        GTECH_OR2                            gtech
+        memc_Size1
+            GTECH_AND2                       gtech
+            GTECH_AND3                       gtech
+            GTECH_BUF                        gtech
+            GTECH_NOT                        gtech
+            GTECH_OR2                        gtech
+        memc_Size5
+            GTECH_AND2                       gtech
+            GTECH_AND3                       gtech
+            GTECH_BUF                        gtech
+            GTECH_NOT                        gtech
+            GTECH_OR2                        gtech
+        memc_Size16
+            GTECH_AND2                       gtech
+            GTECH_AND3                       gtech
+            GTECH_BUF                        gtech
+            GTECH_NOT                        gtech
+            GTECH_OR2                        gtech
+        memv
+            GTECH_AND2                       gtech
+            GTECH_BUF                        gtech
+            GTECH_NOT                        gtech
+            GTECH_OR2                        gtech
+    four_bank_mem
+        GTECH_AND2                           gtech
+        GTECH_NOT                            gtech
+        GTECH_OR2                            gtech
+        dff
+            GTECH_BUF                        gtech
+            GTECH_NOT                        gtech
+        final_memory
+            GTECH_AND2                       gtech
+            GTECH_AND8                       gtech
+            GTECH_BUF                        gtech
+            GTECH_NOT                        gtech
+            GTECH_OR2                        gtech
+            dff
+                ...
+    mem_system_control
+        mem_next_state
+            GTECH_AND2                       gtech
+            GTECH_NOT                        gtech
+            GTECH_OR2                        gtech
+            GTECH_OR3                        gtech
+            GTECH_OR4                        gtech
+            GTECH_OR5                        gtech
+        mem_signals
+            GTECH_AND2                       gtech
+            GTECH_NOT                        gtech
+            GTECH_OR2                        gtech
+        mem_state_reg
+            dff
+                ...
+1
