@@ -1,4 +1,4 @@
-module mem_state(clk, rst, state, next_state);
+module mem_state_reg(clk, rst, state, next_state);
 
   input clk, rst;
   input [3:0] state;

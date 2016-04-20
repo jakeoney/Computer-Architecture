@@ -28,7 +28,9 @@ module mem_system_control(clk, rst, rd, wr, hit, dirty,
 
   wire [3:0] state, next_state;
 
-  mem_logic LOGIC(//Inputs
+//I split up the logic to make debuging easier. Had a bug that I couldn't
+//find. mem_logic was split into mem_next_state and mem_signals.
+/*  mem_logic LOGIC(//Inputs
                   .rd(rd), .wr(wr), .hit(hit), .dirty(dirty), .state(state),
                   //Outputs
                   .stall(stall), .err(err), .done(done), .next_state(next_state),
@@ -40,8 +42,26 @@ module mem_system_control(clk, rst, rd, wr, hit, dirty,
                   .mem_wr(mem_wr), .mem_rd(mem_rd), .mem_sel(mem_sel),
                   .mem_offset(mem_offset)
   );
+*/
+  mem_state_reg STATE_FF (.next_state(next_state), .state(state), .clk(clk), .rst(rst));
+  
+  mem_next_state NEXT_STATE (//Inputs
+                  .rd(rd), .wr(wr), .hit(hit), .dirty(dirty), .state(state),
+                  //Outputs
+                  .err(err), .next_state(next_state)
+  );
 
-  mem_state STATE(.next_state(next_state), .state(state), .clk(clk), .rst(rst));
-
+  mem_signals SIGNALS(//Inputs
+                  .hit(hit), .state(state),
+                  //Outputs
+                  .stall(stall), .done(done),
+                  //Outputs - Cache
+                  .cache_wr(cache_wr), .comp(comp),
+                  .cache_offset(cache_offset), .cache_sel(cache_sel),
+                  .cache_hit(cache_hit),
+                  //Outputs - Mem
+                  .mem_wr(mem_wr), .mem_rd(mem_rd), .mem_sel(mem_sel),
+                  .mem_offset(mem_offset)
+  );
 
 endmodule
