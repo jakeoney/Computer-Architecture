@@ -1,0 +1,95 @@
+Skipping final_memory.syn.v, seems like a file meant for synthesis
+Skipping memc.syn.v, seems like a file meant for synthesis
+Skipping memv.syn.v, seems like a file meant for synthesis
+-------------------------------------------------
+Step: 1
+Compiling the following verilog files: cache.v clkrst.v dff.v final_cache.v final_memory.v four_bank_mem.v memc.v mem_logic.v mem_next_state.v mem_signals.v mem_state_reg.v mem_system_control.v mem_system_hier.v mem_system_perfbench.v mem_system_randbench.v mem_system_ref.v mem_system.v memv.v 
+Top module: mem_system_perfbench
+Compilation log in wsrun.log
+Executing rm -rf __work dump.wlf dump.vcd diff.trace diff.ptrace archsim.trace archsim.ptrace verilogsim.trace verilogsim.ptrace
+Executing vlib __work
+Executing vlog +define+RANDSEED=3 -work __work cache.v clkrst.v dff.v final_cache.v final_memory.v four_bank_mem.v memc.v mem_logic.v mem_next_state.v mem_signals.v mem_state_reg.v mem_system_control.v mem_system_hier.v mem_system_perfbench.v mem_system_randbench.v mem_system_ref.v mem_system.v memv.v
+Model Technology ModelSim SE vlog 5.8b Compiler 2004.01 Jan 26 2004
+-- Compiling module cache
+-- Compiling module clkrst
+-- Compiling module dff
+-- Compiling module final_cache
+-- Compiling module final_memory
+-- Compiling module four_bank_mem
+-- Compiling module memc
+-- Compiling module mem_logic
+-- Compiling module mem_next_state
+-- Compiling module mem_signals
+-- Compiling module mem_state_reg
+-- Compiling module mem_system_control
+-- Compiling module mem_system_hier
+-- Compiling module mem_system_perfbench
+-- Compiling module mem_system_randbench
+-- Compiling module mem_system_ref
+-- Compiling module mem_system
+-- Compiling module memv
+
+Top level modules:
+	mem_logic
+	mem_system_perfbench
+	mem_system_randbench
+-------------------------------------------------
+Step: 2
+Running Verilog simulation...details in wsrun.log
+Reading /afs/cs.wisc.edu/s/mentor-2004/common/modeltech-5.8b/tcl/vsim/pref.tcl 
+
+# 5.8b
+
+# vsim +addr_trace_file_name=mem.addr -lib __work -c mem_system_perfbench 
+# //  ModelSim SE 5.8b Jan 01 2004 Linux 2.6.32-573.7.1.el6.x86_64
+# //
+# //  Copyright Model Technology, a Mentor Graphics Corporation company, 2004
+# //                         All Rights Reserved.
+# //                   UNPUBLISHED, LICENSED SOFTWARE.
+# //         CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+# //        PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS.
+# //
+# Loading __work.mem_system_perfbench
+# Loading __work.mem_system_hier
+# Loading __work.clkrst
+# Loading __work.mem_system
+# Loading __work.final_cache
+# Loading __work.dff
+# Loading __work.cache
+# Loading __work.memc
+# Loading __work.memv
+# Loading __work.four_bank_mem
+# Loading __work.final_memory
+# Loading __work.mem_system_control
+# Loading __work.mem_state_reg
+# Loading __work.mem_next_state
+# Loading __work.mem_signals
+# Loading __work.mem_system_ref
+VSIM 1> run -all
+# Using trace file                                                                                                                                                                                                                                                         mem.addr
+# LOG: ReQNum    1 Cycle       11 ReqCycle        3 Wr Addr 0x015c Value 0x0018 ValueRef 0x0018 HIT 0
+# 
+# LOG: ReqNum    2 Cycle       12 ReqCycle       11 Rd Addr 0x015c Value 0x0018 ValueRef 0x0018 HIT 1
+# 
+# LOG: ReQNum    3 Cycle       20 ReqCycle       12 Wr Addr 0x00d6 Value 0x007c ValueRef 0x007c HIT 0
+# 
+# LOG: ReQNum    4 Cycle       28 ReqCycle       20 Wr Addr 0x0002 Value 0x000a ValueRef 0x000a HIT 0
+# 
+# LOG: ReQNum    5 Cycle       29 ReqCycle       28 Wr Addr 0x0002 Value 0x001e ValueRef 0x001e HIT 1
+# 
+# LOG: ReqNum    6 Cycle       30 ReqCycle       29 Rd Addr 0x0002 Value 0x001e ValueRef 0x001e HIT 1
+# 
+# LOG: ReqNum    7 Cycle       31 ReqCycle       30 Rd Addr 0x00d6 Value 0x007c ValueRef 0x007c HIT 1
+# 
+# LOG: Done all Requests:          7 Replies:          7 Cycles:         31 Hits:          4
+# Test status: SUCCESS
+# Break at mem_system_perfbench.v line 200
+# Stopped at mem_system_perfbench.v line 200 
+VSIM 2> # 
+# <EOF> 
+-------------------------------------------------
+Step: 3
+Verilog simulation successful
+Created a dump file dump.wlf.
+To view waveforms, open with
+vsim -view dataset=dump.wlf

@@ -1,0 +1,430 @@
+Creating synth.tcl
+File list cache.v
+ dff.v
+ final_memory.syn.v
+ four_bank_mem.v
+ memc.syn.v
+ mem_next_state.v
+ mem_signals.v
+ mem_state_reg.v
+ mem_system_control.v
+ mem_system.v
+ mem_system_ref.v
+ memv.syn.v
+
+Cleaning temporary directory WORK
+Executing synth.tcl on Synopsys DC Compiler
+This phase does not do any optimizations
+
+                        DC Professional (TM)
+                           DC Expert (TM)
+                            DC Ultra (TM)
+                       FloorPlan Manager (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                        Library Compiler (TM)
+                      DesignWare Developer (TM)
+                          DFT Compiler (TM)
+                            BSD Compiler
+                         Power Compiler (TM)
+
+           Version B-2008.09-SP3 for amd64 -- Jan 19, 2009
+              Copyright (c) 1988-2008 by Synopsys, Inc.
+                         ALL RIGHTS RESERVED
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+The above trademark notice does not imply that you are licensed to use 
+all of the listed products. You are licensed to use only those products 
+for which you have lawfully obtained a valid license key.
+
+Initializing...
+echo "********** CS552 Reading files begin ********************"
+********** CS552 Reading files begin ********************
+set my_verilog_files [list cache.v dff.v final_memory.syn.v four_bank_mem.v memc.syn.v mem_next_state.v mem_signals.v mem_state_reg.v mem_system_control.v mem_system.v mem_system_ref.v memv.syn.v  ]
+cache.v dff.v final_memory.syn.v four_bank_mem.v memc.syn.v mem_next_state.v mem_signals.v mem_state_reg.v mem_system_control.v mem_system.v mem_system_ref.v memv.syn.v
+set my_toplevel mem_system
+mem_system
+define_design_lib WORK -path ./WORK
+1
+analyze -f verilog $my_verilog_files
+Running PRESTO HDLC
+Searching for ./cache.v
+Searching for ./dff.v
+Searching for ./final_memory.syn.v
+Searching for ./four_bank_mem.v
+Searching for ./memc.syn.v
+Searching for ./mem_next_state.v
+Searching for ./mem_signals.v
+Searching for ./mem_state_reg.v
+Searching for ./mem_system_control.v
+Searching for ./mem_system.v
+Searching for ./mem_system_ref.v
+Searching for ./memv.syn.v
+Compiling source file ./cache.v
+Warning:  ./cache.v:47: the undeclared symbol 'go' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:48: the undeclared symbol 'match' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:52: the undeclared symbol 'wr_word0' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:53: the undeclared symbol 'wr_word1' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:54: the undeclared symbol 'wr_word2' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:55: the undeclared symbol 'wr_word3' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:57: the undeclared symbol 'wr_dirty' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:58: the undeclared symbol 'wr_tag' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:59: the undeclared symbol 'wr_valid' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:60: the undeclared symbol 'dirty_in' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:68: the undeclared symbol 'dirtybit' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./cache.v:69: the undeclared symbol 'validbit' assumed to have the default net type, which is 'wire'. (VER-936)
+Compiling source file ./dff.v
+Warning:  ./dff.v:15: delays for continuous assignment are ignored. (VER-173)
+Compiling source file ./final_memory.syn.v
+Warning:  ./final_memory.syn.v:80: the undeclared symbol 'rd0' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./final_memory.syn.v:81: the undeclared symbol 'wr0' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./final_memory.syn.v:86: the undeclared symbol 'rd1' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./final_memory.syn.v:87: the undeclared symbol 'wr1' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./final_memory.syn.v:96: the undeclared symbol 'rd2' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./final_memory.syn.v:97: the undeclared symbol 'wr2' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./final_memory.syn.v:98: the undeclared symbol 'rd3' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./final_memory.syn.v:99: the undeclared symbol 'wr3' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./final_memory.syn.v:101: the undeclared symbol 'busy' assumed to have the default net type, which is 'wire'. (VER-936)
+Compiling source file ./four_bank_mem.v
+Warning:  ./final_memory.syn.v:110: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./four_bank_mem.v:81: the undeclared symbol 'sel0' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./four_bank_mem.v:82: the undeclared symbol 'sel1' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./four_bank_mem.v:83: the undeclared symbol 'sel2' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./four_bank_mem.v:84: the undeclared symbol 'sel3' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./four_bank_mem.v:98: the undeclared symbol 'err0' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./four_bank_mem.v:100: the undeclared symbol 'err1' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./four_bank_mem.v:102: the undeclared symbol 'err2' assumed to have the default net type, which is 'wire'. (VER-936)
+Warning:  ./four_bank_mem.v:104: the undeclared symbol 'err3' assumed to have the default net type, which is 'wire'. (VER-936)
+Compiling source file ./memc.syn.v
+Compiling source file ./mem_next_state.v
+Compiling source file ./mem_signals.v
+Compiling source file ./mem_state_reg.v
+Compiling source file ./mem_system_control.v
+Compiling source file ./mem_system.v
+Compiling source file ./mem_system_ref.v
+Compiling source file ./memv.syn.v
+Warning:  Little argument or return value checking implemented for system task or function '$readmemh'. (VER-209)
+Warning:  ./mem_system_ref.v:42: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./mem_system_ref.v:45: Unsupported system task '$readmemh' will be ignored for synthesis. (VER-274)
+Presto compilation completed successfully.
+Loading db file '/u/k/a/karu/courses/cs552/cad/Synopsys_Libraries/libs/gscl45nm.db'
+1
+elaborate $my_toplevel -architecture verilog
+Loading db file '/s/synopsys-2009_03_09/@sys/B-2008.09-SP3/libraries/syn/gtech.db'
+Loading db file '/s/synopsys-2009_03_09/@sys/B-2008.09-SP3/libraries/syn/standard.sldb'
+  Loading link library 'gscl45nm'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'mem_system'.
+Information: Building the design 'cache' instantiated from design 'mem_system' with
+	the parameters "0". (HDL-193)
+Warning:  ./cache.v:39: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./cache.v:40: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./cache.v:41: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./cache.v:42: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./cache.v:43: signed to unsigned assignment occurs. (VER-318)
+Warning:  ./cache.v:44: signed to unsigned assignment occurs. (VER-318)
+Presto compilation completed successfully.
+Information: Building the design 'four_bank_mem'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mem_system_control'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'memc' instantiated from design 'cache_cache_id0' with
+	the parameters "16". (HDL-193)
+Warning:  Starting with the 2000.11-1 release, the Presto Verilog reader treats Verilog 'integer' types as signed; synthesized result may not match earlier versions of HDL Compiler. (VER-314)
+Warning:  ./memc.syn.v:23: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+Warning:  ./memc.syn.v:35: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+
+Inferred memory devices in process
+	in routine memc_Size16 line 25 in file
+		'./memc.syn.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===========================================================
+| block name/line  | Inputs | Outputs | # sel inputs | MB |
+===========================================================
+|  memc_Size16/23  |   32   |   16    |      5       | N  |
+===========================================================
+Presto compilation completed successfully.
+Information: Building the design 'memc' instantiated from design 'cache_cache_id0' with
+	the parameters "5". (HDL-193)
+Warning:  Starting with the 2000.11-1 release, the Presto Verilog reader treats Verilog 'integer' types as signed; synthesized result may not match earlier versions of HDL Compiler. (VER-314)
+Warning:  ./memc.syn.v:23: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+Warning:  ./memc.syn.v:35: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+
+Inferred memory devices in process
+	in routine memc_Size5 line 25 in file
+		'./memc.syn.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===========================================================
+| block name/line  | Inputs | Outputs | # sel inputs | MB |
+===========================================================
+|  memc_Size5/23   |   32   |    5    |      5       | N  |
+===========================================================
+Presto compilation completed successfully.
+Information: Building the design 'memc' instantiated from design 'cache_cache_id0' with
+	the parameters "1". (HDL-193)
+Warning:  Starting with the 2000.11-1 release, the Presto Verilog reader treats Verilog 'integer' types as signed; synthesized result may not match earlier versions of HDL Compiler. (VER-314)
+Warning:  ./memc.syn.v:23: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+Warning:  ./memc.syn.v:35: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+
+Inferred memory devices in process
+	in routine memc_Size1 line 25 in file
+		'./memc.syn.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       mem_reg       | Flip-flop |  32   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===========================================================
+| block name/line  | Inputs | Outputs | # sel inputs | MB |
+===========================================================
+|  memc_Size1/23   |   32   |    1    |      5       | N  |
+===========================================================
+Presto compilation completed successfully.
+Information: Building the design 'memv'. (HDL-193)
+Warning:  Starting with the 2000.11-1 release, the Presto Verilog reader treats Verilog 'integer' types as signed; synthesized result may not match earlier versions of HDL Compiler. (VER-314)
+
+Inferred memory devices in process
+	in routine memv line 24 in file
+		'./memv.syn.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       mem_reg       | Flip-flop |  256  |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===========================================================
+| block name/line  | Inputs | Outputs | # sel inputs | MB |
+===========================================================
+|     memv/22      |  256   |    1    |      8       | N  |
+===========================================================
+Presto compilation completed successfully.
+Information: Building the design 'final_memory'. (HDL-193)
+Warning:  Starting with the 2000.11-1 release, the Presto Verilog reader treats Verilog 'integer' types as signed; synthesized result may not match earlier versions of HDL Compiler. (VER-314)
+Warning:  ./final_memory.syn.v:130: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+Warning:  ./final_memory.syn.v:92: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+Warning:  ./final_memory.syn.v:92: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+Warning:  ./final_memory.syn.v:129: Potential simulation-synthesis mismatch if index exceeds size of array 'mem'. (ELAB-349)
+
+Inferred memory devices in process
+	in routine final_memory line 110 in file
+		'./final_memory.syn.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'dff'. (HDL-193)
+
+Inferred memory devices in process
+	in routine dff line 17 in file
+		'./dff.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'mem_state_reg'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'mem_next_state'. (HDL-193)
+
+Statistics for case statements in always block at line 14 in file
+	'./mem_next_state.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            20            |     auto/no      |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'mem_signals'. (HDL-193)
+Presto compilation completed successfully.
+1
+echo "********** CS552 Reading files end ********************"
+********** CS552 Reading files end ********************
+echo "********** CS552 Linking all modules begin ********************"
+********** CS552 Linking all modules begin ********************
+link
+
+  Linking design 'mem_system'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  gscl45nm (library)          /u/k/a/karu/courses/cs552/cad/Synopsys_Libraries/libs/gscl45nm.db
+
+1
+echo "********** CS552 Linking all modules end **********************"
+********** CS552 Linking all modules end **********************
+echo "********** CS552 Checking design of all modules begin**********"
+********** CS552 Checking design of all modules begin**********
+check_design -summary
+Warning: In design 'mem_system', there are 5 nets with no loads. (LINT-30)
+Warning: In design 'mem_system', there are 2 submodules connected to power or ground. (LINT-30)
+Warning: In design 'cache_cache_id0', there is 1 feedthrough. (LINT-30)
+Warning: In design 'cache_cache_id0', there are 7 submodules connected to power or ground. (LINT-30)
+Warning: In design 'cache_cache_id0', there are 7 submodules with pins connected to the same net. (LINT-30)
+Warning: In design 'four_bank_mem', there are 4 submodules connected to power or ground. (LINT-30)
+Warning: In design 'four_bank_mem', there are 2 submodules with pins connected to the same net. (LINT-30)
+Warning: In design 'mem_system_control', there are 8 nets with no loads. (LINT-30)
+Warning: In design 'mem_system_control', there are 8 nets with no drivers.  Logic 0 assumed. (LINT-30)
+Warning: In design 'mem_system_control', there are 4 multidriver nets driven by power or ground. (LINT-30)
+Warning: In design 'mem_system_control', there are 8 hierarchical cell input pins with internal loads, connected to undriven net. (LINT-30)
+Warning: In design 'mem_system_control', there are 4 hierarchical cell input pins without any driver and without any internal loads. (LINT-30)
+Warning: In design 'memc_Size16', there are 6 ports not connected to any nets. (LINT-30)
+Warning: In design 'memc_Size5', there are 6 ports not connected to any nets. (LINT-30)
+Warning: In design 'memc_Size1', there are 6 ports not connected to any nets. (LINT-30)
+Warning: In design 'memv', there are 6 ports not connected to any nets. (LINT-30)
+Warning: In design 'final_memory', there are 3 ports not connected to any nets. (LINT-30)
+Warning: In design 'mem_state_reg', there are 4 undriven output ports. (LINT-30)
+Warning: In design 'mem_state_reg', there are 4 input ports that are connected to multiple-driver nets. (LINT-30)
+Warning: In design 'mem_state_reg', there are 4 unloaded input ports. (LINT-30)
+Warning: In design 'mem_state_reg', there are 4 hierarchical cell input pins with internal loads, connected to undriven net. (LINT-30)
+Information: Design 'mem_system' has multiply instantiated designs. Use the '-multiple_designs' switch for more information. (LINT-78)
+
+Information: Use the 'check_design' command for 
+	 more information about warnings. (LINT-98)
+
+1
+echo "********** CS552 Checking design of all modules end************"
+********** CS552 Checking design of all modules end************
+report_hierarchy > synth/hierarchy.txt
+set filename [format "%s%s"  $my_toplevel ".syn.v"]
+mem_system.syn.v
+write -f verilog $my_toplevel -output synth/$filename -hierarchy
+Writing verilog file '/afs/cs.wisc.edu/u/o/n/oney/private/cs552/project/cache_direct/verilog/synth/mem_system.syn.v'.
+Warning: Bus naming style currently specified as %s<%d>, verilog syntax requires bus naming style to be "[]".  (VO-13)
+Warning: Module memc_Size16 contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+Warning: Module memc_Size5 contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+Warning: Module memc_Size1 contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+Warning: Module memv contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+Warning: Module final_memory contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+Warning: Module dff contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Warning: Module cache_cache_id0 contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+Warning: Module mem_system contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+1
+quit
+Information: Defining new variable 'filename'. (CMD-041)
+Information: Defining new variable 'my_toplevel'. (CMD-041)
+Information: Defining new variable 'my_verilog_files'. (CMD-041)
+
+Thank you...
+************************************************
+Synthesis messages saved in synth.log.
+Synthesized files are in synth/mem_system.syn.v
+Subset of errors found follow
+---begin
+---end
+Cleaning temporary directory WORK
+Look for files in synth/

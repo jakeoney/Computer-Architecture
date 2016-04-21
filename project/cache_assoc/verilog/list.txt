@@ -1,0 +1,13 @@
+cache.v
+dff.v
+final_cache.v
+final_memory.syn.v
+four_bank_mem.v
+memc.syn.v
+mem_next_state.v
+mem_signals.v
+mem_state_reg.v
+mem_system_control.v
+mem_system.v
+mem_system_ref.v
+memv.syn.v

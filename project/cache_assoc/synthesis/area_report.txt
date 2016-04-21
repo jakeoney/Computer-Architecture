@@ -1,0 +1,24 @@
+ 
+****************************************
+Report : area
+Design : mem_system
+Version: B-2008.09-SP3
+Date   : Wed Apr 20 22:03:21 2016
+****************************************
+
+Library(s) Used:
+
+    gscl45nm (File: /u/k/a/karu/courses/cs552/cad/Synopsys_Libraries/libs/gscl45nm.db)
+
+Number of ports:               57
+Number of nets:               190
+Number of cells:               98
+Number of references:          12
+
+Combinational area:       66181.154679
+Noncombinational area:    50030.663990
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:          116211.818669
+Total area:                 undefined
+1
